@@ -1,15 +1,23 @@
 # Changelog
 
+## 1.2.0 — 2026-11-10
+
+- Made the repository documentation English-first.
+- Added `skills/system-analysis-en/SKILL.md` as a standalone English BA/SA skill.
+- Added `skills/system-analysis-id/SKILL.md` as a standalone Indonesian BA/SA skill with natural workplace wording.
+- Preserved technical English terms in the Indonesian skill and examples.
+- Updated root `SKILL.md` to a bilingual-aware English-first master.
+- Added verified CLI command syntax for Claude Code, Codex CLI, Gemini CLI, Cursor, GitHub Copilot, and OpenCode.
+- Updated installation guide, README, examples, Mermaid diagram guidance, and Word/PDF style documentation.
+
 ## 1.1.0 — 2026-11-10
 
-- Added detailed Indonesian Anti-AI Slop writing rules and eight illustrative before/after examples.
-- Expanded Mermaid sequence diagram rules and three detailed sample flows.
-- Strengthened natural DOCX/PDF formatting guidance.
-- Added repository documentation, bilingual README files, and editable Mermaid examples.
+- Added Indonesian Anti-AI Slop standards.
+- Added sequence diagram patterns with normal and failure paths.
+- Expanded natural DOCX/PDF formatting rules.
 
-## 1.0.0 — Previous working baseline
+## 1.0.0 — Previous baseline
 
-- Consolidated cross-project Business Analyst and System Analyst guidance.
-- Added evidence hierarchy, requirement statuses, delivery standards, and document quality checks.
+- Consolidated cross-project BA/SA analysis methods and deliverable quality standards.
 
-Versions describe this repository's skill materials, not product release versions.
+The changelog describes instruction content revisions, not releases of a software product.
