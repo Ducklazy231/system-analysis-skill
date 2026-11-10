@@ -1,29 +1,30 @@
 sequenceDiagram
     autonumber
-    actor U as User
+    actor User
     participant FE as Frontend
     participant API as Backend API
     participant DB as Database
 
-    U->>FE: Isi form dan klik Submit
+    User->>FE: Fill form and click Submit
     rect rgb(239, 246, 255)
         FE->>API: POST /requests + payload
-        API->>API: Validasi input dan permission
+        API->>API: Validate fields and permissions
     end
-    alt Data tidak valid
-        API-->>FE: 422 + detail validasi
-        FE-->>U: Tampilkan error pada field terkait
-    else Data valid
-        API->>DB: Insert pengajuan dengan status Draft
-        alt Penyimpanan gagal
+
+    alt Validation fails
+        API-->>FE: Field errors
+        FE-->>User: Show validation errors
+    else Validation passes
+        API->>DB: Insert request as Draft
+        alt Database write fails
             DB-->>API: Database error
-            API-->>FE: 500 + request reference
-            FE-->>U: Tampilkan pesan gagal dan opsi ulang
-        else Penyimpanan berhasil
+            API-->>FE: Failure response + request reference
+            FE-->>User: Show failure and retry option
+        else Save succeeds
             DB-->>API: Request ID
             rect rgb(240, 253, 244)
                 API-->>FE: 201 Created + Request ID
-                FE-->>U: Tampilkan nomor pengajuan
+                FE-->>User: Show submitted request reference
             end
         end
     end
