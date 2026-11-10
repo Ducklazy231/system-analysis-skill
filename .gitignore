@@ -1,0 +1,8 @@
+# Temporary files and local build products
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.swp
+__pycache__/
+*.pyc
