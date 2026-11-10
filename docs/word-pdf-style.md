@@ -1,41 +1,42 @@
-# Standar layout Word dan PDF
+# Word and PDF formatting standard
 
-Tujuannya dokumen kerja BA/SA yang enak dibaca, mudah dicetak, dan tidak terlihat seperti template pemasaran. Gunakan ini sebagai default kecuali ada corporate template atau arahan user yang berbeda.
+Produce documents that resemble normal internal BA/SA work, not a decorative AI-generated brochure. Use an organization's own template if provided.
 
-## Layout default
+## Default page style
 
-| Elemen | Aturan |
+| Element | Default |
 |---|---|
-| Ukuran kertas | A4 portrait |
-| Margin | Atas 2,2 cm, bawah 2,2 cm, kiri 2,5 cm, kanan 2,3 cm |
-| Font | Aptos, Calibri, atau Arial |
-| Body | 10,5–11 pt, hitam atau abu-abu gelap |
-| Spasi baris | 1,1–1,15 |
-| Jarak paragraf | After 4–6 pt |
-| Judul dokumen | 15–16 pt, rata kiri |
-| Heading utama | 12–13 pt, bold seperlunya |
-| Tabel | 9–10 pt, garis tipis, padding wajar |
-| Header/footer | Tidak dibuat secara default |
+| Page size | A4 portrait |
+| Margins | 2.2 cm top/bottom, approximately 2.3–2.5 cm left/right |
+| Font | Aptos, Calibri, or Arial |
+| Body | 10.5–11 pt |
+| Line spacing | 1.1–1.15 |
+| Paragraph gap | 4–6 pt after |
+| Document title | 15–16 pt, left-aligned |
+| Section heading | 12–13 pt, bold when needed |
+| Table | 9–10 pt, thin borders, compact padding |
+| Header and footer | Do not add unless requested |
 
-## Hal yang perlu dihindari
+## Avoid AI-template aesthetics
 
-- Cover dekoratif jika tidak diminta.
-- Icon besar, shaded callout, atau header dengan warna mencolok.
-- Kesimpulan yang hanya mengulang isi dokumen.
-- Diagram lebar dipaksa masuk ke satu halaman kecil sehingga teks tidak terbaca.
-- Tabel semua kolom sama lebar meski isi berbeda.
-- Menaruh tiap section pada halaman baru tanpa alasan.
-- Memecah row tabel antarhalaman jika bisa dihindari.
-- Menggunakan gambar tabel ketika user butuh file Word yang editable.
+- Decorative cover pages when not requested.
+- Oversized titles, cards, random icons, and brightly colored summary boxes.
+- Generic introductions and conclusions added just to create extra pages.
+- Starting every section on a new page without a real reason.
+- Tables whose columns all have equal width despite different content.
+- Converting editable tables into images.
+- Diagram text so small it cannot be read at normal zoom.
 
-## DOCX
+## DOCX requirements
 
-Gunakan heading styles, numbering yang stabil, tabel yang bisa diedit, repeat header row jika tabel berlanjut, dan page-break yang tidak menyisakan halaman kosong. Pilih landscape pada halaman tertentu bila tabel terlalu lebar, bukan mengecilkan font secara ekstrem.
+Use actual heading styles, editable tables, consistent paragraph spacing, stable numbering, and meaningful page breaks. Repeat a header row when a table continues onto the next page if the tool supports it. Avoid splitting rows across pages where possible. Use landscape for a genuinely wide page or diagram instead of shrinking everything.
 
-## PDF
+## PDF requirements
 
-Jaga kesesuaian isi dengan source dokumen, tidak ada teks/tabel terpotong, halaman kosong, atau diagram pecah. Periksa hasil render jika tool mendukung. Jangan hanya mengganti ekstensi file.
+Preserve correct content, alignment, and diagram readability. Check for clipped table cells, orphaned headings, empty pages, missing characters, and broken images after rendering. Do not simply rename a file extension to PDF.
 
-## Pengecekan isi dan tampilan
+## Content quality still matters
 
-Layout yang rapi tidak cukup bila requirement generik. Selalu periksa alur, aktor, validasi, status, dan evidence. Untuk Bahasa Indonesia, terapkan juga [Anti-AI Slop](anti-ai-slop-id.md).
+A nice layout does not replace accurate requirements. Check actors, triggers, validation, permissions, business rules, exceptions, source evidence, and acceptance criteria before export.
+
+For Indonesian writing, apply the [Anti-AI Slop guide](anti-ai-slop-id.md). Technical terms remain in English.
