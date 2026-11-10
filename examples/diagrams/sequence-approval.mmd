@@ -1,38 +1,39 @@
 sequenceDiagram
     autonumber
-    actor Staff as Staff
+    actor Staff
     participant App as Application
     participant DB as Database
-    actor Appr as Approver
+    actor Approver
 
     Staff->>App: Submit request
-    App->>App: Validasi data dan syarat pengajuan
-    alt Data belum memenuhi syarat
-        App-->>Staff: Tampilkan alasan pengajuan ditolak sistem
-    else Data valid
-        App->>DB: Simpan status Pending Approval
+    App->>App: Validate required data
+    alt Request invalid
+        App-->>Staff: Show validation errors
+    else Request valid
+        App->>DB: Save Pending Approval
         DB-->>App: Request ID
-        App-->>Staff: Submission berhasil
-        Appr->>App: Buka detail request
-        App->>DB: Ambil detail dan status terbaru
-        DB-->>App: Detail request
-        App-->>Appr: Tampilkan request
-        Appr->>App: Approve atau Reject
-        App->>App: Validasi permission dan status
-        alt Tidak punya akses atau status berubah
-            App-->>Appr: Action ditolak dan alasan ditampilkan
+        App-->>Staff: Show submission result
+        Approver->>App: Open request
+        App->>DB: Fetch latest record state
+        DB-->>App: Current status and details
+        App-->>Approver: Show request
+        Approver->>App: Select Approve or Reject
+        App->>App: Validate permission and status
+
+        alt Unauthorized or status changed
+            App-->>Approver: Reject action with reason
         else Approve
-            App->>DB: Update status Approved dan approver
-            DB-->>App: Update berhasil
-            App-->>Appr: Tampilkan status Approved
+            App->>DB: Save Approved and approver
+            DB-->>App: Update succeeded
+            App-->>Approver: Show Approved
         else Reject
-            App->>App: Validasi rejection reason
-            alt Alasan kosong
-                App-->>Appr: Wajib isi rejection reason
-            else Alasan tersedia
-                App->>DB: Update status Rejected dan alasan
-                DB-->>App: Update berhasil
-                App-->>Appr: Tampilkan status Rejected
+            App->>App: Check rejection reason
+            alt Rejection reason missing
+                App-->>Approver: Require reason
+            else Reason provided
+                App->>DB: Save Rejected and reason
+                DB-->>App: Update succeeded
+                App-->>Approver: Show Rejected
             end
         end
     end
