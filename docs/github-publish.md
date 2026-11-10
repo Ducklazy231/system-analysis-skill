@@ -1,38 +1,39 @@
-# Cara upload repository ke GitHub
+# Publishing and updating the repository
 
-## Melalui website GitHub
+This repository contains two reusable language editions of the same BA/SA method.
 
-1. Buat repository baru di akun GitHub, misalnya `business-system-analysis-skill`.
-2. Sebaiknya buat repository kosong, tanpa README otomatis, karena paket sudah berisi README.
-3. Extract paket ZIP di komputer.
-4. Di halaman repository, pilih **Add file → Upload files**.
-5. Upload isi folder `business-system-analysis-skill` dari dalam foldernya, bukan ZIP utuh, supaya `README.md` berada di root repository.
-6. Commit perubahan dan pastikan Markdown / Mermaid terbaca.
+## Main skill entry points
 
-Untuk repository dengan banyak file, Git atau GitHub Desktop umumnya lebih mudah daripada upload manual.
+- `skills/system-analysis-en/SKILL.md`
+- `skills/system-analysis-id/SKILL.md`
 
-## Menggunakan Git CLI
+The root `SKILL.md` is a bilingual-aware English-first working reference. It is not the recommended direct path for CLI installation when you want one specific language.
 
-Jalankan dari dalam folder `business-system-analysis-skill` setelah membuat repository kosong di GitHub.
+## Publishing through GitHub
+
+1. Create the repository.
+2. Keep each skill in its own directory, with a valid `SKILL.md` containing `name` and `description` frontmatter.
+3. Commit the documentation and examples.
+4. Verify that the language-specific SKILL files are readable through their GitHub URLs.
+5. Use a skills-compatible CLI to install the exact folder you want.
+
+## Publishing through Git CLI
 
 ```bash
-git init
-git add .
-git commit -m "docs: add BA and SA reusable skill"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/business-system-analysis-skill.git
-git push -u origin main
+git add README.md SKILL.md skills docs examples AGENTS.md CLAUDE.md CHANGELOG.md
+git commit -m "docs: maintain bilingual system analysis skill"
+git push origin main
 ```
 
-Ganti `YOUR_USERNAME` dan nama repository sesuai tujuan. Pastikan autentikasi GitHub sudah dikonfigurasi pada perangkat. Jangan menempel token GitHub di file atau commit.
+The command above assumes the repository is already configured with an authenticated remote and the working tree has no conflicting changes.
 
-Jika repository tujuan sudah ada, lakukan clone lalu tambahkan atau gabungkan file ke branch baru. Periksa konflik sebelum push, dan buat Pull Request jika proses tim mengharuskannya.
+## Release checks
 
-## Setelah upload
+- Both language editions remain general-purpose.
+- All real technical terms remain in English in the Indonesian skill.
+- No secret credentials or real customer information are published.
+- Code fences, Mermaid examples, and links render correctly.
+- Installation commands use supported agent IDs.
+- GitHub README and standard documentation remain English.
 
-- Pastikan `README.md` tampil pada halaman awal repository.
-- Pastikan `SKILL.md` ada di root.
-- Buka `docs/sequence-diagrams.md` untuk mengecek preview Mermaid.
-- Konfirmasi bahwa tidak ada dokumen rahasia, screenshot internal, credentials, atau data pelanggan yang terikut.
-- Pilih visibility Public atau Private sesuai kebijakan pemilik repo dan hak distribusi materi.
-- Lisensi publik belum dipilih, jadi jangan mengasumsikan seluruh materi boleh dipakai ulang tanpa izin.
+[Install instructions](installation.md) · [CLI upstream docs](https://github.com/vercel-labs/skills/blob/main/docs/commands.md)
