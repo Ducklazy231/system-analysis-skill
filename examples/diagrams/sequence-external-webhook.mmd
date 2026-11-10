@@ -1,45 +1,46 @@
 sequenceDiagram
     autonumber
-    actor U as User
+    actor User
     participant FE as Frontend
     participant BE as Backend
     participant DB as Database
     participant EXT as External Service
     participant WH as Webhook Handler
 
-    U->>FE: Konfirmasi operasi
+    User->>FE: Confirm operation
     FE->>BE: POST /operations
-    BE->>DB: Simpan operasi status Pending
+    BE->>DB: Save operation as Pending
     DB-->>BE: Internal Operation ID
+
     rect rgb(239, 246, 255)
-        BE->>EXT: POST operation + idempotency key
-        alt Request diterima
-            EXT-->>BE: 202 Accepted + External Reference
-            BE->>DB: Simpan external reference
-            BE-->>FE: 202 Pending + Operation ID
-        else Timeout atau hasil belum pasti
-            BE->>DB: Set status Verification Required
-            BE-->>FE: Status masih menunggu verifikasi
+        BE->>EXT: Send operation + idempotency key
+        alt External request acknowledged
+            EXT-->>BE: 202 Accepted + reference
+            BE->>DB: Store external reference
+            BE-->>FE: Pending + Operation ID
+        else Timeout or ambiguous result
+            BE->>DB: Mark Verification Required
+            BE-->>FE: Pending verification
         end
     end
-    FE-->>U: Tampilkan status proses, bukan hasil final
+    FE-->>User: Show processing status, not final completion
 
-    Note over EXT,WH: Tahap berikut berjalan asynchronous
-    EXT->>WH: POST webhook status operasi
-    WH->>WH: Verifikasi signature dan event ID
-    alt Signature tidak valid
-        WH-->>EXT: 401 Unauthorized
-    else Event sudah diproses
-        WH-->>EXT: 200 Acknowledged
-    else Event valid dan baru
-        WH->>DB: Simpan event dan update status secara atomik
-        alt Update database gagal
-            DB-->>WH: Error penyimpanan
-            WH-->>EXT: Response gagal agar dapat di-retry
-        else Update berhasil
-            DB-->>WH: Status final tersimpan
+    Note over EXT,WH: Later asynchronous event
+    EXT->>WH: POST webhook event
+    WH->>WH: Verify signature and event ID
+    alt Invalid signature
+        WH-->>EXT: Reject event
+    else Duplicate event
+        WH-->>EXT: Acknowledge already processed event
+    else Valid new event
+        WH->>DB: Persist event and update status atomically
+        alt Database update fails
+            DB-->>WH: Storage error
+            WH-->>EXT: Retryable failure
+        else Update succeeds
+            DB-->>WH: Status saved
             rect rgb(240, 253, 244)
-                WH-->>EXT: 200 Acknowledged
+                WH-->>EXT: Acknowledge event
             end
         end
     end
