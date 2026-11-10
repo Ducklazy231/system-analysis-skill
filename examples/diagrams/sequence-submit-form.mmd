@@ -1,0 +1,29 @@
+sequenceDiagram
+    autonumber
+    actor U as User
+    participant FE as Frontend
+    participant API as Backend API
+    participant DB as Database
+
+    U->>FE: Isi form dan klik Submit
+    rect rgb(239, 246, 255)
+        FE->>API: POST /requests + payload
+        API->>API: Validasi input dan permission
+    end
+    alt Data tidak valid
+        API-->>FE: 422 + detail validasi
+        FE-->>U: Tampilkan error pada field terkait
+    else Data valid
+        API->>DB: Insert pengajuan dengan status Draft
+        alt Penyimpanan gagal
+            DB-->>API: Database error
+            API-->>FE: 500 + request reference
+            FE-->>U: Tampilkan pesan gagal dan opsi ulang
+        else Penyimpanan berhasil
+            DB-->>API: Request ID
+            rect rgb(240, 253, 244)
+                API-->>FE: 201 Created + Request ID
+                FE-->>U: Tampilkan nomor pengajuan
+            end
+        end
+    end
