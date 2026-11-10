@@ -1,186 +1,155 @@
-# Standar sequence diagram
+# Sequence diagrams — BA/SA reference
 
-`SKILL.md` bagian 8 memuat aturan lengkap dan tiga contoh end-to-end. Dokumen ini menjelaskan bagaimana membaca dan mengubah source Mermaid dalam repository.
+Use a sequence diagram when the main question is **which actor or system calls which component, in what order, and how the result is returned or processed**. This is not a replacement for a workflow diagram, a database ERD, or an API contract.
 
-## Kapan dipakai
+## Before drawing
 
-Sequence diagram dipakai saat kita perlu melihat **siapa mengirim request, komponen apa yang memprosesnya, kapan data disimpan, serta kapan dan kepada siapa response dikirim**. Gunakan flowchart atau swimlane jika fokusnya urutan proses bisnis dan pembagian peran, bukan pertukaran pesan antarkomponen.
+Gather as much of the following as the available evidence supports: business event, actors, system boundary, endpoint and method, payload, authentication, validation, database operation, state update, response, error paths, and retry policy. For external integrations, also check idempotency, callback/webhook, status inquiry, and reconciliation.
 
-## Notasi Mermaid
+If a contract is missing, label proposed behavior and mark the endpoint `Need Confirmation`. Do not invent a real-looking production URL.
 
-| Notasi | Makna | Contoh penggunaan |
-|---|---|---|
-| `actor` | Manusia / peran | User, Staff, Approver |
-| `participant` | Komponen / sistem | Frontend, Backend, Database |
-| `->>` | Request atau message | Frontend mengirim submit request |
-| `-->>` | Response, acknowledgment, callback message | Backend mengembalikan hasil |
-| `alt` / `else` | Kondisi dan jalur alternatif | Approved atau Rejected |
-| `opt` | Langkah opsional | Resend notification bila disepakati |
-| `loop` | Perulangan yang punya batas/rule | Retry dengan ketentuan yang jelas |
-| `Note over` | Konteks singkat | Callback terjadi asynchronous |
+## Notation
 
-## Contoh A — Submit form
+| Element | Use |
+|---|---|
+| `actor` | Human user or business role |
+| `participant` | Frontend, API, DB, queue, service |
+| `->>` | Request/message |
+| `-->>` | Response/acknowledgment |
+| `alt / else` | Mutually exclusive paths |
+| `opt` | Optional action |
+| `loop` | Meaningful repetition or retry |
+| `Note over` | Event timing, boundaries, or a short technical note |
+| `autonumber` | Readable step numbering |
 
-Source: [`sequence-submit-form.mmd`](../examples/diagrams/sequence-submit-form.mmd)
+Distinguish synchronous calls from asynchronous callbacks. Avoid placing a webhook directly inside the original HTTP response flow.
 
-Alur ilustratif: User mengirim form, Backend melakukan validasi dan permission check, lalu menyimpan data. Untuk input salah, sistem menampilkan detail error. Jika database gagal, jangan klaim request tersimpan. Jika berhasil, tampilkan ID pengajuan.
-
-## Contoh B — Approval
-
-Source: [`sequence-approval.mmd`](../examples/diagrams/sequence-approval.mmd)
-
-Alur ilustratif: Staff mengajukan request. Approver membuka detail, memilih Approve atau Reject. Aplikasi memeriksa permission dan status terbaru, serta meminta rejection reason saat menolak. Perubahan state harus disimpan sebelum response sukses diberikan.
-
-## Contoh C — External API dan webhook
-
-Source: [`sequence-external-webhook.mmd`](../examples/diagrams/sequence-external-webhook.mmd)
-
-Tahap pertama: Backend membuat operation ID, memanggil External Service, dan memberi response sementara kepada Frontend. Response `202 Accepted` pada contoh **bukan** berarti business process selesai.
-
-Tahap kedua: External Service mengirim webhook ke Webhook Handler. Handler memverifikasi signature dan event ID sebelum mengubah status operation. Callback yang sama dapat diterima lebih dari sekali, sehingga event duplikat harus ditangani dengan benar. HTTP response webhook hanya menandakan penerimaan callback sesuai kontrak, bukan menggantikan request awal.
-
-## Cek diagram sebelum dipakai
-
-- Participant sesuai arsitektur yang diketahui.
-- Semua message berarah masuk akal. Frontend tidak langsung mengakses internal database kecuali memang dirancang begitu.
-- Happy path dan error path penting terlihat.
-- Data read/write menghasilkan perubahan status yang konsisten.
-- `Request accepted` tidak disamakan dengan `business completed`.
-- Webhook asynchronous berada di flow yang berbeda dari response sinkron.
-- Detail endpoint, status HTTP, authentication, retry, dan idempotency dilabeli ilustrasi jika belum dikonfirmasi.
-- Diagram bisa dibaca pada ukuran normal. Pecah diagram bila terlalu panjang.
-
-## Cara menggunakan source di GitHub
-
-GitHub mendukung render code block Mermaid dalam Markdown. Untuk preview cepat, salin isi `.mmd` ke code block `mermaid` pada file README atau dokumentasi modul. Simpan source `.mmd` agar tim bisa mengedit diagram tanpa menggambar ulang.
-
-## Preview Mermaid lengkap
-
-Seluruh flow berikut merupakan ilustrasi. Sesuaikan nama sistem, status, dan HTTP codes dengan requirement yang terverifikasi.
-
-### 1. Submit form — validasi dan data tersimpan
+## Example 1 — Submit, validation, save
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor U as User
+    actor User
     participant FE as Frontend
     participant API as Backend API
     participant DB as Database
-
-    U->>FE: Isi form dan klik Submit
-    rect rgb(239, 246, 255)
-        FE->>API: POST /requests + payload
-        API->>API: Validasi input dan permission
-    end
-    alt Data tidak valid
-        API-->>FE: 422 + detail validasi
-        FE-->>U: Tampilkan error pada field terkait
-    else Data valid
-        API->>DB: Insert pengajuan dengan status Draft
-        alt Penyimpanan gagal
+    User->>FE: Fill form and click Submit
+    FE->>API: POST /requests + payload
+    API->>API: Validate fields and permission
+    alt Validation error
+        API-->>FE: Validation error response
+        FE-->>User: Show field errors
+    else Valid data
+        API->>DB: Insert request
+        alt Save failed
             DB-->>API: Database error
-            API-->>FE: 500 + request reference
-            FE-->>U: Tampilkan pesan gagal dan opsi ulang
-        else Penyimpanan berhasil
+            API-->>FE: Failure response
+            FE-->>User: Show failure
+        else Save succeeded
             DB-->>API: Request ID
-            rect rgb(240, 253, 244)
-                API-->>FE: 201 Created + Request ID
-                FE-->>U: Tampilkan nomor pengajuan
-            end
+            API-->>FE: Created + Request ID
+            FE-->>User: Show confirmation
         end
     end
 ```
 
-### 2. Approval — approve, reject, permission
+For this example, no specific API contract has been supplied. The endpoint and status are illustrative only.
+
+## Example 2 — Approval workflow
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Staff as Staff
+    actor Staff
     participant App as Application
     participant DB as Database
-    actor Appr as Approver
-
+    actor Approver
     Staff->>App: Submit request
-    App->>App: Validasi data dan syarat pengajuan
-    alt Data belum memenuhi syarat
-        App-->>Staff: Tampilkan alasan pengajuan ditolak sistem
-    else Data valid
-        App->>DB: Simpan status Pending Approval
+    App->>App: Validate required data
+    alt Invalid request
+        App-->>Staff: Show validation error
+    else Request valid
+        App->>DB: Save Pending Approval
         DB-->>App: Request ID
-        App-->>Staff: Submission berhasil
-        Appr->>App: Buka detail request
-        App->>DB: Ambil detail dan status terbaru
-        DB-->>App: Detail request
-        App-->>Appr: Tampilkan request
-        Appr->>App: Approve atau Reject
-        App->>App: Validasi permission dan status
-        alt Tidak punya akses atau status berubah
-            App-->>Appr: Action ditolak dan alasan ditampilkan
+        App-->>Staff: Show submission result
+        Approver->>App: Open request
+        App->>DB: Fetch latest status
+        DB-->>App: Current record
+        Approver->>App: Approve or Reject
+        App->>App: Validate role and current status
+        alt Unauthorized or status changed
+            App-->>Approver: Reject action
         else Approve
-            App->>DB: Update status Approved dan approver
-            DB-->>App: Update berhasil
-            App-->>Appr: Tampilkan status Approved
+            App->>DB: Save Approved
+            DB-->>App: Success
+            App-->>Approver: Show Approved
         else Reject
-            App->>App: Validasi rejection reason
-            alt Alasan kosong
-                App-->>Appr: Wajib isi rejection reason
-            else Alasan tersedia
-                App->>DB: Update status Rejected dan alasan
-                DB-->>App: Update berhasil
-                App-->>Appr: Tampilkan status Rejected
-            end
+            App->>App: Require rejection reason
+            App->>DB: Save Rejected and reason
+            DB-->>App: Success
+            App-->>Approver: Show Rejected
         end
     end
 ```
 
-### 3. Integrasi eksternal — request dan webhook asynchronous
+This diagram illustrates a possible design. Approval role, statuses, and validation rules must be confirmed in a real project.
+
+## Example 3 — External API plus asynchronous webhook
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor U as User
+    actor User
     participant FE as Frontend
     participant BE as Backend
     participant DB as Database
     participant EXT as External Service
     participant WH as Webhook Handler
-
-    U->>FE: Konfirmasi operasi
+    User->>FE: Confirm operation
     FE->>BE: POST /operations
-    BE->>DB: Simpan operasi status Pending
+    BE->>DB: Save Pending operation
     DB-->>BE: Internal Operation ID
-    rect rgb(239, 246, 255)
-        BE->>EXT: POST operation + idempotency key
-        alt Request diterima
-            EXT-->>BE: 202 Accepted + External Reference
-            BE->>DB: Simpan external reference
-            BE-->>FE: 202 Pending + Operation ID
-        else Timeout atau hasil belum pasti
-            BE->>DB: Set status Verification Required
-            BE-->>FE: Status masih menunggu verifikasi
-        end
+    BE->>EXT: Send operation + idempotency key
+    alt External request acknowledged
+        EXT-->>BE: Accepted + external reference
+        BE->>DB: Store reference
+        BE-->>FE: Pending operation
+    else Timeout or ambiguous result
+        BE->>DB: Mark Verification Required
+        BE-->>FE: Pending verification
     end
-    FE-->>U: Tampilkan status proses, bukan hasil final
-
-    Note over EXT,WH: Tahap berikut berjalan asynchronous
-    EXT->>WH: POST webhook status operasi
-    WH->>WH: Verifikasi signature dan event ID
-    alt Signature tidak valid
-        WH-->>EXT: 401 Unauthorized
-    else Event sudah diproses
-        WH-->>EXT: 200 Acknowledged
-    else Event valid dan baru
-        WH->>DB: Simpan event dan update status secara atomik
-        alt Update database gagal
-            DB-->>WH: Error penyimpanan
-            WH-->>EXT: Response gagal agar dapat di-retry
-        else Update berhasil
-            DB-->>WH: Status final tersimpan
-            rect rgb(240, 253, 244)
-                WH-->>EXT: 200 Acknowledged
-            end
+    FE-->>User: Show processing state
+    Note over EXT,WH: Later asynchronous event
+    EXT->>WH: Send webhook event
+    WH->>WH: Verify signature and event ID
+    alt Signature invalid
+        WH-->>EXT: Reject event
+    else Event already processed
+        WH-->>EXT: Acknowledge duplicate
+    else New valid event
+        WH->>DB: Store event and update status
+        alt Database failure
+            DB-->>WH: Error
+            WH-->>EXT: Retryable failure
+        else Stored successfully
+            DB-->>WH: Commit successful
+            WH-->>EXT: Acknowledge event
         end
     end
 ```
+
+### Review checklist for external integration
+
+1. Is the trigger and Source of Truth explicit?
+2. Is the acknowledgment different from final business completion?
+3. Are retry, timeout, and duplicate requests addressed?
+4. Is webhook signature verification defined by the actual provider?
+5. Is the final status mapping based on the API contract?
+6. Is error handling consistent with stored state?
+7. Are all sensitive values excluded from logs and examples?
+
+## Layout and readability
+
+Make diagrams detailed enough to be useful, but avoid compressing a long end-to-end system into a single unreadable image. Split into main request flow, callback processing, and recovery/reconciliation if needed. Keep the Mermaid source editable.
+
+See `../examples/diagrams/` for reusable `.mmd` files.
