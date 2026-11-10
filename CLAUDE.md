@@ -1,7 +1,10 @@
-# Claude project guidance
+# Claude Code project guidance
 
-Read and follow [`SKILL.md`](SKILL.md) before preparing Business Analyst or System Analyst deliverables in this repository.
+For BA/SA work, select one skill edition:
 
-Use section 3A for natural Indonesian documentation, section 8 for technical sequence diagrams, and section 14 for Word/PDF formatting. Follow the user's current project decisions and evidence. Do not invent business requirements or claim testing/approval that did not occur.
+- `skills/system-analysis-en/SKILL.md` for English deliverables.
+- `skills/system-analysis-id/SKILL.md` for natural Indonesian deliverables with unchanged technical terminology.
 
-The main specification is in `SKILL.md`. This file is intentionally concise to avoid conflicting rules.
+Apply the user's current project evidence and decisions. Do not invent roles, APIs, states, approvals, metrics, or sign-off. Use practical, testable requirements and detailed but readable sequence diagrams.
+
+For global installation via Claude Code, see `docs/installation.md`. For an agent that automatically detects project skills, the language-specific skill folder is the preferred reference.
