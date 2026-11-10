@@ -1,24 +1,26 @@
 # Contributing
 
-This is an instruction repository for repeatable BA/SA work. Updates should preserve its cross-project scope.
+This is a reusable Agent Skills repository. Keep it general-purpose and language-aware.
 
-## Suggested change process
+## Editing instructions
 
-1. Describe the problem in the current skill, ideally with a short before/after example.
-2. Edit `SKILL.md` first. The canonical rules belong there.
-3. Update the relevant guide or `.mmd` example where needed.
-4. Check that Indonesian and English instructions do not conflict.
-5. Avoid introducing project-specific business rules into the general skill.
-6. Update `CHANGELOG.md` when behavior or scope changes.
+1. For English BA/SA behavior, update `skills/system-analysis-en/SKILL.md`.
+2. For natural Indonesian behavior, update `skills/system-analysis-id/SKILL.md`.
+3. Keep technical terms in English in Indonesian documentation.
+4. Keep the root `SKILL.md` useful as an English-first bilingual working reference.
+5. Update README, examples, and related guides when a change affects user-facing behavior.
+6. Note meaningful changes in `CHANGELOG.md`.
 
 ## Review checklist
 
-- No unsupported factual claims, fake metrics, or invented project decisions.
-- Indonesian examples are natural and technically accurate.
-- Every sequence diagram has a coherent happy path and appropriate alternatives.
-- Async events are not drawn as synchronous responses.
-- No private credentials, live customer data, or access tokens.
-- Word/PDF guidance prioritizes readability over decoration.
-- Relative file links resolve within the repository.
+- Confirmed business facts come from provided evidence, not generic examples.
+- Indonesian language sounds like natural internal BA/SA documentation, not rigid translated wording.
+- Technical names, UI labels, API terms, and status labels are not translated.
+- Sequence diagrams reflect the stated business flow and include relevant alternate paths.
+- Async callbacks are not depicted as synchronous HTTP responses.
+- No private customer data, passwords, credentials, or proprietary endpoints are published.
+- Both skill versions remain independently installable.
+- The README and general documentation remain English-first.
+- Installation commands reference valid skill paths and supported agent IDs.
 
-No public license has been selected. Contact the repository owner before distributing or reusing the materials under a separate license.
+No public software license has been selected. Do not assume redistribution rights beyond those actually granted by the repository owner.
