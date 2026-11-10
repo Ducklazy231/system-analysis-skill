@@ -1,0 +1,38 @@
+sequenceDiagram
+    autonumber
+    actor Staff as Staff
+    participant App as Application
+    participant DB as Database
+    actor Appr as Approver
+
+    Staff->>App: Submit request
+    App->>App: Validasi data dan syarat pengajuan
+    alt Data belum memenuhi syarat
+        App-->>Staff: Tampilkan alasan pengajuan ditolak sistem
+    else Data valid
+        App->>DB: Simpan status Pending Approval
+        DB-->>App: Request ID
+        App-->>Staff: Submission berhasil
+        Appr->>App: Buka detail request
+        App->>DB: Ambil detail dan status terbaru
+        DB-->>App: Detail request
+        App-->>Appr: Tampilkan request
+        Appr->>App: Approve atau Reject
+        App->>App: Validasi permission dan status
+        alt Tidak punya akses atau status berubah
+            App-->>Appr: Action ditolak dan alasan ditampilkan
+        else Approve
+            App->>DB: Update status Approved dan approver
+            DB-->>App: Update berhasil
+            App-->>Appr: Tampilkan status Approved
+        else Reject
+            App->>App: Validasi rejection reason
+            alt Alasan kosong
+                App-->>Appr: Wajib isi rejection reason
+            else Alasan tersedia
+                App->>DB: Update status Rejected dan alasan
+                DB-->>App: Update berhasil
+                App-->>Appr: Tampilkan status Rejected
+            end
+        end
+    end
