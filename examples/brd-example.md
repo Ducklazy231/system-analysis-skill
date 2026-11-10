@@ -1,46 +1,46 @@
-# Contoh BRD singkat — Filter Stok per Gudang
+# Example BRD — Warehouse stock filter
 
-> **Status:** Seluruh isi merupakan contoh hipotetis. Tidak menjelaskan sistem perusahaan tertentu.
+> **Hypothetical scenario.** This example is not linked to any real company or product.
 
 ## Problem
 
-Pada contoh sistem Inventory ini, daftar stok belum memiliki filter lokasi gudang. Staff perlu membuka setiap detail barang untuk memeriksa stok di gudang tertentu.
+In this example Inventory module, staff cannot filter the stock list by warehouse. Checking stock for a selected warehouse requires opening each item's detail page.
 
 ## Objective
 
-Staff dapat melihat stok sesuai gudang yang dipilih tanpa membuka detail satu per satu.
+Allow staff to view stock for a selected warehouse without reviewing item details one by one.
 
 ## Scope
 
-**In scope:** filter berdasarkan gudang, daftar stok, indikator hasil kosong.
+**In scope:** warehouse selection, stock list filtering, and empty state.
 
-**Out of scope:** perpindahan stok antar-gudang, perubahan quantity, proses approval.
+**Out of scope:** stock transfer, quantity adjustment, and approval workflow.
 
-## As-Is dan To-Be
+## As-Is / To-Be
 
-| As-Is (ilustratif) | To-Be (usulan) |
+| As-Is | Proposed To-Be |
 |---|---|
-| Daftar stok menampilkan semua gudang tanpa filter | Staff memilih gudang pada daftar stok |
-| Staff membuka detail barang untuk melihat ketersediaan per gudang | Sistem menampilkan barang yang terkait gudang pilihan |
+| The stock list has no warehouse filter | Staff can select a warehouse |
+| Staff opens item detail to see stock by warehouse | The list displays stock associated with the selected warehouse |
 
-## Requirement
+## Business Requirements
 
 | ID | Actor | Requirement | Expected Result | Status |
 |---|---|---|---|---|
-| INV-001 | Staff | User dapat memilih gudang dari daftar yang diizinkan | Gudang yang dipilih menjadi filter aktif | Proposed |
-| INV-002 | System | Setelah gudang dipilih, sistem memfilter daftar stok berdasarkan gudang itu | Barang dari gudang lain tidak ditampilkan | Proposed |
-| INV-003 | System | Jika gudang tidak memiliki hasil, tampilkan empty state yang informatif | User melihat bahwa tidak ada data yang cocok | Proposed |
+| INV-001 | Staff | Select a warehouse from the allowed options | The selected warehouse becomes the active filter | Proposed |
+| INV-002 | System | Filter stock records based on the selected warehouse | Records for other warehouses are hidden | Proposed |
+| INV-003 | System | Display an empty state when no data matches | Staff sees a clear empty result instead of a generic error | Proposed |
 
 ## Acceptance Criteria
 
-- Given Staff memiliki akses gudang A dan memilih gudang A, when daftar stok dimuat, then hanya barang dengan stok pada gudang A yang tampil.
-- Given tidak ada barang pada gudang pilihan, when filter diterapkan, then sistem menampilkan empty state, bukan error umum.
+- Given Staff selects Warehouse A, when the stock list loads, then only records belonging to Warehouse A are displayed.
+- Given no items match the selected warehouse, when the filter is applied, then the system displays an empty state.
 
-## Open questions
+## Open Questions
 
 | Question | Impact | Status |
 |---|---|---|
-| Apakah opsi gudang dibatasi berdasarkan role? | Permission dan data visibility | Need Confirmation |
-| Apakah default filter menunjukkan semua gudang atau gudang user? | Behavior awal screen | Need Confirmation |
+| Are warehouse options restricted by the user's role? | Permission and data visibility | Need Confirmation |
+| Should the initial selection be All Warehouses or the user's default warehouse? | Initial filter behavior | Need Confirmation |
 
-Contoh ini menunjukkan struktur, bukan alasan untuk menganggap aturan di atas sudah disetujui pada proyek nyata.
+Use this as a writing example only. Do not copy its hypothetical requirements into a real project without validation.
