@@ -1,141 +1,155 @@
 # Business & System Analysis Skill
 
-Panduan kerja untuk AI ketika membantu Business Analyst (BA) dan System Analyst (SA). Bisa dipakai lintas proyek, dari analisis proses bisnis sampai dokumentasi teknis.
+Reusable instructions for Business Analysts and System Analysts. The repository helps AI agents produce practical requirements, workflow diagrams, sequence diagrams, Jira tickets, integration specifications, UAT scenarios, and well-formatted documentation.
 
-**Versi:** 1.1.0  
-**Bahasa:** Bahasa Indonesia dan English  
-**Instruksi utama:** [`SKILL.md`](SKILL.md)  
-**English documentation:** [`README.en.md`](README.en.md)
+**English-first documentation. Two independent skill packages: English and Indonesian.** The Indonesian edition is written for real BA/SA working language, not literal textbook-style translation. Technical terms remain in English.
 
-Skill ini dibuat supaya hasil AI jelas, dapat diuji, dan siap dibahas bersama tim. Fokusnya bukan membuat dokumen panjang yang hanya terlihat formal.
+[English SKILL.md](skills/system-analysis-en/SKILL.md) · [Indonesian SKILL.md](skills/system-analysis-id/SKILL.md) · [Bilingual root SKILL.md](SKILL.md)
 
-## Apa yang diatur?
+## What is included?
 
-| Area | Cakupan |
-|---|---|
-| Business analysis | Discovery, stakeholder, As-Is, To-Be, gap analysis, scope, business rules |
-| Dokumen kerja | BRD, PRD, FRD, SRS, MoM, Jira, SOP, UAT |
-| System analysis | API integration, ERD, architecture, data flow, sequence diagram |
-| Quality control | Evidence, keputusan, traceability, acceptance criteria |
-| Penulisan | Anti-AI Slop Bahasa Indonesia dan English, contoh sebelum/sesudah |
-| Word dan PDF | Tipografi, margin, tabel, diagram, pemenggalan halaman |
+- Evidence hierarchy and status labels: `Existing / Observed`, `Confirmed`, `Proposed`, and `Need Confirmation`.
+- Discovery, requirement analysis, As-Is/To-Be, BPMN, swimlane, Business Rules, and Acceptance Criteria.
+- API integration, sequence diagrams, webhook, timeout, idempotency, status mapping, and error handling.
+- BRD, PRD, FRD, SRS, MoM, Jira, UAT, SOP, and technical documentation guidelines.
+- Word/PDF layout rules that produce plain, readable internal documentation instead of decorative AI-generated templates.
+- Natural Indonesian writing with **unchanged technical terminology**: `endpoint`, `payload`, `approval`, `validation`, `request`, `response`, `webhook`, `sequence diagram`, and actual UI names.
 
-**Bukan template khusus proyek.** Nama modul, role, requirement, approval, endpoint, dan status diambil dari project yang sedang dikerjakan, bukan dari contoh di repository.
+## Quick install
 
-## Quick start
+Requires **Node.js 22.20.0 or later** and the [skills CLI](https://github.com/vercel-labs/skills). You do not need to install the CLI globally. `npx` runs it for you.
 
-1. Berikan [`SKILL.md`](SKILL.md) sebagai instruksi kepada AI yang digunakan.
-2. Lampirkan bahan proyek, misalnya meeting notes, requirement, screenshot, backlog, error log, atau dokumentasi API.
-3. Sebutkan output, bahasa, dan format hasil yang diperlukan.
+Choose a language and agent below. Each command installs that single skill globally for the selected agent, so you can reuse it across projects. The `--copy` option is helpful on Windows, where creating symlinks may be restricted.
 
-Contoh prompt:
+### Claude Code
 
-> Gunakan SKILL.md sebagai standar analisis. Analisis kebutuhan modul Inventory dari catatan meeting berikut. Buat As-Is, To-Be, Business Rules, Field Requirements, dan Acceptance Criteria. Gunakan Bahasa Indonesia profesional yang natural. Bedakan Existing, Confirmed, Proposed, dan Need Confirmation.
+English:
 
-Untuk Word:
-
-> Buat hasil dalam DOCX yang bisa diedit. Gunakan format dokumen internal sederhana, tanpa cover dekoratif, tanpa header atau footer tambahan, dan pastikan tabel dapat dibaca.
-
-Untuk Jira:
-
-> Gunakan SKILL.md dan buat Jira ticket singkat dalam Bahasa Inggris. Isi Title, As-Is, To-Be, serta Acceptance Criteria. Jangan menambahkan root cause tanpa bukti.
-
-Menyimpan `SKILL.md` di repository **tidak otomatis** membuat semua AI membaca isinya. Sertakan dalam project instructions atau secara eksplisit minta AI membaca file tersebut. `AGENTS.md` dan `CLAUDE.md` disiapkan sebagai petunjuk singkat untuk AI tools yang mendukung file instruksi tersebut.
-
-## Prinsip utama
-
-1. **Pisahkan fakta dan usulan.** Gunakan `Existing / Observed`, `Confirmed`, `Proposed`, atau `Need Confirmation` dengan tepat.
-2. **Tulis sesuai pekerjaan.** Jira singkat tidak perlu pembuka panjang. BRD lengkap memerlukan detail yang lebih banyak.
-3. **Utamakan requirement yang dapat diuji.** Sebut aktor, kondisi, tindakan, validasi, dan hasil.
-4. **Jaga technical flow.** Response HTTP awal, perubahan state, dan webhook asynchronous bukan kejadian yang sama.
-5. **Hindari AI slop.** Tidak perlu bahasa promosi, filler, heading dekoratif, atau kesimpulan tanpa fungsi.
-6. **Gunakan format sederhana.** Word/PDF harus seperti dokumen internal yang mudah direvisi dan dicetak.
-
-## Contoh Anti-AI Slop
-
-**Tidak spesifik**
-
-> Dalam rangka meningkatkan efisiensi operasional secara menyeluruh, dibutuhkan optimalisasi sistem inventory agar lebih terintegrasi dan user-friendly.
-
-**Lebih jelas**
-
-> Modul Inventory saat ini belum menyediakan filter berdasarkan lokasi gudang. User perlu membuka detail setiap barang untuk mencari stok pada gudang tertentu.
-
-Kedua contoh adalah ilustrasi, bukan hasil observasi proyek nyata. Selengkapnya ada di [Panduan Anti-AI Slop](docs/anti-ai-slop-id.md).
-
-## Sequence diagram
-
-Diagram source Mermaid disediakan dalam file `.mmd` sehingga dapat diedit dan dirender di GitHub. Tiga skenario:
-
-- [Submit form dengan validation dan database error](examples/diagrams/sequence-submit-form.mmd)
-- [Approval dan rejection](examples/diagrams/sequence-approval.mmd)
-- [External API dan webhook asynchronous](examples/diagrams/sequence-external-webhook.mmd)
-
-Contoh submission singkat:
-
-```mermaid
-sequenceDiagram
-    autonumber
-    actor User
-    participant UI as Frontend
-    participant API as Backend API
-    participant DB as Database
-    User->>UI: Submit form
-    UI->>API: Kirim data pengajuan
-    API->>API: Validasi input
-    alt Invalid input
-        API-->>UI: Detail validation error
-        UI-->>User: Tampilkan error
-    else Valid input
-        API->>DB: Simpan pengajuan
-        DB-->>API: Request ID
-        API-->>UI: Hasil penyimpanan
-        UI-->>User: Tampilkan nomor pengajuan
-    end
+```powershell
+npx skills add https://github.com/Ducklazy231/system-analysis-skill/tree/main/skills/system-analysis-en -g -a claude-code --copy -y
 ```
 
-Baca [standar sequence diagram](docs/sequence-diagrams.md) untuk penjelasan participant, jenis message, error, dan async flow.
+Indonesian:
 
-## Struktur repository
+```powershell
+npx skills add https://github.com/Ducklazy231/system-analysis-skill/tree/main/skills/system-analysis-id -g -a claude-code --copy -y
+```
+
+### OpenAI Codex CLI
+
+English:
+
+```powershell
+npx skills add https://github.com/Ducklazy231/system-analysis-skill/tree/main/skills/system-analysis-en -g -a codex --copy -y
+```
+
+Indonesian:
+
+```powershell
+npx skills add https://github.com/Ducklazy231/system-analysis-skill/tree/main/skills/system-analysis-id -g -a codex --copy -y
+```
+
+### Gemini CLI
+
+English:
+
+```powershell
+npx skills add https://github.com/Ducklazy231/system-analysis-skill/tree/main/skills/system-analysis-en -g -a gemini-cli --copy -y
+```
+
+Indonesian:
+
+```powershell
+npx skills add https://github.com/Ducklazy231/system-analysis-skill/tree/main/skills/system-analysis-id -g -a gemini-cli --copy -y
+```
+
+### Cursor
+
+English:
+
+```powershell
+npx skills add https://github.com/Ducklazy231/system-analysis-skill/tree/main/skills/system-analysis-en -g -a cursor --copy -y
+```
+
+Indonesian:
+
+```powershell
+npx skills add https://github.com/Ducklazy231/system-analysis-skill/tree/main/skills/system-analysis-id -g -a cursor --copy -y
+```
+
+Other supported agents, including GitHub Copilot and OpenCode, and project-local installations are documented in [Installation and CLI commands](docs/installation.md).
+
+> **ChatGPT web/app:** these CLI commands install skills for supported local coding agents, not automatically into ChatGPT web chats. To use the skill in ChatGPT, attach the selected `SKILL.md` or include its contents in a Project's instructions/files where supported.
+
+## Verify the installation
+
+```powershell
+npx skills list -g
+```
+
+You should find `system-analysis-en` or `system-analysis-id` if installation succeeded. Restart or reload your agent session if the skill is not immediately listed by the agent.
+
+Ask your agent to apply the installed skill explicitly, for example:
+
+> Apply system-analysis-en. Draft an FRD for this module, covering field validation, Business Rules, Role Permission, Acceptance Criteria, and open questions.
+
+> Gunakan system-analysis-id. Buat Jira dari case ini dengan As-Is, To-Be, dan Acceptance Criteria. Technical terms tetap English. Jangan buat intro yang terlalu formal.
+
+## What natural Indonesian means here
+
+**Avoid:**
+
+> Dalam rangka meningkatkan efisiensi dan efektivitas proses bisnis, diperlukan optimalisasi mekanisme persetujuan secara komprehensif.
+
+**Write instead:**
+
+> Saat user klik Submit, sistem perlu menentukan approver berdasarkan role dan mengubah status request menjadi Pending Approval.
+
+This is a *hypothetical writing example*, not a confirmed process rule.
+
+## Repository layout
 
 ```text
-business-system-analysis-skill/
-├── SKILL.md
+.
 ├── README.md
-├── README.en.md
+├── SKILL.md
 ├── AGENTS.md
 ├── CLAUDE.md
-├── CHANGELOG.md
-├── CONTRIBUTING.md
+├── skills/
+│   ├── system-analysis-en/
+│   │   └── SKILL.md
+│   └── system-analysis-id/
+│       └── SKILL.md
 ├── docs/
-│   ├── penggunaan-id.md
+│   ├── installation.md
 │   ├── usage-en.md
 │   ├── anti-ai-slop-id.md
 │   ├── sequence-diagrams.md
-│   ├── word-pdf-style.md
-│   └── github-publish.md
-└── examples/
-    ├── brd-example.md
-    ├── jira-example.md
-    └── diagrams/
-        ├── sequence-submit-form.mmd
-        ├── sequence-approval.mmd
-        └── sequence-external-webhook.mmd
+│   └── word-pdf-style.md
+├── examples/
+│   ├── brd-example.md
+│   ├── jira-example.md
+│   └── diagrams/
+└── CHANGELOG.md
 ```
 
-## Dokumen dan contoh
+## Documentation
 
-| Dokumen | Kegunaan |
-|---|---|
-| [Cara penggunaan](docs/penggunaan-id.md) | Pengaturan lintas AI dan contoh prompt |
-| [English usage](docs/usage-en.md) | English setup and workflows |
-| [Anti-AI Slop](docs/anti-ai-slop-id.md) | Aturan penulisan Bahasa Indonesia |
-| [Sequence diagrams](docs/sequence-diagrams.md) | Standar notasi dan contoh lengkap |
-| [Word/PDF formatting](docs/word-pdf-style.md) | Aturan layout dokumen kerja |
-| [Publish ke GitHub](docs/github-publish.md) | Langkah upload lewat web atau Git CLI |
-| [Contoh BRD](examples/brd-example.md) | Ilustrasi requirement dan keputusan |
-| [Contoh Jira](examples/jira-example.md) | Ilustrasi ticket pendek dan testable |
+- [Installation & CLI](docs/installation.md)
+- [English usage guide](docs/usage-en.md)
+- [Indonesian anti-AI-slop rules](docs/anti-ai-slop-id.md)
+- [Sequence diagrams](docs/sequence-diagrams.md)
+- [Word/PDF formatting](docs/word-pdf-style.md)
+- [BRD example](examples/brd-example.md)
+- [Jira example](examples/jira-example.md)
+- [Editable Mermaid diagrams](examples/diagrams/sequence-external-webhook.mmd)
 
-## Batasan
+## Evidence and safety
 
-Skill ini tidak mengakses sistem perusahaan atau data proyek secara otomatis. Status `Confirmed` harus berasal dari sumber yang benar. Contoh endpoint, role, status, dan field di repository bersifat hipotetis. DOCX/PDF memerlukan AI tool yang benar-benar mendukung pembuatan file. Belum ada lisensi publik yang ditetapkan untuk repository ini.
+The skill provides working methods, not verified facts about a product. It must not invent business decisions, API documentation URLs, approval assignments, metrics, customer information, or test evidence. Example workflows are intentionally generic. Always use the current project's actual sources.
+
+CLI usage and supported agent IDs follow the [skills CLI reference](https://github.com/vercel-labs/skills/blob/main/docs/commands.md) and [agent support list](https://github.com/vercel-labs/skills/blob/main/docs/agents.md). CLI behavior may change after publication.
+
+## Version
+
+**v1.2.0** — Bilingual, independently installable skills and English-first repository documentation.
