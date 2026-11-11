@@ -459,7 +459,7 @@ For change analysis, inspect upstream and downstream flows, other modules, repor
 
 **PRD:** User problem, personas/actors, functionality, scope and priority, journeys, success measures, dependencies, constraints, and open decisions.
 
-**FRD/SRS:** Functional flows, validations, field rules, status transitions, permissions, exceptions, technical dependencies, and testable requirements.
+**FSD (Functional Specification Document):** Functional flows, validations, field rules, status transitions, permissions, exceptions, ERD and technical dependencies, and testable requirements. Former FRD/SRS labels may be used when required by the user's organization, but FSD is the default third document.
 
 **MoM:** Meeting details when given, discussion outcomes, confirmed decisions, pending decisions, actions, owners, and deadlines when known. Do not invent attendees.
 
