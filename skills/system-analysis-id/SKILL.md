@@ -1,6 +1,6 @@
 ---
 name: system-analysis-id
-version: 1.4.1
+version: 1.4.2
 description: Reusable Business and System Analysis skill in natural Indonesian, keeping technical terminology in English. Use for requirements, BRD, PRD, Jira, workflow, API, sequence diagrams, UAT, and Word/PDF documents.
 ---
 
@@ -111,20 +111,32 @@ Kalau user baru kasih deskripsi singkat tentang project, aplikasi, atau module b
 - Pastikan BRD, PRD, dan FSD punya Requirement ID serta istilah yang konsisten, dan setiap dokumen benar-benar berisi content, bukan placeholder semua.
 - Pengecualian: kalau user cuma minta Jira, revisi satu field, analisis error kecil, atau translate, tetap fokus ke task itu. Jangan buat tiga dokumen otomatis.
 
-### Judul dokumen tidak pakai nomor, subtitle, atau tabel metadata
+### Judul tanpa nomor, lalu tabel Item | Keterangan — wajib
 
-- **Judul halaman pertama tidak boleh diawali nomor**. Jangan buat `01. Business Requirements Document`, `01_BRD`, `1. Accounting Module`, atau `Dokumen 1`. Contoh yang benar: `Accounting Module — Business Requirements Document (BRD)`.
-- Judul dokumen menggunakan Word Title style tanpa numbering/list. Jangan otomatis menambah nomor dari nama file, ornamen sudut halaman, crop mark, kotak, garis dekoratif, header atau footer.
-- Nama file default `BRD.docx`, `PRD.docx`, dan `FSD.docx` (atau sesuai format yang diminta), **tanpa angka di depannya**. Kalau user menentukan nama file sendiri, ikuti nama file itu tanpa membawa angka ke judul halaman.
-- Setelah judul, **langsung isi dokumen**. Jangan buat subtitle seperti `Database Architecture & Technical Data Modeling | Status: Proposed | Version: 1.0.0` atau `Product Management & System Analysis`.
-- **Jangan buat tabel metadata awal dengan header `Item | Keterangan`** atau `Item | Description`. Tabel ini tetap dilarang sebagai template otomatis **meskipun metadata-nya tersedia**.
-- Jangan buat tabel pembuka yang berisi `Nama Produk`, `Modul`, `Target RDBMS`, `Data Architect`, `Target Audience`, `Status`, `Version`, atau `Target Rilis` sekadar untuk mengisi halaman. Masukkan informasi yang memang relevan ke section sebenarnya. Stakeholder masuk BRD, target user masuk PRD, dan DBMS/technical constraint masuk FSD.
-- Kalau user **meminta Document Control secara eksplisit** atau memakai corporate template yang memang mewajibkannya, buat section khusus sesuai template, pakai data yang valid. Jangan pakai tabel generik `Item/Keterangan` atau mengulang metadata di bawah judul.
-- Nomor untuk sub-bab boleh dipakai kalau memang membantu struktur, tapi **judul dokumen utama tetap tanpa nomor**.
+**Urutan halaman pertama:** judul dokumen tanpa nomor → **tabel Item | Keterangan** → isi BRD, PRD, atau FSD yang sebenarnya. Tabelnya harus benar-benar ada, jangan diganti deskripsi dalam paragraf.
+
+- Untuk dokumen Bahasa Indonesia gunakan header **`Item | Keterangan`**. Kalau dokumennya English, gunakan **`Item | Description`**.
+- Tabel wajib pakai **full border hitam yang jelas**, background putih, font Calibri hitam, tanpa header berwarna, shading, atau zebra stripe. Kalau Word, tabel harus editable.
+- Isi row standar yang sesuai: **Modul**, **Versi Dokumen**, **Tanggal**, **Sistem Terkait**, dan **Status**. Tambahkan **Project / Product**, **Document Owner**, atau **PIC** kalau memang relevan dan datanya tersedia.
+- **Jangan ngarang isi tabel.** Gunakan informasi yang benar-benar diberikan user atau ada di sumber. Kalau belum ada, isi **Need Confirmation** atau **Belum ditentukan**. Tanggal boleh pakai tanggal saat dokumen dibuat kalau memang benar. Status `Proposed` hanya digunakan kalau dokumennya masih proposal. Jangan otomatis menentukan versi seperti `1.0.0` kalau belum ada basisnya.
+- Tabel ini **default untuk BRD, PRD, FSD**, dan dokumen analisis/technical standalone yang panjang. Kalau user cuma minta Jira ticket, satu paragraf, atau chat message, enggak perlu dipaksakan.
+- Judul utama tetap tanpa nomor. Jangan tambah subtitle di antara judul dan tabel, jangan bikin kotak/gambar dekoratif, label departemen, garis warna, atau status/version banner di luar tabel.
+- Informasi di tabel enggak perlu diulang sebagai metadata di bagian bawah. Penjelasan stakeholder, user needs, atau technical constraints tetap ada dalam section dokumen masing-masing.
+- Format berbeda hanya kalau user **secara eksplisit minta tanpa tabel** atau ada corporate template wajib yang mengatur struktur lain.
+
+Contoh tabel untuk dokumen Bahasa Indonesia, **nilainya hanya ilustrasi**:
+
+| Item | Keterangan |
+|---|---|
+| Modul | Accounting Module |
+| Versi Dokumen | Need Confirmation |
+| Tanggal | Tanggal pembuatan dokumen yang sebenarnya |
+| Sistem Terkait | Need Confirmation |
+| Status | Proposed (kalau memang masih proposal) |
 
 ### Final check sebelum file dikirim
 
-Lihat halaman pertama pada **white-page / print preview** kalau tool mendukung. Pastikan judul polos tanpa nomor, setelah judul langsung konten, tidak ada tabel `Item/Keterangan`, tidak ada subtitle status/version, tidak ada metadata yang dibuat-buat. Cek semua teks Calibri hitam #000000, tabel putih dengan full border hitam, dan diagram benar-benar muncul sebagai visual. Kalau format atau isinya belum sesuai, revisi lalu preview lagi.
+Buka halaman pertama pada **white print preview** kalau tool tersedia. Pastikan: judul polos tanpa nomor, **tabel Item/Keterangan tepat di bawah judul**, border hitam terlihat, tidak ada shading, nilainya sesuai sumber atau ditandai Need Confirmation, lalu masuk ke isi dokumen. Cek font Calibri, semua teks hitam #000000, tabel editable, dan diagram benar-benar visual. Kalau belum sesuai, perbaiki dan preview ulang.
 
 
 ### Cara delivery
