@@ -2,6 +2,28 @@
 
 Use a sequence diagram when the main question is **which actor or system calls which component, in what order, and how the result is returned or processed**. This is not a replacement for a workflow diagram, a database ERD, or an API contract.
 
+## Mandatory: actually render the diagram
+
+**Deliver the diagram itself, not just the code that could generate one.** For flowcharts, swimlanes, and sequence diagrams, display an actual SVG, PNG, draw.io rendering, or native diagram preview as the primary result. Mermaid or PlantUML source is optional supplementary material.
+
+When creating Word or PDF documents, insert the rendered diagram in the document. A Markdown code block inside the document does **not** count as a diagram. If a renderer is unavailable, explain the limitation and provide source as a clearly labeled fallback instead of pretending that text is a visual.
+
+These example diagrams are **already rendered SVG files**, so they are visible directly on GitHub:
+
+### Rendered flowchart example
+
+![Rendered submission workflow](../examples/diagrams/flowchart-submit-request.svg)
+
+[Open flowchart SVG](../examples/diagrams/flowchart-submit-request.svg)
+
+### Rendered sequence diagram example
+
+![Rendered submission sequence diagram](../examples/diagrams/sequence-submit-request.svg)
+
+[Open sequence diagram SVG](../examples/diagrams/sequence-submit-request.svg)
+
+Each graphic is only an illustration. Use actual project evidence for participants, decisions, and business states.
+
 ## Before drawing
 
 Gather as much of the following as the available evidence supports: business event, actors, system boundary, endpoint and method, payload, authentication, validation, database operation, state update, response, error paths, and retry policy. For external integrations, also check idempotency, callback/webhook, status inquiry, and reconciliation.
@@ -150,6 +172,6 @@ sequenceDiagram
 
 ## Layout and readability
 
-Make diagrams detailed enough to be useful, but avoid compressing a long end-to-end system into a single unreadable image. Split into main request flow, callback processing, and recovery/reconciliation if needed. Keep the Mermaid source editable.
+Make diagrams detailed enough to be useful, but avoid compressing a long end-to-end system into a single unreadable image. Split into main request flow, callback processing, and recovery/reconciliation if needed. Keep the Mermaid source editable in addition to the rendered graphic. Check that exported SVG/PNG and embedded DOCX/PDF diagrams remain legible.
 
 See `../examples/diagrams/` for reusable `.mmd` files.
