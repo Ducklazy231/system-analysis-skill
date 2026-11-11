@@ -14,11 +14,11 @@ The supporting analysis is included inside the appropriate document. The user do
 
 **The ERD must be readable with no overlapping tables, text or connectors.** Use a larger canvas, not image compression. Show Primary Key, Foreign Key and regular fields as separate groups with horizontal divider lines.
 
-Use a **plain title only**. Do not add invented subtitle banners, project Status/Version, Product Owner, Target Release, or a placeholder Document Information table. All text Calibri black `#000000`, white table cells and visible black full-grid borders.
+Use a **plain, unnumbered document title** (no `01.` or numbered-list prefix). Default filenames are `BRD`, `PRD` and `FSD` with the requested extension. Do not add subtitle banners, Status/Version, fabricated owners, releases or the generic `Item | Keterangan` opening table. Even real metadata belongs in the relevant content section unless the user explicitly asks for Document Control or supplies a mandatory corporate template. All text Calibri black `#000000`, white table cells and visible black full-grid borders.
 
 See [the three-document standard](document-suite.md), [BRD](brd-standard.md), [PRD](prd-standard.md), [FSD](fsd-standard.md) and [greenfield workflow](greenfield-documentation.md).
 
-For a narrow Jira issue or a field change, deliver only the requested task.
+Even when the user gives a short new-system brief, produce all three documents with substantive, clearly labeled Proposed details, Need Confirmation decisions, and rendered diagrams. Avoid shallow outlines. For a narrow Jira issue or a field change, deliver only the requested task.
 
 ## Choose a language
 
