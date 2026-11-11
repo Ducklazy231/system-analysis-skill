@@ -12,7 +12,7 @@ The prior 19-area coverage matrix remains a **completeness checklist**, not 19 i
 
 This default applies to requests to **design or document a new project/system/module from scratch**, or to produce a complete requirements package. It does not override explicit user requests for only one document, a Jira ticket, a bug analysis, a small change, or a short edit.
 
-When a user explicitly asks for files and editable business documents, create three separate files using the available artifact tools. Prefer names `01_BRD`, `02_PRD`, and `03_FSD` with the requested extension. When no format is specified, provide three clearly separated Markdown deliverables or files rather than presuming the user requires DOCX or PDF. A Markdown outline alone is not a finished document.
+When a user explicitly asks for files and editable business documents, create three separate files using the available artifact tools. Default file names are `BRD`, `PRD`, and `FSD` with the requested extension, without numerical prefixes. When no format is specified, provide three clearly separated Markdown deliverables or files rather than presuming the user requires DOCX or PDF. A Markdown outline alone is not a finished document.
 
 Do not ask separately whether the user also wants stakeholders, workflow, ERD, sequence diagrams or test scenarios. Those are part of the relevant document's standard when applicable.
 
@@ -134,7 +134,7 @@ The ERD is a **rendered visual** inside the FSD, with editable source available 
 - Page and all table cells white. Full visible black grid on all table cells. No shading, colored backgrounds, decorative header fills or alternating row bands.
 - **Start with the document title only.** Default heading examples: `Accounting Module — Business Requirements Document (BRD)`, `Accounting Module — Product Requirements Document (PRD)`, and `Accounting Module — Functional Specification Document (FSD)`.
 - Do not automatically add a subtitle such as `Product Management & System Analysis | Status: Proposed | Version: 1.0.0`, department labels, ornamental rule lines, boxes, revision banners, or colored title decoration.
-- **No fabricated document metadata.** Do not invent Version, Status, Target Release, Sprint, Product Owner, Lead System Analyst, PIC, approver, date or document author. Include document information only when provided or required by an approved company template. If none is available, **omit the metadata table entirely** and begin with actual content.
+- **No fabricated document metadata.** Do not invent Version, Status, Target Release, Sprint, Product Owner, Lead System Analyst, PIC, approver, date or document author. Do **not** add a Document Information table by default, even when authentic values are supplied. Only create an explicit Document Control section when the user specifically requests it or a supplied corporate template requires it. Place other verified details in the relevant substantive sections.
 - Do not repeat the same status/owner/version under the heading and in a metadata table.
 - Any required diagrams must be **visibly rendered and embedded**, not Mermaid code blocks disguised as graphics.
 - Do not create decorative covers, header/footer, random icons, tinted summaries or other AI-template styling unless the user requests them.
