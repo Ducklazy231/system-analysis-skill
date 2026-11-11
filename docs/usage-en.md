@@ -2,11 +2,23 @@
 
 The repository supplies an English skill and a natural Indonesian skill. Both work across projects, but they are **instructions**, not sources of project facts.
 
-## Automatic documentation for new systems
+## Automatic BRD, PRD and FSD for new systems
 
-For a from-scratch project/module request, the skill automatically prepares stakeholder register and RACI, Project Charter, scope, BRD, PRD, FRD/SRS, rendered workflow and swimlane, ERD and sequence diagram, permissions, UAT, and relevant integration/architecture details. It doesn't wait for the user to separately request each artifact. See the [full greenfield documentation workflow](greenfield-documentation.md).
+For a from-scratch application, project or module, the skill creates **three separate primary documents** by default:
 
-All Word/PDF text must be pure black #000000, including heading, body, tables, links, and captions. Use Calibri and visible black full table borders without shading. For a narrow Jira or field task, do not generate the full package.
+- **BRD** for Business Owners and non-technical stakeholders. Focus on business problems, objectives, stakeholder responsibilities, scope, Business Rules, and rendered business workflows.
+- **PRD** for Product/PM/UI/UX. Define target users, modules, features, user stories, screen behavior, and rendered user journey/user flow.
+- **FSD** for Developers, System Analysts and QA. Define detailed functionality, validation, permissions, status transitions, rendered sequence diagrams, rendered ERD with PK/FK separators where relevant, integrations, and test mapping.
+
+The supporting analysis is included inside the appropriate document. The user does not need to request the stakeholder table, ERD or sequence diagram separately.
+
+**The ERD must be readable with no overlapping tables, text or connectors.** Use a larger canvas, not image compression. Show Primary Key, Foreign Key and regular fields as separate groups with horizontal divider lines.
+
+Use a **plain title only**. Do not add invented subtitle banners, project Status/Version, Product Owner, Target Release, or a placeholder Document Information table. All text Calibri black `#000000`, white table cells and visible black full-grid borders.
+
+See [the three-document standard](document-suite.md), [BRD](brd-standard.md), [PRD](prd-standard.md), [FSD](fsd-standard.md) and [greenfield workflow](greenfield-documentation.md).
+
+For a narrow Jira issue or a field change, deliver only the requested task.
 
 ## Choose a language
 
@@ -21,7 +33,7 @@ After installation, ask for the skill by name or provide a task that matches its
 
 English prompt:
 
-> Apply system-analysis-en. Create an FRD based on the provided MoM. Include functional requirements, field validations, role permissions, state transitions, sequence diagrams, and open questions. Do not treat proposals as confirmed requirements.
+> Apply system-analysis-en. Create an FSD based on the provided MoM. Include functional requirements, field validations, role permissions, state transitions, sequence diagrams, and open questions. Do not treat proposals as confirmed requirements.
 
 Indonesian prompt:
 
