@@ -36,3 +36,11 @@ Each document has mandatory sections and traceability rules in `docs/document-su
 - Render diagrams as actual visual graphics in the requested document, not raw Mermaid code alone.
 
 Other guides: `docs/word-pdf-style.md`, `docs/sequence-diagrams.md`, `docs/brd-standard.md`, `docs/prd-standard.md`, `docs/fsd-standard.md`.
+
+## Strict first-page and short-brief quality gate
+
+- Never prefix a visible document title with `01.`, `1.`, `01_BRD`, a numbered list marker, or any file-order index. Default file names: `BRD`, `PRD`, `FSD` (extension determined by request), without numeric prefixes.
+- The first page must contain a plain, unnumbered title **immediately followed by substantive content**. No decorative subtitle, "Architecture & Technical Data Modeling" tagline, status/version ribbon, corner crop marks or invented author/owner metadata.
+- **Do not create any generic opening `Item | Keterangan` / `Item | Description` table**, even with known values. Integrate verified information into relevant sections instead. Document Control is only allowed when explicitly requested or required by an approved supplied template.
+- A one-paragraph new-system brief still triggers **substantive complete BRD/PRD/FSD**. Never stop with generic intros, shallow outlines or empty sections. Use specific `Proposed` designs, record `Need Confirmation` issues, and render diagrams. Never claim missing data or chosen architecture was confirmed.
+- Inspect first page of generated Word/PDF in white print preview when possible and verify black Calibri text, fully bordered unshaded tables and embedded visual diagrams. Fix before delivery.
