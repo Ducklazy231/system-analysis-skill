@@ -1,0 +1,34 @@
+erDiagram
+    USER ||--o{ REQUEST : creates
+    REQUEST ||--o{ REQUEST_ITEM : contains
+    REQUEST ||--o{ APPROVAL_HISTORY : records
+
+    USER {
+        uuid user_id PK
+        string user_name
+        string email
+        boolean is_active
+    }
+
+    REQUEST {
+        uuid request_id PK
+        uuid created_by_user_id FK
+        string status
+        datetime submitted_at
+        datetime created_at
+    }
+
+    REQUEST_ITEM {
+        uuid item_id PK
+        uuid request_id FK
+        string item_code
+        decimal quantity
+    }
+
+    APPROVAL_HISTORY {
+        uuid approval_id PK
+        uuid request_id FK
+        uuid approver_user_id FK
+        string decision
+        datetime decided_at
+    }
