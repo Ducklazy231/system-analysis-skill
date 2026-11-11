@@ -82,3 +82,9 @@ All three documents use **Calibri**, **black #000000 text** throughout, white ba
 - ERD has readable table sections for PK, FK and attributes and no overlap.
 - No decorative subtitle/metadata under document title.
 - Cross-document IDs and decisions stay consistent.
+
+## Rule for short inputs and first-page layout
+
+A one-paragraph new-system brief still requires substantive **BRD, PRD, and FSD**, including the relevant actual rendered diagrams, proper analysis and cross-document traceability. Work with `Proposed` design options and `Need Confirmation` decisions rather than fabricating evidence or delaying the entire package.
+
+The first page starts with a **plain, unnumbered document title**, immediately followed by meaningful content. Do not prefix the displayed title with `01.` or duplicate any filename index. The default files are `BRD`, `PRD` and `FSD` with the requested extension, no numeric prefix. Never add an opening `Item | Keterangan` table, technical subtitle, version/status banner or invented document metadata. Place confirmed details in the actual Stakeholder, Product or Technical sections.
