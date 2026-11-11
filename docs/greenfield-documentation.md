@@ -65,11 +65,11 @@ Diagrams must be **actually rendered**, not merely Mermaid syntax.
 
 **ERD layout gate:** No overlapping entities, text or connectors. Visible horizontal separators between PK, FK and attributes. Expand canvas or split diagrams instead of compressing an unreadable model.
 
-## Document formatting and metadata
+## Document formatting and first-page information table
 
-All three documents use **Calibri**, **black #000000 text** throughout, white background, and full black visible table borders without shading or colored headers. Begin directly with a clear document title.
+All three documents use Calibri, pure black text throughout, white backgrounds, and visible black full-grid table borders without shading.
 
-**Do not add an invented subtitle**, departmental tagline, proposed-status banner, version, target release, Product Owner, or author. Include a dedicated Document Control section only if explicitly requested or mandated by a supplied corporate template, and use only verified fields. Otherwise omit the opening metadata table even if some factual metadata is known.
+First-page order: **plain unnumbered document title → real information table → actual first section**. Use `Item | Keterangan` for Indonesian and `Item | Description` for English. Choose context-appropriate rows such as Module, Document Version, Date, Related Systems and Status. Known facts are used as provided, and unknown ones are marked `Need Confirmation` or `Not specified`. Do not invent release dates or version numbers. No extra decorative subtitle or metadata banner.
 
 ## Final delivery check
 
@@ -85,6 +85,6 @@ All three documents use **Calibri**, **black #000000 text** throughout, white ba
 
 ## Rule for short inputs and first-page layout
 
-A one-paragraph new-system brief still requires substantive **BRD, PRD, and FSD**, including the relevant actual rendered diagrams, proper analysis and cross-document traceability. Work with `Proposed` design options and `Need Confirmation` decisions rather than fabricating evidence or delaying the entire package.
+A one-paragraph new-system brief still requires substantial **BRD, PRD, and FSD** analysis, relevant rendered diagrams, and traceability. Use `Proposed` for candidate designs and `Need Confirmation` for missing decisions rather than making up facts.
 
-The first page starts with a **plain, unnumbered document title**, immediately followed by meaningful content. Do not prefix the displayed title with `01.` or duplicate any filename index. The default files are `BRD`, `PRD` and `FSD` with the requested extension, no numeric prefix. Never add an opening `Item | Keterangan` table, technical subtitle, version/status banner or invented document metadata. Place confirmed details in the actual Stakeholder, Product or Technical sections.
+Start each document with an **unnumbered title**, then the required **Item/Keterangan or Item/Description table**, then substantial content. Default filenames are `BRD`, `PRD` and `FSD` with the requested extension. Do not add ornamental subtitles or duplicate information outside the table.
