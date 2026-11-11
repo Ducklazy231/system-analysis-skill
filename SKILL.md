@@ -17,7 +17,7 @@ For complete single-language instruction sets, use [English skill](skills/system
 
 
 
-> Version 1.2.0. This is a reusable working standard, not a project-specific business specification. Use the user's actual source materials as evidence and preserve the terminology used by the product team.
+> Version 1.2.1. This is a reusable working standard, not a project-specific business specification. Use the user's actual source materials as evidence and preserve the terminology used by the product team.
 
 ## 1. Scope and operating principles
 
