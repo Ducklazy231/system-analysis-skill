@@ -1,6 +1,6 @@
 ---
 name: system-analysis-id
-version: 1.2.1
+version: 1.3.0
 description: Reusable Business and System Analysis skill in natural Indonesian, keeping technical terminology in English. Use for requirements, BRD, PRD, Jira, workflow, API, sequence diagrams, UAT, and Word/PDF documents.
 ---
 
@@ -38,6 +38,61 @@ description: Reusable Business and System Analysis skill in natural Indonesian, 
 **Lebih jelas:** "Saat dokumen sudah `Submitted`, field `Amount` tidak bisa diedit oleh role `Staff`. Perubahan hanya bisa dilakukan lewat proses `Amend` sesuai permission."
 
 **Penting:** Ketiga contoh di atas hanya ilustrasi, bukan ketentuan bisnis yang berlaku untuk semua sistem.
+
+
+
+## 0B. Mode dokumentasi lengkap untuk project dari nol — wajib
+
+**Kapan dipakai:** Saat user minta bikin project, aplikasi, sistem, atau module baru dari awal, atau bilang "buat dokumentasi dari nol", "analisis sistem baru", "bikin dokumentasi lengkap", maupun permintaan umum sejenis. **Jangan menunggu user meminta PRD, ERD, workflow, stakeholder matrix, dan sequence diagram satu per satu.**
+
+Kalau scope-nya memang sistem atau module baru, langsung buat **paket dokumentasi BA/SA lengkap**. Bukan hanya outline, bukan hanya PRD, dan bukan cuma penjelasan alur berupa teks. Susun dokumen dengan detail yang bisa dipakai Business, PM, UI/UX, Developer, QA, dan Operations untuk review dan implementasi.
+
+### Output yang otomatis harus dicakup
+
+| Deliverable | Isi yang perlu dibuat |
+|---|---|
+| 01. Project Overview / Project Charter | Problem, objective, business context, target user, success criteria, constraint |
+| 02. Stakeholder Register & RACI | Stakeholder atau role, tugasnya, decision authority, PIC, siapa yang perlu di-consult atau informed |
+| 03. Scope & Requirement Baseline | In Scope, Out of Scope, priority, dependency, assumption, Need Confirmation |
+| 04. BRD | Business process, business need, requirement, Business Rule, expected result |
+| 05. PRD | Product objective, persona, user journey, feature/module, priority, acceptance |
+| 06. FRD / SRS | Functional flow, field, data type, validation, status, permission, exception, NFR |
+| 07. As-Is / To-Be | As-Is hanya kalau memang ada existing process yang diketahui, lalu To-Be dan gap-nya |
+| 08. Workflow / Swimlane visual | Diagram asli yang sudah di-render, lengkap dengan actor, step, handoff, decision, success, error |
+| 09. Use Case & User Story | Role, trigger, precondition, main flow, alternate flow, Acceptance Criteria |
+| 10. Sequence Diagram visual | User, Frontend, Backend, Database, external service, request/response, callback dan error path |
+| 11. ERD visual & Data Dictionary | Entity, PK/FK, relationship, cardinality, field penting, constraint dan data ownership |
+| 12. System Architecture & Data Flow | Component, service boundary, source of truth, integration, security consideration |
+| 13. API Integration Spec | Kalau ada integrasi: trigger, field mapping, endpoint yang valid, webhook, retry, idempotency, status sync |
+| 14. Role Permission Matrix | Role, module, action permission, field visibility, authorization rule |
+| 15. Business Rules & Status Transition | Condition, calculation, approval, status change, exception handling |
+| 16. UI/UX Screen Requirement | Screen list, input, action, validation, error state, navigation |
+| 17. UAT & Test Scenarios | Happy path, invalid input, duplicate, unauthorized, error, expected result |
+| 18. Delivery & Risk | Dependency, risk, traceability, rollout, migration jika relevan, sign-off point |
+| 19. Open Questions & Decision Log | Hal yang belum final, impact, PIC yang perlu konfirmasi, status keputusan |
+
+Ini **coverage wajib**, bukan alasan buat mengarang isi. Bagian yang memang tidak relevan boleh ditandai `Not Applicable` beserta alasan. Kalau datanya belum tersedia, tetap buat struktur dan jelaskan mana yang `Proposed` dan `Need Confirmation`.
+
+### Menentukan stakeholder
+
+Kalau nama stakeholder atau PIC sudah diberikan user, gunakan data yang sama. Kalau belum, buat **usulan stakeholder berdasarkan role yang relevan**, misalnya Business Owner, Product Owner, PM, BA/SA, UI/UX Designer, Frontend, Backend, QA, Database, Security, Operations, atau Support. Jangan otomatis menyatakan orang atau jabatan tertentu sudah ditunjuk. Nama, RACI, dan approval authority yang belum jelas diberi status `Need Confirmation`.
+
+### Workflow kerja otomatis
+
+1. **Discovery** — baca konteks, kumpulkan tujuan, actor, pain point, data, constraint, dan hal yang belum jelas.
+2. **Define Scope** — tentukan module, stakeholder, In/Out Scope, dependency, dan decision point.
+3. **Requirements** — susun BRD, PRD, FRD/SRS, Business Rule, dan Acceptance Criteria dengan ID yang konsisten.
+4. **Process Diagram** — buat dan **render** workflow serta swimlane dengan actor dan kondisi percabangan.
+5. **Technical Design** — buat dan **render** ERD, sequence diagram, architecture, dan data flow. Tambahkan API mapping kalau ada integrasi.
+6. **Control & Validation** — isi role permission, state transition, NFR, error handling, UAT, risk dan Open Questions.
+7. **Cross-check** — pastikan requirement, ERD, diagram, screen, data field, status, dan test scenario saling cocok.
+8. **Delivery** — langsung keluarkan paket dokumentasi lengkap. Kalau ukuran output membatasi, kerjakan bagian paling penting secara utuh dan tulis coverage/gap yang belum selesai. Jangan mengklaim semua bagian sudah jadi kalau belum.
+
+**Jangan bertanya lagi apakah user mau dibikinkan ERD, PRD, workflow, stakeholder matrix, atau sequence diagram.** Kalau dari awal user minta dokumentasi sistem baru, itu sudah termasuk secara otomatis.
+
+**Format:** Kalau diminta Word/PDF, buat file sungguhan dengan diagram visual yang di-embed. Kalau format belum disebutkan, buat dokumentasi lengkap dalam Markdown dan tampilkan diagram visual bila environment mendukung. Mermaid source boleh ikut sebagai file tambahan, bukan menggantikan gambar.
+
+**Pengecualian:** Kalau user hanya minta satu Jira ticket, translate satu kalimat, analisis error, satu field, atau revisi paragraf, jangan otomatis membuat semua dokumen besar. Sesuaikan dengan scope task.
 
 
 ## 1. Tujuan dan cakupan
@@ -796,7 +851,7 @@ Bagian ini **wajib diterapkan ketika user meminta DOCX atau PDF**, kecuali user 
 | Margin | Atas 2.2 cm, bawah 2.2 cm, kiri 2.5 cm, kanan 2.3 cm |
 | Font body | **Calibri** (wajib sebagai default untuk body, heading, dan tabel) |
 | Ukuran body | 10.5–11 pt |
-| Warna body | Hitam atau dark charcoal |
+| Warna semua teks | **Hitam solid #000000 (RGB 0,0,0) untuk seluruh text, title, heading, tabel, caption, dan hyperlink** |
 | Line spacing | 1.1–1.15 |
 | Paragraph spacing | After 4–6 pt, before 0 pt untuk body |
 | Document title | 15–16 pt, bold seperlunya, rata kiri |
@@ -808,6 +863,15 @@ Bagian ini **wajib diterapkan ketika user meminta DOCX atau PDF**, kecuali user 
 | Page number | Hanya jika diminta atau diperlukan dokumen formal yang panjang |
 
 Gunakan **Calibri** secara konsisten. Jangan gunakan Aptos atau Arial sebagai alternatif otomatis. Kalau Calibri tidak tersedia, beri tahu sebelum menggunakan font pengganti. Corporate template atau instruksi user yang spesifik tetap diutamakan.
+
+
+### Aturan warna teks dokumen — wajib hitam solid
+
+- **Semua teks dokumen wajib hitam solid (#000000 / RGB 0,0,0)**, termasuk body, title, heading, subheading, header tabel, isi tabel, caption, footnote, numbering, label diagram, metadata, dan link. Jangan pakai dark charcoal, abu-abu, theme color, hyperlink biru, teks pudar, atau warna font yang belang.
+- Atur dari **Word styles** dan semua text run. Pastikan Normal, Heading 1/2/3, Title, Caption, list, tabel, dan Hyperlink menggunakan warna hitam. Jangan mengandalkan theme default.
+- Background halaman putih. Semua tabel putih, tanpa warna header, shading, atau zebra stripes. Border semua cell hitam, solid, dan jelas terlihat.
+- Di gambar workflow, sequence diagram, dan ERD yang masuk Word/PDF, gunakan **label teks hitam** dan background putih. Warna untuk bentuk diagram hanya boleh dipakai kalau membantu menjelaskan status atau user memang memintanya, bukan untuk mengubah warna tulisan.
+- Setelah export Word/PDF, cek hasil render. Kalau warna teks berubah atau tidak konsisten, perbaiki sebelum file dikirim.
 
 ### C. Judul, paragraf, dan numbering
 
