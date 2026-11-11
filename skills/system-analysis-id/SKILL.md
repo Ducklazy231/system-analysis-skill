@@ -808,9 +808,9 @@ Fokus pada problem, objective, stakeholder, scope, As-Is, To-Be, business requir
 
 Fokus pada user problem, goals, personas atau user roles, scope, user journey, feature requirements, user interaction, success metric, dependencies, dan release consideration. Jangan memalsukan market data.
 
-### D. FRD / SRS / functional specification
+### D. FSD / Functional Specification Document
 
-Fokus pada functional flow, detailed field, validations, state transition, permission, API mapping, error handling, NFR, dan testable requirements.
+FSD berisi functional flow, detail field, validation, state transition, role permission, API mapping jika ada, error handling, ERD visual bila ada relational database, NFR, dan testable requirements. BRD dan PRD tidak perlu diulang di sini.
 
 ### E. MoM
 
