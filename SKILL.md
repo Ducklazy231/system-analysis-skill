@@ -188,6 +188,17 @@ flowchart TD
     class D error
 ```
 
+
+### Mandatory rendered-diagram delivery
+
+When the user requests a **flowchart, workflow, swimlane, BPMN, sequence diagram, DFD, or architecture diagram**, produce an **actual visible rendered diagram** as the primary deliverable. Plain prose, step lists, ASCII art, or Mermaid/PlantUML source code alone do not satisfy a request to make a diagram.
+
+- Render to SVG/PNG, a supported native diagram preview, or another actual graphic format, and display or link the visual artifact. Provide editable Mermaid, SVG, or draw.io source as supplementary material when useful.
+- In DOCX/PDF, **embed the rendered diagram in the relevant section**. Never substitute a Mermaid code block for the graphic.
+- Keep nodes, arrows, decisions, roles, messages, and branches legible at normal viewing/print size. Split complex diagrams instead of shrinking them to unreadable text.
+- If rendering is technically unavailable, explain the limitation and clearly label code as a fallback. Do not falsely claim a visual diagram exists.
+- Confirm that rendered output matches the requirement and diagram source.
+
 ## 8. Sequence diagrams and technical flows
 
 A good sequence diagram answers who initiates the event, which component handles it, what is validated or stored, what comes back, and how failures change the outcome.
@@ -201,7 +212,7 @@ Follow these requirements:
 5. Do not invent a production endpoint, schema, status, or HTTP code. Treat all example paths as illustrative.
 6. Document validation, permission checks, response data, database writes, retry behavior, and relevant edge cases.
 7. Avoid claiming an external transaction is complete based only on the initial acknowledgment.
-8. Keep source Mermaid editable and readable in Word/PDF. Split lengthy flows when necessary.
+8. Render the sequence diagram into a **visible diagram**, and embed the visual in Word/PDF when requested. Keep Mermaid source editable as an optional additional deliverable. Split lengthy flows when necessary.
 9. Never include secrets, live credentials, personal data, or plaintext license keys in examples.
 
 ### Example A — Submit form, validation, and storage
@@ -407,17 +418,17 @@ Default internal style unless the organization supplies its own template:
 |---|---|
 | Paper | A4 portrait |
 | Margins | Approx. 2.2 cm top/bottom and 2.3–2.5 cm sides |
-| Font | Aptos, Calibri, or Arial |
+| Font | **Calibri only** as the default for body, headings, and tables |
 | Body size | 10.5–11 pt |
 | Line spacing | 1.1–1.15 |
 | Main title | 15–16 pt, left-aligned |
 | Section heading | 12–13 pt, restrained bold |
-| Tables | Thin borders, compact cell padding, no aggressive fill |
+| Tables | **Visible full grid**: solid black/dark-gray 0.5–0.75 pt borders on all cells, white background, no fill/shading/color banding |
 | Header/footer | None unless requested or required by source template |
 
-Keep paragraph length proportional to content, avoid giant headings or overdecorated covers, never pad a short document with generic introductions and conclusions. Maintain editable Word tables. Repeat table headers on continuation pages where supported. Avoid broken row splits and empty pages. Use landscape selectively for wide diagrams, not tiny illegible fonts. Render/inspect generated files where possible.
+Use Calibri consistently. Do not silently switch to Aptos or Arial. If Calibri is unavailable, disclose the substitution. Keep paragraph length proportional to content, avoid giant headings or overdecorated covers, never pad a short document with generic introductions and conclusions. Maintain editable Word tables. Repeat table headers on continuation pages where supported. Avoid broken row splits and empty pages. Use landscape selectively for wide diagrams, not tiny illegible fonts. Render/inspect generated files where possible.
 
-A document may contain colored process diagrams, but color must distinguish information, not act as decoration.
+Tables must remain monochrome, with a white background and clearly visible gridlines. Render process diagrams as graphics and embed them in the file rather than inserting diagram syntax. Diagram colors, if used, should distinguish actual flow states rather than decorate.
 
 ## 15. Presentations, spreadsheets, and knowledge bases
 
@@ -440,7 +451,7 @@ Before delivering, check:
 - No made-up URLs, metrics, API contracts, people, or approvals.
 - Technical terms remain precise.
 - Writing contains no filler or promotional claims.
-- Word/PDF tables and diagrams are legible if a file was requested.
+- Word/PDF tables have visible black/dark-gray full gridlines and no fill. Diagrams are embedded as rendered visuals, not code blocks.
 - Output length matches the task.
 
 ## 18. Handling unknown details
