@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.4.1 — 2026-11-11
+
+- Made visible BRD/PRD/FSD titles **plain and unnumbered**. Removed automatic `01.` title prefixes and numbered filenames as a default.
+- Banned generic opening `Item | Keterangan` / `Item | Description` document metadata tables, including when valid metadata exists. Factual project details now belong in the relevant substantive sections.
+- Explicitly banned arbitrary department subtitles, status/version banners, ornamental crop/corner marks, and fabricated release, technology, author, approver or PIC information under the title.
+- Required **substantive BRD, PRD and FSD** from short new-system briefs rather than shallow outlines. Specific design proposals are labeled `Proposed` and missing decisions `Need Confirmation`.
+- Added first-page visual QA in white print preview and clarified that narrow tickets do not trigger a full three-document package.
+- Aligned bilingual and English skills, README, agent instructions and the reference document guides. Preserved Calibri, pure black text, visible full table borders and rendered diagrams.
+
 ## 1.4.0 — 2026-11-11
 
 - Changed greenfield/default output from 19 separate documents to **three core deliverables**: BRD (business and non-technical), PRD (product and user features), and FSD (functional technical specification and QA).
