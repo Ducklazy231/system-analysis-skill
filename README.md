@@ -43,6 +43,17 @@ ERD table boxes, connectors, labels and cardinalities **must not overlap**. Prim
 
 ![Rendered ERD with PK/FK separators](examples/diagrams/erd-request-management.svg)
 
+## Clean document titles and complete content from short briefs
+
+- **No numbered titles.** The visible heading is `Accounting Module — Business Requirements Document (BRD)`, not `01. Business Requirements Document`.
+- **No automatic document index in filenames**. Default filenames are `BRD.docx`, `PRD.docx` and `FSD.docx`.
+- **No generic `Item | Keterangan` / `Item | Description` table** at the beginning, even when metadata is known. No decorative department subtitle, proposed status, version, release or fabricated PIC/DBMS.
+- Begin with the title, then substantive business/product/functional content. A Document Control section is added only when requested or required by a real corporate template.
+- **Even a one-paragraph project brief triggers complete BRD/PRD/FSD** with meaningful sections, specific `Proposed` design options, `Need Confirmation` decisions and actual rendered diagrams. No placeholder-only documents or shallow outlines. Narrow bugs and edits remain small.
+- Calibri, pure black text, white fully bordered tables and non-overlapping rendered ERD remain mandatory.
+
+[Three-document must-have reference](docs/document-suite.md) · [Word/PDF formatting](docs/word-pdf-style.md)
+
 ## Black text for Word/PDF
 
 All text defaults to **pure black #000000**, including body, headings, captions, tables and hyperlinks. Calibri remains the default font. Tables use white cells with solid visible black full-grid borders and no shaded rows or headers. Diagrams are delivered as rendered graphics and embedded in the actual document when Word/PDF is requested.
@@ -205,4 +216,4 @@ CLI usage and supported agent IDs follow the [skills CLI reference](https://gith
 
 ## Version
 
-**v1.4.0** — Three-document BRD/PRD/FSD delivery, strict ERD non-overlap and PK/FK separators, and plain titles without invented subtitle/metadata.
+**v1.4.1** — Unnumbered document titles, no generic Item/Keterangan metadata tables, and complete BRD/PRD/FSD from brief inputs.
