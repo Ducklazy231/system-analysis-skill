@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.4.2 — 2026-11-11
+
+- Reinstated a **real first-page document information table** after the plain unnumbered title for BRD, PRD, FSD and substantial technical documents.
+- Indonesian documents use **`Item | Keterangan`** and English documents use **`Item | Description`**.
+- Recommended rows include Module, Document Version, Date, Related Systems and Status. Values must be sourced from provided information or marked `Need Confirmation` / `Not specified`. No invented version, release date, technology, owner or approval.
+- Required fully visible solid black cell borders, white background, Calibri black text, no shading or decorative subtitle.
+- Preserved complete BRD/PRD/FSD from short new-system briefs, rendered workflows and ERDs, and ERD no-overlap/PK-FK separator rules.
+- Aligned all three SKILL.md files, documentation standards, README, AGENTS.md and CLAUDE.md.
+
 ## 1.4.1 — 2026-11-11
 
 - Made visible BRD/PRD/FSD titles **plain and unnumbered**. Removed automatic `01.` title prefixes and numbered filenames as a default.
