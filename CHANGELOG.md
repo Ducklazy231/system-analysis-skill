@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.4.0 — 2026-11-11
+
+- Changed greenfield/default output from 19 separate documents to **three core deliverables**: BRD (business and non-technical), PRD (product and user features), and FSD (functional technical specification and QA).
+- Added independent must-have references: `docs/brd-standard.md`, `docs/prd-standard.md`, `docs/fsd-standard.md` and the cross-document standard `docs/document-suite.md`.
+- Retained stakeholder mapping, business workflow, user journey, sequence diagrams, ERD, API mapping, permission, status transitions and UAT inside the appropriate document rather than dropping coverage.
+- Made **FSD** the default third document, with FRD/SRS only as alternative terminology when a company requires it.
+- Required ERD with **no overlapping entities, text, labels, relationship lines or connectors**, no over-compression, and visible **horizontal PK/FK/attribute section separators** with explicit field key labels.
+- Redrew the sample ERD as a spacious, black-and-white SVG and synchronized its Mermaid source.
+- Banned automatically generated document subtitles, decorative colored bars and fictitious Version, Status, Sprint, Product Owner, Target Release, PIC or author metadata. A Document Information table appears only with genuine information or a required corporate template.
+- Preserved Calibri, pure black text, white full-grid bordered tables, and actual rendered diagrams in Word/PDF.
+- Updated English, Indonesian and bilingual skills, README, agent pointers, document-format guide and greenfield workflow.
+
 ## 1.3.0 — 2026-11-11
 
 - Enforced pure black text (#000000) in Word/PDF for every element, including body, headings, table content, captions and hyperlinks. Kept Calibri as the single default font.
