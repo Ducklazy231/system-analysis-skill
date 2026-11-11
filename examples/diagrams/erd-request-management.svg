@@ -1,43 +1,97 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1010" height="780" viewBox="0 0 1010 780" role="img" aria-labelledby="title desc">
-<title id="title">Example ERD - Request Management</title>
-<desc id="desc">Illustrative entity relationship diagram containing User, Request, Request Item, and Approval History, with primary keys, foreign keys, and one-to-many relationships.</desc>
-<rect width="1010" height="780" fill="#ffffff"/>
-<text x="505" y="38" text-anchor="middle" font-family="Calibri, sans-serif" font-size="26" font-weight="700" fill="#000000">Request Management — ERD Example</text>
-<text x="505" y="65" text-anchor="middle" font-family="Calibri, sans-serif" font-size="15" fill="#000000">Illustrative entities and relationships, not an approved database schema</text>
-<g stroke="#000000" fill="#ffffff" stroke-width="1.8">
-<rect x="60" y="125" width="340" height="228" rx="2"/>
-<rect x="560" y="125" width="390" height="270" rx="2"/>
-<rect x="60" y="494" width="340" height="225" rx="2"/>
-<rect x="560" y="494" width="390" height="225" rx="2"/>
-<line x1="60" y1="177" x2="400" y2="177"/>
-<line x1="560" y1="177" x2="950" y2="177"/>
-<line x1="60" y1="546" x2="400" y2="546"/>
-<line x1="560" y1="546" x2="950" y2="546"/>
-</g>
-<g font-family="Calibri, sans-serif" fill="#000000">
-<text x="230" y="159" font-size="23" font-weight="700" text-anchor="middle">User</text>
-<text x="755" y="159" font-size="23" font-weight="700" text-anchor="middle">Request</text>
-<text x="230" y="528" font-size="23" font-weight="700" text-anchor="middle">Request Item</text>
-<text x="755" y="528" font-size="23" font-weight="700" text-anchor="middle">Approval History</text>
-</g>
-<g font-family="Calibri, sans-serif" font-size="18" fill="#000000">
-<text x="82" y="213">PK  user_id</text><text x="82" y="245">user_name</text><text x="82" y="277">email</text><text x="82" y="309">is_active</text>
-<text x="582" y="213">PK  request_id</text><text x="582" y="245">FK  created_by_user_id</text><text x="582" y="277">status</text><text x="582" y="309">submitted_at</text><text x="582" y="341">created_at</text>
-<text x="82" y="582">PK  item_id</text><text x="82" y="614">FK  request_id</text><text x="82" y="646">item_code</text><text x="82" y="678">quantity</text>
-<text x="582" y="582">PK  approval_id</text><text x="582" y="614">FK  request_id</text><text x="582" y="646">FK  approver_user_id</text><text x="582" y="678">decision, decided_at</text>
-</g>
-<g stroke="#000000" stroke-width="2.3" fill="none">
-<line x1="400" y1="230" x2="560" y2="230"/>
-<path d="M400 218 V242 M548 216 L560 230 L548 244 M560 216 L548 230 L560 244"/>
-<path d="M627 395 V439 H230 V494"/>
-<path d="M615 395 H639 M216 481 L230 494 L244 481 M216 494 L230 482 L244 494"/>
-<line x1="825" y1="395" x2="825" y2="494"/>
-<path d="M813 395 H837 M811 481 L825 494 L839 481 M811 494 L825 482 L839 494"/>
-</g>
-<g font-family="Calibri, sans-serif" font-size="15" font-weight="700" fill="#000000">
-<text x="478" y="212" text-anchor="middle">1 → 0..N</text>
-<text x="429" y="421" text-anchor="middle">Request has many items</text>
-<text x="845" y="451" text-anchor="middle">1 → 0..N</text>
-</g>
-<text x="505" y="752" text-anchor="middle" font-family="Calibri, sans-serif" font-size="14" fill="#000000">All entity names, fields and constraints are hypothetical and require validation.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1170" viewBox="0 0 1680 1170" role="img" aria-labelledby="title desc">
+<title id="title">Request Management ERD with separated Primary and Foreign Keys</title>
+<desc id="desc">Illustrative entity relationship diagram. Entity tables do not overlap. Primary Key, Foreign Key, and Attributes groups are separated by solid horizontal rules. Connector lines are routed through open whitespace and diagram is shown at full readable size.</desc>
+<rect width="1680" height="1170" fill="#ffffff"/>
+<text x="840" y="46" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="29" font-weight="700" fill="#000000">Request Management — ERD Layout Example</text>
+<text x="840" y="76" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="17" fill="#000000">Illustrative model only — not a confirmed project database schema</text>
+<rect x="65" y="165" width="355" height="328" fill="#ffffff" stroke="#000000" stroke-width="2.3"/>
+<text x="242.5" y="201" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="22" font-weight="700" fill="#000000">USER</text>
+<line x1="65" y1="221" x2="420" y2="221" stroke="#000000" stroke-width="2.3"/>
+<text x="84" y="245" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000">PRIMARY KEY (PK)</text>
+<text x="84" y="277" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">PK</text>
+<text x="132" y="277" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">user_id</text>
+<text x="402" y="277" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">UUID</text>
+<line x1="65" y1="291" x2="420" y2="291" stroke="#000000" stroke-width="2"/>
+<text x="84" y="315" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000">FOREIGN KEY (FK)</text>
+<text x="84" y="346" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="400" fill="#000000">None</text>
+<line x1="65" y1="361" x2="420" y2="361" stroke="#000000" stroke-width="2"/>
+<text x="84" y="385" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000">ATTRIBUTES</text>
+<text x="84" y="417" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">user_name</text>
+<text x="402" y="417" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">VARCHAR</text>
+<text x="84" y="448" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">email</text>
+<text x="402" y="448" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">VARCHAR</text>
+<text x="84" y="479" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">is_active</text>
+<text x="402" y="479" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">BOOLEAN</text>
+<rect x="630" y="165" width="405" height="328" fill="#ffffff" stroke="#000000" stroke-width="2.3"/>
+<text x="832.5" y="201" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="22" font-weight="700" fill="#000000">REQUEST</text>
+<line x1="630" y1="221" x2="1035" y2="221" stroke="#000000" stroke-width="2.3"/>
+<text x="649" y="245" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000">PRIMARY KEY (PK)</text>
+<text x="649" y="277" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">PK</text>
+<text x="697" y="277" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">request_id</text>
+<text x="1017" y="277" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">UUID</text>
+<line x1="630" y1="291" x2="1035" y2="291" stroke="#000000" stroke-width="2"/>
+<text x="649" y="315" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000">FOREIGN KEY (FK)</text>
+<text x="649" y="347" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">FK</text>
+<text x="697" y="347" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">created_by_user_id</text>
+<text x="1017" y="347" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">UUID</text>
+<line x1="630" y1="361" x2="1035" y2="361" stroke="#000000" stroke-width="2"/>
+<text x="649" y="385" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000">ATTRIBUTES</text>
+<text x="649" y="417" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">status</text>
+<text x="1017" y="417" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">VARCHAR</text>
+<text x="649" y="448" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">submitted_at</text>
+<text x="1017" y="448" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">DATETIME</text>
+<text x="649" y="479" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">created_at</text>
+<text x="1017" y="479" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">DATETIME</text>
+<rect x="1300" y="165" width="340" height="328" fill="#ffffff" stroke="#000000" stroke-width="2.3"/>
+<text x="1470" y="201" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="22" font-weight="700" fill="#000000">REQUEST ITEM</text>
+<line x1="1300" y1="221" x2="1640" y2="221" stroke="#000000" stroke-width="2.3"/>
+<text x="1319" y="245" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000">PRIMARY KEY (PK)</text>
+<text x="1319" y="277" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">PK</text>
+<text x="1367" y="277" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">item_id</text>
+<text x="1622" y="277" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">UUID</text>
+<line x1="1300" y1="291" x2="1640" y2="291" stroke="#000000" stroke-width="2"/>
+<text x="1319" y="315" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000">FOREIGN KEY (FK)</text>
+<text x="1319" y="347" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">FK</text>
+<text x="1367" y="347" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">request_id</text>
+<text x="1622" y="347" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">UUID</text>
+<line x1="1300" y1="361" x2="1640" y2="361" stroke="#000000" stroke-width="2"/>
+<text x="1319" y="385" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000">ATTRIBUTES</text>
+<text x="1319" y="417" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">item_code</text>
+<text x="1622" y="417" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">VARCHAR</text>
+<text x="1319" y="448" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">quantity</text>
+<text x="1622" y="448" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">DECIMAL</text>
+<text x="1319" y="479" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">amount</text>
+<text x="1622" y="479" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">DECIMAL</text>
+<rect x="630" y="650" width="405" height="359" fill="#ffffff" stroke="#000000" stroke-width="2.3"/>
+<text x="832.5" y="686" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="22" font-weight="700" fill="#000000">APPROVAL HISTORY</text>
+<line x1="630" y1="706" x2="1035" y2="706" stroke="#000000" stroke-width="2.3"/>
+<text x="649" y="730" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000">PRIMARY KEY (PK)</text>
+<text x="649" y="762" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">PK</text>
+<text x="697" y="762" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">approval_id</text>
+<text x="1017" y="762" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">UUID</text>
+<line x1="630" y1="776" x2="1035" y2="776" stroke="#000000" stroke-width="2"/>
+<text x="649" y="800" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000">FOREIGN KEY (FK)</text>
+<text x="649" y="832" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">FK</text>
+<text x="697" y="832" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">request_id</text>
+<text x="1017" y="832" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">UUID</text>
+<text x="649" y="863" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">FK</text>
+<text x="697" y="863" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">approver_user_id</text>
+<text x="1017" y="863" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">UUID</text>
+<line x1="630" y1="877" x2="1035" y2="877" stroke="#000000" stroke-width="2"/>
+<text x="649" y="901" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000">ATTRIBUTES</text>
+<text x="649" y="933" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">decision</text>
+<text x="1017" y="933" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">VARCHAR</text>
+<text x="649" y="964" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">decided_at</text>
+<text x="1017" y="964" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">DATETIME</text>
+<text x="649" y="995" text-anchor="start" font-family="Calibri, Arial, sans-serif" font-size="17" font-weight="400" fill="#000000">reason</text>
+<text x="1017" y="995" text-anchor="end" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="400" fill="#000000">VARCHAR</text>
+<path d="M 420 281 L 630 281" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="525" y="269" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">1 : N (created by)</text>
+<path d="M 1035 281 L 1300 281" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1167.5" y="269" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">1 : N (items)</text>
+<path d="M 832.5 493 L 832.5 650" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="947.5" y="598" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">1 : N (approvals)</text>
+<path d="M 242.5 493 L 242.5 1103 L 832.5 1103 L 832.5 1009" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="537.5" y="1090" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">1 : N (approver)</text>
+<text x="840" y="1151" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="15" font-weight="400" fill="#000000">Primary Key and Foreign Key groups are separated by horizontal rules. All fields and connectors are hypothetical.</text>
 </svg>
