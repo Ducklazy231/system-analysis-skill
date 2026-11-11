@@ -1,6 +1,6 @@
 ---
 name: system-analysis-id
-version: 1.2.0
+version: 1.2.1
 description: Reusable Business and System Analysis skill in natural Indonesian, keeping technical terminology in English. Use for requirements, BRD, PRD, Jira, workflow, API, sequence diagrams, UAT, and Word/PDF documents.
 ---
 
