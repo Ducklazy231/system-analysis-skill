@@ -5,7 +5,7 @@ description: Cross-project Business Analyst and System Analyst skill for evidenc
 
 # Business & System Analysis — English Skill
 
-> Version 1.4.1. This is a reusable working standard, not a project-specific business specification. Use the user's actual source materials as evidence and preserve the terminology used by the product team.
+> Version 1.4.2. This is a reusable working standard, not a project-specific business specification. Use the user's actual source materials as evidence and preserve the terminology used by the product team.
 
 
 ## 0A. Default package for a new system — BRD, PRD, FSD
@@ -60,7 +60,7 @@ Use stable mappings such as `BR-001 → PR-001 → FS-001 → TC-001`. The relat
 
 Start with a **plain document title**, then substantive content. **Do not automatically add a subtitle**, ornamental colored line or box, or a banner like `Product Management & System Analysis | Status: Proposed | Version: 1.0.0`.
 
-Do **not fabricate** Document Version, Status, Product Owner, Lead Analyst, PIC, Target Release, Sprint, author, reviewer, approval date or date. Include a Document Control section **only when explicitly requested or mandated by an approved company template** and only with verified fields. Do not generate a generic Item/Keterangan metadata table even when factual metadata is available. Integrate actual facts into relevant BRD/PRD/FSD sections.
+Do not fabricate Document Version, Status, Product Owner, PIC, Target Release, Sprint, author, reviewer, approval date or other metadata. However, **always show the first-page document information table** with known data and clearly marked unknown values rather than omitting the table.
 
 Use **Calibri**, all visible text **pure black #000000**, white background and clearly visible black full-grid table borders without any colored or shaded cells. Render diagrams as real graphics in the documents, not just Mermaid code.
 
@@ -76,20 +76,32 @@ A short project description is **enough to start full documentation**. If the us
 - Apply cross-document traceability and check all three are internally consistent. No automatically generated document may consist only of a title and generic overview.
 - Treat a small brief for **a single Jira ticket, one bug, translation, or limited field change** as a narrow task. Do not produce three documents unless the user requests new-system or full documentation.
 
-### Absolutely no numbered or decorated document titles
+### Mandatory first-page table — Item | Description
 
-- **The visible document title must never begin with a number**, ordered-list marker or file index: no `01.`, `1.`, `01 —`, `01_BRD` or prefixed `Document 1`. A good heading is `Accounting Module — Business Requirements Document (BRD)`.
-- This applies to the **first on-page title**, not merely the file name. Make sure DOCX Title paragraphs have no list numbering, prefix, bullet, left-side crop/registration mark, ornamental corner, box, decorative line, or graphic header.
-- **Default filenames are `BRD.docx`, `PRD.docx` and `FSD.docx`** (or the requested extension). Filename indices are not the default. If a user provides a filename containing numbers, keep their chosen filename but do not duplicate its prefix in the document title.
-- Directly under the title, go into **substantive content**, not a department/status/version subtitle, `Database Architecture & Technical Data Modeling` tagline, or a cover metadata block.
-- **Do not create an opening generic metadata table**, especially a two-column `Item | Keterangan` / `Item | Description` table with rows such as Module, Product Name, Target RDBMS, Architect, Target Audience, Status, Version, Target Release, or Product Owner.
-- **Even if such values were supplied**, do not insert a front-matter Item/Keterangan table by default. Integrate relevant facts into meaningful sections: stakeholders go in Stakeholder Register, database choices go into FSD Technical Constraints, product users go into PRD Target Users, and release assumptions go into Release Scope.
-- Only when the user **explicitly asks for a Document Control section** or an approved corporate template mandates it, include a compact, factual metadata section in the specified place. Use specific column names and verified values, not the generic Item/Keterangan layout. Do not duplicate title metadata.
-- Internal section numbering is optional when a real document benefits from it. Do not let automatic numbering become part of the main title. Prefer clear section headings without repetitive boilerplate.
+**First-page layout order is fixed:** unnumbered document title → **two-column Document Information table** → the first substantive BRD/PRD/FSD section. The table is required by default, not an optional Document Control appendix.
 
-### Mandatory pre-delivery inspection
+- Indonesian output: table headers **`Item | Keterangan`**. English output: **`Item | Description`**. The table header and borders are visible in the actual Word/PDF file, not a paragraph imitating a table.
+- Use an **editable table** in Word, with a full black grid (0.5–0.75 pt borders), plain white cells, black Calibri text and no shading or color bands.
+- Use context-appropriate rows from: **Module**, **Document Version**, **Date**, **Related Systems**, **Document Status**, optionally **Product / Project**, **Document Owner** or **PIC** if applicable. Use Indonesian labels for Indonesian documents: **Modul**, **Versi Dokumen**, **Tanggal**, **Sistem Terkait**, **Status**.
+- **Do not fabricate values.** Use known information from user/project sources. For an unconfirmed field, show **Need Confirmation** or **Not specified**. Document creation date may use the actual generation date, not an invented meeting/release date. Use `Proposed` for document status only when the actual document is a proposal. Do not force a fictional version number such as `1.0.0`.
+- Include the table for **BRD, PRD and FSD**, and for other substantial standalone technical documentation. A one-paragraph Jira issue or short chat reply is not required to have a document table.
+- Keep the on-page title **without numbering**, even when the file was named with an index. Never add a decorative subtitle, department/status/version ribbon, ornamental corner, letterhead or colored line above or below the table.
+- Avoid duplicate document-control information below the table. Genuine business stakeholders, user personas and technical constraints still belong in the relevant BRD, PRD or FSD sections as detailed analysis.
+- Only deviate from the default table when the user **explicitly asks to omit it** or provides a mandatory corporate template with another document-control structure.
 
-Open/render the final DOCX/PDF in a **white-page print preview** when possible. Inspect the first page: a clean unnumbered title, **no generic Item/Keterangan table**, no made-up metadata or status/version banner, then real content. Check Calibri, solid black text #000000, white full-grid tables, rendered workflow/ERD/sequence diagrams, and substantial completion appropriate to the document type. If a problem is found, fix the file and inspect again before delivery.
+Example of the **Indonesian** table (illustrative values, not universal facts):
+
+| Item | Keterangan |
+|---|---|
+| Modul | Accounting Module |
+| Versi Dokumen | Need Confirmation |
+| Tanggal | Actual creation date |
+| Sistem Terkait | Need Confirmation |
+| Status | Proposed (only if the document is a proposal) |
+
+### Required first-page QA
+
+Render or open the final DOCX/PDF in **white print-layout preview** where possible. Verify: unnumbered title, **real editable Item/Keterangan or Item/Description table directly below it**, visible black full-grid borders, no background fill, correct factual/Need Confirmation values, then actual document content. Ensure Calibri, all-black text and fully rendered diagrams. Fix incorrect first pages before delivery.
 
 
 ### Delivery scope and format
