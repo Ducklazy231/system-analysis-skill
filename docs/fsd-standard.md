@@ -58,3 +58,9 @@ This example does not establish an actual backend service or endpoint.
 - All text black #000000, Calibri, white fully bordered tables, no decorative metadata under title.
 
 [Three-document standard](document-suite.md) · [BRD standard](brd-standard.md) · [PRD standard](prd-standard.md)
+
+## Document presentation and short-brief behavior
+
+Start with a **plain unnumbered FSD title**, e.g. `Accounting Module — Functional Specification Document (FSD)`. No `01.`, `01_FSD`, ornamental subtitle, technical team/status/version banner or generic opening `Item | Keterangan` table. Technical constraints such as actual DBMS belong in a technical constraint section only when verified, not a fabricated target-RDBMS row under the title.
+
+Even when the system brief is short, build a **complete implementation-oriented FSD**, using explicit Proposed and Need Confirmation for unknown items. Cover detailed module flows, fields, validation, status transitions, role permissions, errors, rendered sequence diagrams, readable ERD with PK/FK dividers if relational storage applies, Data Dictionary, API mapping where relevant, NFR and test mapping. Never fill technical gaps by inventing an approved schema or API endpoint.
