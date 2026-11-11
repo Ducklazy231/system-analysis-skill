@@ -17,7 +17,7 @@ For complete single-language instruction sets, use [English skill](skills/system
 
 
 
-> Version 1.4.0. This is a reusable working standard, not a project-specific business specification. Use the user's actual source materials as evidence and preserve the terminology used by the product team.
+> Version 1.4.1. This is a reusable working standard, not a project-specific business specification. Use the user's actual source materials as evidence and preserve the terminology used by the product team.
 
 
 ## 0A. Default package for a new system — BRD, PRD, FSD
@@ -76,9 +76,37 @@ Do **not fabricate** Document Version, Status, Product Owner, Lead Analyst, PIC,
 
 Use **Calibri**, all visible text **pure black #000000**, white background and clearly visible black full-grid table borders without any colored or shaded cells. Render diagrams as real graphics in the documents, not just Mermaid code.
 
+### Mandatory document construction from a short brief
+
+A short project description is **enough to start full documentation**. If the user describes a new system/module or asks for its documents in one or two sentences, do not respond with only an outline, a concept summary, a placeholder-only document, or a list of questions. Produce a substantive complete **BRD, PRD, and FSD** package using the known context. If only one of those documents was explicitly requested, produce that single document completely instead.
+
+- Expand a brief into meaningful sections: actors and responsibilities, process flow, main and alternate use cases, module/feature inventory, functional behavior, field candidates, validation, exception paths, data ownership, integrations where applicable, role permissions, acceptance criteria and test coverage.
+- Derive **Proposed** solution details from the described problem, but **never present them as confirmed facts**. Don't fabricate current processes, headcounts, existing databases, concrete APIs, vendor versions, timelines, approved approvers, KPIs or numeric claims.
+- For an unconfirmed design, give specific **proposed** rules and examples with rationale instead of leaving entire sections empty. A proposed rule is a design option, not an approved business decision.
+- Where an essential fact is missing, mark **Need Confirmation**, describe how it affects implementation, and continue documenting everything that is supportable. Build a Decision Log instead of stopping all work to ask for more input.
+- Create actual **rendered** visual diagrams in the relevant documents, sized for readability. When an output is too large, divide into meaningful modules/appendices without shrinking text or reducing analysis to a shallow outline.
+- Apply cross-document traceability and check all three are internally consistent. No automatically generated document may consist only of a title and generic overview.
+- Treat a small brief for **a single Jira ticket, one bug, translation, or limited field change** as a narrow task. Do not produce three documents unless the user requests new-system or full documentation.
+
+### Absolutely no numbered or decorated document titles
+
+- **The visible document title must never begin with a number**, ordered-list marker or file index: no `01.`, `1.`, `01 —`, `01_BRD` or prefixed `Document 1`. A good heading is `Accounting Module — Business Requirements Document (BRD)`.
+- This applies to the **first on-page title**, not merely the file name. Make sure DOCX Title paragraphs have no list numbering, prefix, bullet, left-side crop/registration mark, ornamental corner, box, decorative line, or graphic header.
+- **Default filenames are `BRD.docx`, `PRD.docx` and `FSD.docx`** (or the requested extension). Filename indices are not the default. If a user provides a filename containing numbers, keep their chosen filename but do not duplicate its prefix in the document title.
+- Directly under the title, go into **substantive content**, not a department/status/version subtitle, `Database Architecture & Technical Data Modeling` tagline, or a cover metadata block.
+- **Do not create an opening generic metadata table**, especially a two-column `Item | Keterangan` / `Item | Description` table with rows such as Module, Product Name, Target RDBMS, Architect, Target Audience, Status, Version, Target Release, or Product Owner.
+- **Even if such values were supplied**, do not insert a front-matter Item/Keterangan table by default. Integrate relevant facts into meaningful sections: stakeholders go in Stakeholder Register, database choices go into FSD Technical Constraints, product users go into PRD Target Users, and release assumptions go into Release Scope.
+- Only when the user **explicitly asks for a Document Control section** or an approved corporate template mandates it, include a compact, factual metadata section in the specified place. Use specific column names and verified values, not the generic Item/Keterangan layout. Do not duplicate title metadata.
+- Internal section numbering is optional when a real document benefits from it. Do not let automatic numbering become part of the main title. Prefer clear section headings without repetitive boilerplate.
+
+### Mandatory pre-delivery inspection
+
+Open/render the final DOCX/PDF in a **white-page print preview** when possible. Inspect the first page: a clean unnumbered title, **no generic Item/Keterangan table**, no made-up metadata or status/version banner, then real content. Check Calibri, solid black text #000000, white full-grid tables, rendered workflow/ERD/sequence diagrams, and substantial completion appropriate to the document type. If a problem is found, fix the file and inspect again before delivery.
+
+
 ### Delivery scope and format
 
-If an editable document artifact is requested, generate **three separate files**: `01_BRD`, `02_PRD` and `03_FSD` with the requested extension. If no file type is specified, keep three clearly distinct Markdown documents/sections and do not assume Word or PDF. A single small Jira bug or limited field change still gets only its requested scope.
+If an editable document artifact is requested, generate **three separate files**: `BRD`, `PRD` and `FSD` with the requested extension. If no file type is specified, keep three clearly distinct Markdown documents/sections and do not assume Word or PDF. A single small Jira bug or limited field change still gets only its requested scope.
 
 The full must-have matrix and ERD design rules are in `docs/document-suite.md` when the repository is available. **The requirements above are self-contained** for agents that install only this language-specific SKILL.md.
 
