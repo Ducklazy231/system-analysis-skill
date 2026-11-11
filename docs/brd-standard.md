@@ -42,3 +42,9 @@ The corresponding feature specification belongs in PRD and field validation / da
 - No fabricated release date, version, owner, or decorative subtitle.
 
 [Three-document standard](document-suite.md) · [Word/PDF layout](word-pdf-style.md)
+
+## Document presentation and short-brief behavior
+
+Start with a **plain unnumbered BRD title**, e.g. `Accounting Module — Business Requirements Document (BRD)`. No `01.` or `01_BRD` prefix, decorative subtitle, role/status/version line, or generic `Item | Keterangan` metadata table. Do not invent Project Owner, approval, Target Release or business metrics.
+
+Even when the initial project brief is short, provide a **full BRD**: explain available business context, objectives, affected actors and stakeholder map (Proposed when unknown), scope, proposed business rules, a rendered To-Be process with alternative paths, and business acceptance. Use Need Confirmation for gaps, not entire blank sections. Never fabricate an As-Is process or measured financial impact.
