@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.1 — 2026-11-11
+
+- Standardized **Calibri** as the default font for body text, headings, tables, and document captions.
+- Required visible full table borders (black or dark gray), white backgrounds, and no table shading or color fills in Word/PDF.
+- Required **rendered diagrams** as primary deliverables for flowcharts, workflows, swimlanes, and sequence diagrams rather than code-only or text-only outputs.
+- Required embedded SVG/PNG/vector diagrams inside requested Word/PDF artifacts, with editable source as optional extra.
+- Added example rendered SVG flowchart and sequence diagram, embedded visually in README and diagrams guide.
+- Updated English, Indonesian, and bilingual master SKILL.md files to keep behavior consistent.
+
 ## 1.2.0 — 2026-11-10
 
 - Made the repository documentation English-first.
