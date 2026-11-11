@@ -45,6 +45,6 @@ The corresponding feature specification belongs in PRD and field validation / da
 
 ## Document presentation and short-brief behavior
 
-Start with a **plain unnumbered BRD title**, e.g. `Accounting Module — Business Requirements Document (BRD)`. No `01.` or `01_BRD` prefix, decorative subtitle, role/status/version line, or generic `Item | Keterangan` metadata table. Do not invent Project Owner, approval, Target Release or business metrics.
+Start with the **plain unnumbered BRD title**, e.g. `Accounting Module — Business Requirements Document (BRD)`, followed immediately by a **two-column information table**. For Indonesian documents the header is `Item | Keterangan`, for English `Item | Description`. Use relevant rows such as Module, Document Version, Date, Related Systems, and Status. Unknown values are `Need Confirmation`, not invented. The table is white with visible black full borders and black Calibri text. No decorative subtitle.
 
-Even when the initial project brief is short, provide a **full BRD**: explain available business context, objectives, affected actors and stakeholder map (Proposed when unknown), scope, proposed business rules, a rendered To-Be process with alternative paths, and business acceptance. Use Need Confirmation for gaps, not entire blank sections. Never fabricate an As-Is process or measured financial impact.
+Even from a short project brief, provide the **full BRD**: business context, objectives, roles, stakeholder map, in/out scope, proposed business rules, rendered To-Be workflow with alternatives, risks and acceptance. Do not fabricate As-Is process or quantitative business impact.
