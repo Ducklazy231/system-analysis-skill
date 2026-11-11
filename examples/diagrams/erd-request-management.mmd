@@ -1,7 +1,13 @@
+%% Illustrative schema, not an approved database implementation.
+%% The rendered SVG is the layout reference with explicit horizontal PK/FK group divider lines.
+%% Mermaid ER syntax describes relationships, but does not guarantee the requested table section separators.
+%% For full-size, no-overlap export see erd-request-management.svg.
+
 erDiagram
-    USER ||--o{ REQUEST : creates
-    REQUEST ||--o{ REQUEST_ITEM : contains
-    REQUEST ||--o{ APPROVAL_HISTORY : records
+    USER ||--o{ REQUEST : "creates"
+    REQUEST ||--o{ REQUEST_ITEM : "contains"
+    REQUEST ||--o{ APPROVAL_HISTORY : "has history"
+    USER ||--o{ APPROVAL_HISTORY : "acts as approver"
 
     USER {
         uuid user_id PK
@@ -23,6 +29,7 @@ erDiagram
         uuid request_id FK
         string item_code
         decimal quantity
+        decimal amount
     }
 
     APPROVAL_HISTORY {
@@ -31,4 +38,5 @@ erDiagram
         uuid approver_user_id FK
         string decision
         datetime decided_at
+        string reason
     }
