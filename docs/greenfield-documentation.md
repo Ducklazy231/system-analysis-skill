@@ -4,6 +4,14 @@ This guide applies when a user asks for a **new application, project, or module 
 
 The requirement does **not** apply to small, scoped changes such as a Jira bug, one field, one workflow correction, or a short rewriting request.
 
+## Rendered documentation workflow
+
+The following example shows the **end-to-end documentation process with proposed stakeholder roles**, rather than a text-only checklist:
+
+![Rendered greenfield documentation workflow](../examples/diagrams/greenfield-documentation-workflow.svg)
+
+The illustration is not an assignment of actual people or approval authority.
+
 ## 1. Default deliverable package
 
 | Deliverable | What must be addressed | Evidence / status |
