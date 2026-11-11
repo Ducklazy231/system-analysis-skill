@@ -56,15 +56,13 @@ When asked to document a new system, project or module from scratch, automatical
 
 See the [three-document standard](document-suite.md) and [greenfield guide](greenfield-documentation.md). For a narrow ticket or one-field change, do not trigger all three automatically.
 
-## Plain title and metadata rule
+## Plain unnumbered title and required information table
 
-Start with **one plain title only**, then the actual document content. Do not add a subtitle, decorative underline, status/version banner, job-function label, colored box or ornamental header.
+Start with an **unnumbered title** followed immediately by a real **two-column information table**. Indonesian document headers: `Item | Keterangan`. English: `Item | Description`.
 
-Specifically, do not produce a line such as:
+Use relevant rows: **Modul, Versi Dokumen, Tanggal, Sistem Terkait, Status** (or English equivalents). Include owner/PIC only when relevant. Do not fabricate values, versions, status, or technical specifications. Unknown values must be `Need Confirmation` / `Not specified`. The date can be the actual document creation date, not a guessed release date.
 
-> Product Management & System Analysis | Status: Proposed | Version: 1.0.0
-
-Do not fabricate Product Owner, Lead System Analyst, Target Release, Sprint, document Version, document Status, author, PIC, approval or date. Add an explicit **Document Control section only when specifically requested or required by a provided corporate template**, and use only verified data. Do not make a generic opening Item/Keterangan metadata table even if metadata exists. Do not insert placeholder metadata or duplicate the same values below the title and in a table.
+Keep the table **white and fully bordered in black**, Calibri and all-black font. Use no decorative bar, colored subtitle, metadata badges, or extra text between title and table. The table is **required by default for BRD, PRD, FSD and substantial technical reports**, not a prohibited metadata block. A specific user instruction or required corporate template can override the default.
 
 ## ERD visual layout gate (FSD)
 
@@ -101,13 +99,13 @@ A nice layout does not replace accurate requirements. Check actors, triggers, va
 
 For Indonesian writing, apply the [Anti-AI Slop guide](anti-ai-slop-id.md). Technical terms remain in English.
 
-## Mandatory clean first page
+## Mandatory first-page visual quality check
 
-- **Document title has no leading number or bullet.** Never render `01. Business Requirements Document`, `01_BRD`, `Document 1` or a numbered-list paragraph as the first-page title. Use a plain unnumbered title such as `Accounting Module — Product Requirements Document (PRD)`.
-- Default file names are `BRD.docx`, `PRD.docx` and `FSD.docx`. Do not use numeric filename prefixes unless the user explicitly requests them. Even then, keep the **visible document title unnumbered**.
-- After the title, go directly to the actual first section. No subtitle, faux letterhead, registration/crop-mark corners, decorative horizontal rule, divider banner, header/footer, or status/version line.
-- **Never generate the introductory table `Item | Keterangan` / `Item | Description`.** Do not replace this with another generic Module/Target RDBMS/Data Architect/Target Audience/Status information table.
-- This is not only about fabricated metadata. **Even real metadata should be placed in the relevant BRD/PRD/FSD section**, not automatically formatted as a generic two-column front-matter table.
-- Include Document Control only if specifically requested or demanded by an actual supplied company template, using exact verified fields. The default is **no document metadata table at all**.
-- A short brief about a new system is enough to generate substantive, comprehensive BRD, PRD and FSD documents. Do not pad with decorative layout or substitute outline headings for real analysis.
-- Before delivery inspect the **rendered first page in white print-layout view**, and ensure this rule is met. Word dark-mode app UI is not a substitute for checking actual text color and export appearance.
+- The visible title has no numerical prefix or list marker.
+- Directly under it, include a **real editable** `Item | Keterangan` / `Item | Description` table. Do not skip it or replace it with free-text metadata.
+- The table uses solid black full-grid borders, white cell background, pure black Calibri text, no shading.
+- Values are sourced from the task or marked `Need Confirmation`. Never invent version numbers, release dates or system technology.
+- No decorative subtitle or duplicate metadata outside the table.
+- Below the table, begin real document content, with full BRD/PRD/FSD analysis and embedded visual diagrams.
+- Check the first page in white print view before delivery when possible.
+
