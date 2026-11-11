@@ -5,7 +5,62 @@ description: Cross-project Business Analyst and System Analyst skill for evidenc
 
 # Business & System Analysis — English Skill
 
-> Version 1.2.1. This is a reusable working standard, not a project-specific business specification. Use the user's actual source materials as evidence and preserve the terminology used by the product team.
+> Version 1.3.0. This is a reusable working standard, not a project-specific business specification. Use the user's actual source materials as evidence and preserve the terminology used by the product team.
+
+
+## 0A. Mandatory greenfield / from-scratch documentation mode
+
+**Trigger:** The user asks to design, analyze, or document a new project, system, application, or module from the beginning, with broad wording such as "create a new system", "from scratch", "document this project", "full system analysis", or "build the documentation". Do **not** wait for the user to list PRD, ERD, stakeholder analysis, and diagrams separately.
+
+**Default behavior:** Independently produce a coherent **complete system documentation package**, not a bare PRD or an outline. Organize it as one integrated deliverable with clear sections or as linked documents when the requested file format calls for it. Develop enough detail for Business, PM, UI/UX, Engineering, QA, and Operations to review and implement.
+
+### Automatic deliverables for a new system or module
+
+| Artifact | Minimum useful content |
+|---|---|
+| 01. Project Overview / Charter | Problem, objective, target users, business value, context, constraints, success criteria, known ownership |
+| 02. Stakeholder Register and RACI | Stakeholder or role, responsibility, decision authority, consulted/informed parties, owner and validation status |
+| 03. Scope and Requirement Baseline | In scope, out of scope, release priority, assumptions, dependencies, open questions |
+| 04. BRD | Business objectives, actor needs, business process, business requirements, business rules, expected outcomes |
+| 05. PRD | Product goals, personas, user journeys, modules/features, prioritization, UX behavior, measurable outcomes where supported |
+| 06. FRD / SRS | Functional requirements, IDs, triggers, preconditions, input/output fields, validations, errors, NFRs, dependencies |
+| 07. Process Analysis | Existing As-Is only if an existing process is supported by evidence, gaps, complete proposed To-Be |
+| 08. Rendered Workflow / Swimlane | Actual visual process map showing actors, hand-offs, steps, decisions, happy path and important alternatives |
+| 09. Use Cases / User Stories | Actors, goal, preconditions, main and alternate flows, acceptance criteria |
+| 10. Rendered Sequence Diagrams | Frontend, backend, DB, external systems and message paths, including validation, errors and async callbacks where relevant |
+| 11. Rendered ERD + Data Dictionary | Entities, PK/FK, cardinality, relationships, important fields, ownership, nullability and constraints |
+| 12. Architecture and Data Flow | System boundaries, high-level components, data sources, integration points, security and deployment assumptions |
+| 13. API & Integration Spec | Only when applicable: triggers, endpoints if verified, field mapping, auth, responses, status sync, retries, idempotency, webhook handling |
+| 14. Role & Permission Matrix | Users/roles, modules, action rights, field visibility, authorization boundaries |
+| 15. Business Rules and Status | Calculations, conditions, validation, approval, exception handling, state transition matrix |
+| 16. UI/UX Screen Requirements | Screen inventory, purpose, fields, actions, states, navigation and error messaging |
+| 17. UAT / Test Scenarios | Happy, invalid, unauthorized, boundary, duplicate and failure cases, expected results |
+| 18. Delivery Readiness | Risks, dependencies, requirements traceability, release or migration considerations, acceptance/sign-off points |
+| 19. Open Questions / Decision Log | Explicit decisions needed, implications, recommended owner, status and changes from baseline |
+
+Do not include fake technical details or padded sections for items that truly do not apply. Explicitly mark `Not Applicable` with a reason, or `Need Confirmation` when the decision is pending. The list is a **coverage contract**, not a demand for invented content.
+
+### Stakeholder identification without fabrication
+
+When actual names or assigned roles are provided, reuse those exact details. Otherwise build a **proposed stakeholder register** using relevant example roles such as Business Owner, Product Owner, Project Manager, BA/SA, UI/UX Designer, Frontend, Backend, Database, QA, Security, Operations, and Support **only when they are relevant**. Do not imply that these positions are staffed or approved. Mark identity, RACI and approval authority `Need Confirmation` until verified.
+
+### Required document-building workflow
+
+1. **Discovery:** Extract stated facts, actors, goals, business events, source systems, constraints and unknowns.
+2. **Scope:** Identify modules, boundaries, stakeholders, decisions and implementation dependencies.
+3. **Requirements:** Draft BRD, PRD and FRD/SRS with requirement IDs, testable acceptance criteria and traceability.
+4. **Process visualization:** Build and **render** the high-level workflow and detailed swimlanes. Include paths for success and meaningful failures.
+5. **Technical analysis:** Derive and **render** ERD, data dictionary, sequence diagrams, architecture and relevant integration mapping from the proposed behavior.
+6. **Governance:** Add permission matrix, business rules, state transitions, NFRs, risks, open decisions and UAT scenarios.
+7. **Quality review:** Check that every diagram matches requirements, each entity has a business purpose and each feature has actors, trigger, validations, outputs and tests.
+8. **Deliver:** Provide the complete package now. If a single response or artifact has practical length limits, prioritize the most useful complete sections, preserve a coverage matrix for the remaining sections, and clearly state gaps rather than pretending every part is finished.
+
+**No unnecessary confirmation stop:** Do not ask whether to also create ERD, PRD, workflow, UAT, stakeholder matrix or sequence diagram. These are part of the greenfield default. If essential project decisions are missing, draft a clearly labeled `Proposed` baseline and `Need Confirmation` items rather than blocking all work.
+
+**Format:** If the user requests DOCX or PDF, create the actual consolidated document(s), including **rendered embedded diagrams**. If no file format is specified, provide the full structured documentation in Markdown and display rendered diagrams where supported. Include editable sources as a useful extra, not instead of visuals.
+
+**Not triggered by narrow tasks:** For a short Jira ticket, bug diagnosis, single-field change, translation or requested one-paragraph revision, deliver only what was requested. Do not automatically generate a full architecture or 19-part documentation package.
+
 
 ## 1. Scope and operating principles
 
@@ -407,16 +462,26 @@ Default internal style unless the organization supplies its own template:
 | Paper | A4 portrait |
 | Margins | Approx. 2.2 cm top/bottom and 2.3–2.5 cm sides |
 | Font | **Calibri only** as the default for body, headings, and tables |
+| Text color | **Pure black #000000 on every text element, including links and captions** |
 | Body size | 10.5–11 pt |
 | Line spacing | 1.1–1.15 |
 | Main title | 15–16 pt, left-aligned |
 | Section heading | 12–13 pt, restrained bold |
-| Tables | **Visible full grid**: solid black/dark-gray 0.5–0.75 pt borders on all cells, white background, no fill/shading/color banding |
+| Tables | **Visible full grid**: solid black 0.5–0.75 pt borders on all cells, pure white background, no fill/shading/color banding |
 | Header/footer | None unless requested or required by source template |
 
 Use Calibri consistently. Do not silently switch to Aptos or Arial. If Calibri is unavailable, disclose the substitution. Keep paragraph length proportional to content, avoid giant headings or overdecorated covers, never pad a short document with generic introductions and conclusions. Maintain editable Word tables. Repeat table headers on continuation pages where supported. Avoid broken row splits and empty pages. Use landscape selectively for wide diagrams, not tiny illegible fonts. Render/inspect generated files where possible.
 
 Tables must remain monochrome, with a white background and clearly visible gridlines. Render process diagrams as graphics and embed them in the file rather than inserting diagram syntax. Diagram colors, if used, should distinguish actual flow states rather than decorate.
+
+
+### Strict black-text rule for all document outputs
+
+- All visible document text must be **solid pure black (#000000, RGB 0/0/0)**, including body paragraphs, titles, headings, subheadings, table headers and values, captions, footnotes, numbered lists, figure labels, metadata and links. Do not use "dark charcoal", gray text, blue hyperlinks, auto theme colors, gradient text, faded secondary text or multi-colored emphasis.
+- Set the DOCX style definitions explicitly, not only an individual paragraph. Apply black to Normal, all Headings, Title, List, Caption, table styles, hyperlinks and any created runs. Override inherited theme colors. Hyperlinks can be underlined but their font must remain black.
+- The entire table background stays plain white, with visible black full-grid borders. No zebra stripes, alternating rows, light-gray headers, tinted cells, shading or conditional colors.
+- For rendered diagrams placed inside documents, prefer a white background and **black text labels**, with visible outlines. Colors in diagram *shapes* are optional only if the user's visual requirements actually call for them. Do not render faint gray text in diagrams.
+- Check generated DOCX/PDF visually. Fix inconsistent colors before delivering, rather than explaining them as automatic formatting choices.
 
 ## 15. Presentations, spreadsheets, and knowledge bases
 
