@@ -100,3 +100,14 @@ Preserve correct content, alignment, and diagram readability. Check for clipped 
 A nice layout does not replace accurate requirements. Check actors, triggers, validation, permissions, business rules, exceptions, source evidence, and acceptance criteria before export.
 
 For Indonesian writing, apply the [Anti-AI Slop guide](anti-ai-slop-id.md). Technical terms remain in English.
+
+## Mandatory clean first page
+
+- **Document title has no leading number or bullet.** Never render `01. Business Requirements Document`, `01_BRD`, `Document 1` or a numbered-list paragraph as the first-page title. Use a plain unnumbered title such as `Accounting Module — Product Requirements Document (PRD)`.
+- Default file names are `BRD.docx`, `PRD.docx` and `FSD.docx`. Do not use numeric filename prefixes unless the user explicitly requests them. Even then, keep the **visible document title unnumbered**.
+- After the title, go directly to the actual first section. No subtitle, faux letterhead, registration/crop-mark corners, decorative horizontal rule, divider banner, header/footer, or status/version line.
+- **Never generate the introductory table `Item | Keterangan` / `Item | Description`.** Do not replace this with another generic Module/Target RDBMS/Data Architect/Target Audience/Status information table.
+- This is not only about fabricated metadata. **Even real metadata should be placed in the relevant BRD/PRD/FSD section**, not automatically formatted as a generic two-column front-matter table.
+- Include Document Control only if specifically requested or demanded by an actual supplied company template, using exact verified fields. The default is **no document metadata table at all**.
+- A short brief about a new system is enough to generate substantive, comprehensive BRD, PRD and FSD documents. Do not pad with decorative layout or substitute outline headings for real analysis.
+- Before delivery inspect the **rendered first page in white print-layout view**, and ensure this rule is met. Word dark-mode app UI is not a substitute for checking actual text color and export appearance.
