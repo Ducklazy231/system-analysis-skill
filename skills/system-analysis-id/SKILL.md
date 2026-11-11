@@ -1,6 +1,6 @@
 ---
 name: system-analysis-id
-version: 1.3.0
+version: 1.4.0
 description: Reusable Business and System Analysis skill in natural Indonesian, keeping technical terminology in English. Use for requirements, BRD, PRD, Jira, workflow, API, sequence diagrams, UAT, and Word/PDF documents.
 ---
 
@@ -41,59 +41,68 @@ description: Reusable Business and System Analysis skill in natural Indonesian, 
 
 
 
-## 0B. Mode dokumentasi lengkap untuk project dari nol — wajib
+## 0B. Default dokumentasi sistem baru — BRD, PRD, FSD
 
-**Kapan dipakai:** Saat user minta bikin project, aplikasi, sistem, atau module baru dari awal, atau bilang "buat dokumentasi dari nol", "analisis sistem baru", "bikin dokumentasi lengkap", maupun permintaan umum sejenis. **Jangan menunggu user meminta PRD, ERD, workflow, stakeholder matrix, dan sequence diagram satu per satu.**
+**Kapan dipakai:** Kalau user minta analisis atau dokumentasi project, system, aplikasi, atau module baru dari awal, atau minta paket dokumentasi BA/SA yang lengkap.
 
-Kalau scope-nya memang sistem atau module baru, langsung buat **paket dokumentasi BA/SA lengkap**. Bukan hanya outline, bukan hanya PRD, dan bukan cuma penjelasan alur berupa teks. Susun dokumen dengan detail yang bisa dipakai Business, PM, UI/UX, Developer, QA, dan Operations untuk review dan implementasi.
+**Langsung buat tiga dokumen utama: BRD, PRD, dan FSD.** Bukan 19 file berbeda. Stakeholder, workflow, ERD, API, permission, dan UAT tetap dibuat, tetapi dimasukkan ke dokumen yang sesuai. Jangan menunggu user meminta masing-masing diagram atau section satu per satu.
 
-### Output yang otomatis harus dicakup
+### 1. BRD — Business Requirements Document
 
-| Deliverable | Isi yang perlu dibuat |
-|---|---|
-| 01. Project Overview / Project Charter | Problem, objective, business context, target user, success criteria, constraint |
-| 02. Stakeholder Register & RACI | Stakeholder atau role, tugasnya, decision authority, PIC, siapa yang perlu di-consult atau informed |
-| 03. Scope & Requirement Baseline | In Scope, Out of Scope, priority, dependency, assumption, Need Confirmation |
-| 04. BRD | Business process, business need, requirement, Business Rule, expected result |
-| 05. PRD | Product objective, persona, user journey, feature/module, priority, acceptance |
-| 06. FRD / SRS | Functional flow, field, data type, validation, status, permission, exception, NFR |
-| 07. As-Is / To-Be | As-Is hanya kalau memang ada existing process yang diketahui, lalu To-Be dan gap-nya |
-| 08. Workflow / Swimlane visual | Diagram asli yang sudah di-render, lengkap dengan actor, step, handoff, decision, success, error |
-| 09. Use Case & User Story | Role, trigger, precondition, main flow, alternate flow, Acceptance Criteria |
-| 10. Sequence Diagram visual | User, Frontend, Backend, Database, external service, request/response, callback dan error path |
-| 11. ERD visual & Data Dictionary | Entity, PK/FK, relationship, cardinality, field penting, constraint dan data ownership |
-| 12. System Architecture & Data Flow | Component, service boundary, source of truth, integration, security consideration |
-| 13. API Integration Spec | Kalau ada integrasi: trigger, field mapping, endpoint yang valid, webhook, retry, idempotency, status sync |
-| 14. Role Permission Matrix | Role, module, action permission, field visibility, authorization rule |
-| 15. Business Rules & Status Transition | Condition, calculation, approval, status change, exception handling |
-| 16. UI/UX Screen Requirement | Screen list, input, action, validation, error state, navigation |
-| 17. UAT & Test Scenarios | Happy path, invalid input, duplicate, unauthorized, error, expected result |
-| 18. Delivery & Risk | Dependency, risk, traceability, rollout, migration jika relevan, sign-off point |
-| 19. Open Questions & Decision Log | Hal yang belum final, impact, PIC yang perlu konfirmasi, status keputusan |
+**Pembaca:** Business Owner, Management, Process Owner, dan stakeholder non-technical.
 
-Ini **coverage wajib**, bukan alasan buat mengarang isi. Bagian yang memang tidak relevan boleh ditandai `Not Applicable` beserta alasan. Kalau datanya belum tersedia, tetap buat struktur dan jelaskan mana yang `Proposed` dan `Need Confirmation`.
+**Fokus:** Kenapa bisnis membutuhkan perubahan, masalahnya apa, proses bisnis mana yang terdampak, dan hasil seperti apa yang disepakati. Tulis supaya pembaca bisnis paham tanpa perlu mengerti Backend atau Database.
 
-### Menentukan stakeholder
+**Must-have:** Business Background, Problem Statement, Business Objectives, Stakeholder Register (pakai PIC yang memang diketahui, atau role mapping berstatus Proposed), In/Out Scope, As-Is hanya kalau ada existing process, **To-Be Business Workflow atau Swimlane yang sudah di-render**, Business Requirements dengan ID, Business Rules, Dependencies/Risks, Business Acceptance Criteria, dan Open Questions/Decision Status.
 
-Kalau nama stakeholder atau PIC sudah diberikan user, gunakan data yang sama. Kalau belum, buat **usulan stakeholder berdasarkan role yang relevan**, misalnya Business Owner, Product Owner, PM, BA/SA, UI/UX Designer, Frontend, Backend, QA, Database, Security, Operations, atau Support. Jangan otomatis menyatakan orang atau jabatan tertentu sudah ditunjuk. Nama, RACI, dan approval authority yang belum jelas diberi status `Need Confirmation`.
+**Jangan masukkan** ERD, SQL, payload JSON, detail API, atau database schema ke BRD secara default.
 
-### Workflow kerja otomatis
+### 2. PRD — Product Requirements Document
 
-1. **Discovery** — baca konteks, kumpulkan tujuan, actor, pain point, data, constraint, dan hal yang belum jelas.
-2. **Define Scope** — tentukan module, stakeholder, In/Out Scope, dependency, dan decision point.
-3. **Requirements** — susun BRD, PRD, FRD/SRS, Business Rule, dan Acceptance Criteria dengan ID yang konsisten.
-4. **Process Diagram** — buat dan **render** workflow serta swimlane dengan actor dan kondisi percabangan.
-5. **Technical Design** — buat dan **render** ERD, sequence diagram, architecture, dan data flow. Tambahkan API mapping kalau ada integrasi.
-6. **Control & Validation** — isi role permission, state transition, NFR, error handling, UAT, risk dan Open Questions.
-7. **Cross-check** — pastikan requirement, ERD, diagram, screen, data field, status, dan test scenario saling cocok.
-8. **Delivery** — langsung keluarkan paket dokumentasi lengkap. Kalau ukuran output membatasi, kerjakan bagian paling penting secara utuh dan tulis coverage/gap yang belum selesai. Jangan mengklaim semua bagian sudah jadi kalau belum.
+**Pembaca:** Product Owner, PM, UI/UX, BA/SA, dan tim product/engineering untuk planning.
 
-**Jangan bertanya lagi apakah user mau dibikinkan ERD, PRD, workflow, stakeholder matrix, atau sequence diagram.** Kalau dari awal user minta dokumentasi sistem baru, itu sudah termasuk secara otomatis.
+**Fokus:** Product apa yang akan dibuat, siapa user-nya, feature apa yang diperlukan, user berinteraksi lewat screen mana, dan behavior yang diharapkan.
 
-**Format:** Kalau diminta Word/PDF, buat file sungguhan dengan diagram visual yang di-embed. Kalau format belum disebutkan, buat dokumentasi lengkap dalam Markdown dan tampilkan diagram visual bila environment mendukung. Mermaid source boleh ikut sebagai file tambahan, bukan menggantikan gambar.
+**Must-have:** Product Overview, User Problem/Needs, Product Goals dan Success Metrics kalau ada data, Target User/Persona/Role, Product Scope dan Priority, Module/Feature Breakdown, User Stories dan Use Cases, **User Journey/User Flow visual**, Product Behavior, UI/UX Screen Requirements, Feature Acceptance Criteria, Dependencies, Constraints, dan Open Product Decisions.
 
-**Pengecualian:** Kalau user hanya minta satu Jira ticket, translate satu kalimat, analisis error, satu field, atau revisi paragraf, jangan otomatis membuat semua dokumen besar. Sesuaikan dengan scope task.
+**Jangan jadikan PRD** tempat SQL, type database detail, konfigurasi server, atau implementasi internal yang terlalu dalam. Detail itu masuk FSD.
 
+### 3. FSD — Functional Specification Document
+
+**Pembaca:** System Analyst, Frontend, Backend, QA, Database Engineer, dan Tech Lead.
+
+**Fokus:** System behavior secara detail sampai Developer bisa implementasi dan QA bisa buat test case.
+
+**Must-have:** System/Module Boundary, Functional Requirements dan ID yang terhubung ke BRD/PRD, Actor/Role, Detailed Workflow dengan happy path dan exception, **Sequence Diagram visual yang sudah di-render**, Field Specification, Validation Rules, Business Logic/Calculation, Status Transition, Role Permission Matrix, **ERD visual dan Data Dictionary jika memakai relational database**, API/Integration Spec kalau ada integrasi, Error Handling, NFR yang relevan, Technical Dependencies, Acceptance Criteria/UAT/Test Mapping, dan Open Technical Questions.
+
+Kalau module tidak punya relational data model, tandai ERD `Not Applicable` beserta alasannya. Kalau tidak ada external integration, API spec juga tidak perlu dipaksakan. Jangan mengarang entity, field, endpoint, atau approval rule.
+
+### Traceability antar-dokumen
+
+Gunakan Requirement ID yang konsisten, misalnya `BR-001 → PR-001 → FS-001 → TC-001`. Satu Business Requirement boleh diturunkan ke beberapa Product Requirements dan Functional Specifications. Bedakan `Existing/Observed`, `Confirmed`, `Proposed`, dan `Need Confirmation`.
+
+### Aturan khusus ERD — wajib
+
+- **Tidak boleh overlapping.** Table/entity, nama field, relationship line, cardinality, connector, dan label harus punya ruang masing-masing. Jangan sampai text atau garis menabrak table.
+- **Jangan kompres ERD besar** menjadi gambar kecil. Pakai canvas lebih besar, landscape, atau pecah per module/domain dan berikan overview relationship. Jangan mengorbankan ukuran font.
+- Di setiap table, pisahkan group **Primary Key (PK)**, **Foreign Key (FK)**, dan regular attributes menggunakan **garis horizontal yang terlihat jelas**. Berikan label `PK` atau `FK` di field terkait. Kalau satu field sekaligus key utama dan foreign key, tulis `PK, FK` tanpa menduplikasinya.
+- Relationship connector harus lewat area kosong, bukan melewati isi table. Tampilkan cardinality dan arah FK yang benar.
+- Pastikan ukuran table menyesuaikan field terpanjang, bukan mengecilkan field name supaya muat.
+- Setelah render SVG/PNG atau masuk Word/PDF, cek overlap, teks terpotong, connector yang bertabrakan, dan readability. Perbaiki lalu render ulang. File Mermaid/draw.io boleh ikut sebagai source editable, bukan mengganti diagram visual.
+
+### Tampilan dokumen — wajib
+
+**Judul saja, lalu langsung isi dokumen.** Jangan otomatis menambahkan subtitle, kotak warna, garis dekoratif, atau teks seperti `Product Management & System Analysis | Status: Proposed | Version: 1.0.0`.
+
+Jangan mengarang `Version`, `Document Status`, `Target Release`, `Sprint`, `Product Owner`, `Lead System Analyst`, `PIC`, `Author`, tanggal, atau approver. Kalau data tersebut memang diberikan atau corporate template mewajibkan, tulis seperlunya satu kali saja. Kalau tidak, **tidak perlu membuat tabel Document Information**.
+
+Gunakan **Calibri**, semua tulisan **hitam #000000**, background putih, dan tabel dengan **full border hitam** yang terlihat jelas. Jangan warna-warni atau memakai shading. Diagram wajib sudah di-render dan di-embed, bukan code Mermaid saja.
+
+### Cara delivery
+
+Kalau user minta file dokumen editable, buat **tiga file terpisah**: `01_BRD`, `02_PRD`, dan `03_FSD` sesuai format yang diminta. Kalau format belum disebut, pisahkan ketiganya sebagai dokumen/section Markdown. Jangan langsung mengasumsikan harus PDF/Word. Kalau user hanya minta Jira ticket, edit field, atau analisis error kecil, cukup kerjakan task itu.
+
+Referensi must-have dan aturan ERD yang lebih lengkap tersedia di `docs/document-suite.md` kalau repo-nya bisa dibaca. Bagian ini tetap bisa dipakai sendiri oleh AI yang hanya meng-install SKILL.md.
 
 ## 1. Tujuan dan cakupan
 
