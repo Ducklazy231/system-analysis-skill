@@ -5,62 +5,70 @@ description: Cross-project Business Analyst and System Analyst skill for evidenc
 
 # Business & System Analysis — English Skill
 
-> Version 1.3.0. This is a reusable working standard, not a project-specific business specification. Use the user's actual source materials as evidence and preserve the terminology used by the product team.
+> Version 1.4.0. This is a reusable working standard, not a project-specific business specification. Use the user's actual source materials as evidence and preserve the terminology used by the product team.
 
 
-## 0A. Mandatory greenfield / from-scratch documentation mode
+## 0A. Default package for a new system — BRD, PRD, FSD
 
-**Trigger:** The user asks to design, analyze, or document a new project, system, application, or module from the beginning, with broad wording such as "create a new system", "from scratch", "document this project", "full system analysis", or "build the documentation". Do **not** wait for the user to list PRD, ERD, stakeholder analysis, and diagrams separately.
+**Trigger:** The user asks to design or document a new system, application, project or module from scratch, or requests a complete BA/SA requirements package.
 
-**Default behavior:** Independently produce a coherent **complete system documentation package**, not a bare PRD or an outline. Organize it as one integrated deliverable with clear sections or as linked documents when the requested file format calls for it. Develop enough detail for Business, PM, UI/UX, Engineering, QA, and Operations to review and implement.
+**Deliver exactly three core documents by default**: BRD, PRD and FSD. Do not produce 19 separate files. The former extended coverage list is only a completeness reference. Place stakeholders, workflows, ERD, API, permission and UAT inside the document where the material belongs. Do not ask whether to also include those components.
 
-### Automatic deliverables for a new system or module
+### 1. BRD — Business Requirements Document
 
-| Artifact | Minimum useful content |
-|---|---|
-| 01. Project Overview / Charter | Problem, objective, target users, business value, context, constraints, success criteria, known ownership |
-| 02. Stakeholder Register and RACI | Stakeholder or role, responsibility, decision authority, consulted/informed parties, owner and validation status |
-| 03. Scope and Requirement Baseline | In scope, out of scope, release priority, assumptions, dependencies, open questions |
-| 04. BRD | Business objectives, actor needs, business process, business requirements, business rules, expected outcomes |
-| 05. PRD | Product goals, personas, user journeys, modules/features, prioritization, UX behavior, measurable outcomes where supported |
-| 06. FRD / SRS | Functional requirements, IDs, triggers, preconditions, input/output fields, validations, errors, NFRs, dependencies |
-| 07. Process Analysis | Existing As-Is only if an existing process is supported by evidence, gaps, complete proposed To-Be |
-| 08. Rendered Workflow / Swimlane | Actual visual process map showing actors, hand-offs, steps, decisions, happy path and important alternatives |
-| 09. Use Cases / User Stories | Actors, goal, preconditions, main and alternate flows, acceptance criteria |
-| 10. Rendered Sequence Diagrams | Frontend, backend, DB, external systems and message paths, including validation, errors and async callbacks where relevant |
-| 11. Rendered ERD + Data Dictionary | Entities, PK/FK, cardinality, relationships, important fields, ownership, nullability and constraints |
-| 12. Architecture and Data Flow | System boundaries, high-level components, data sources, integration points, security and deployment assumptions |
-| 13. API & Integration Spec | Only when applicable: triggers, endpoints if verified, field mapping, auth, responses, status sync, retries, idempotency, webhook handling |
-| 14. Role & Permission Matrix | Users/roles, modules, action rights, field visibility, authorization boundaries |
-| 15. Business Rules and Status | Calculations, conditions, validation, approval, exception handling, state transition matrix |
-| 16. UI/UX Screen Requirements | Screen inventory, purpose, fields, actions, states, navigation and error messaging |
-| 17. UAT / Test Scenarios | Happy, invalid, unauthorized, boundary, duplicate and failure cases, expected results |
-| 18. Delivery Readiness | Risks, dependencies, requirements traceability, release or migration considerations, acceptance/sign-off points |
-| 19. Open Questions / Decision Log | Explicit decisions needed, implications, recommended owner, status and changes from baseline |
+**Audience:** Business Owner, Management, Process Owner and non-technical stakeholders.
 
-Do not include fake technical details or padded sections for items that truly do not apply. Explicitly mark `Not Applicable` with a reason, or `Need Confirmation` when the decision is pending. The list is a **coverage contract**, not a demand for invented content.
+**Purpose:** Explain why the business needs the change, what must change in the business process and how the outcome will be judged, without implementation details.
 
-### Stakeholder identification without fabrication
+**Required content:** Business Background, Problem Statement, Business Objectives, Stakeholder Register (confirmed roles or proposed mapping), Scope In/Out, As-Is only if an existing process is evidenced, **rendered To-Be Business Workflow or Swimlane**, Business Requirements with IDs, Business Rules, key risks/dependencies, Business Acceptance Criteria, and Open Questions/Approval decisions.
 
-When actual names or assigned roles are provided, reuse those exact details. Otherwise build a **proposed stakeholder register** using relevant example roles such as Business Owner, Product Owner, Project Manager, BA/SA, UI/UX Designer, Frontend, Backend, Database, QA, Security, Operations, and Support **only when they are relevant**. Do not imply that these positions are staffed or approved. Mark identity, RACI and approval authority `Need Confirmation` until verified.
+**Do not add:** SQL, ERD, API payloads, database design or other backend implementation details.
 
-### Required document-building workflow
+### 2. PRD — Product Requirements Document
 
-1. **Discovery:** Extract stated facts, actors, goals, business events, source systems, constraints and unknowns.
-2. **Scope:** Identify modules, boundaries, stakeholders, decisions and implementation dependencies.
-3. **Requirements:** Draft BRD, PRD and FRD/SRS with requirement IDs, testable acceptance criteria and traceability.
-4. **Process visualization:** Build and **render** the high-level workflow and detailed swimlanes. Include paths for success and meaningful failures.
-5. **Technical analysis:** Derive and **render** ERD, data dictionary, sequence diagrams, architecture and relevant integration mapping from the proposed behavior.
-6. **Governance:** Add permission matrix, business rules, state transitions, NFRs, risks, open decisions and UAT scenarios.
-7. **Quality review:** Check that every diagram matches requirements, each entity has a business purpose and each feature has actors, trigger, validations, outputs and tests.
-8. **Deliver:** Provide the complete package now. If a single response or artifact has practical length limits, prioritize the most useful complete sections, preserve a coverage matrix for the remaining sections, and clearly state gaps rather than pretending every part is finished.
+**Audience:** Product Owner, Product Manager, UI/UX Designer, BA/SA and planning engineers.
 
-**No unnecessary confirmation stop:** Do not ask whether to also create ERD, PRD, workflow, UAT, stakeholder matrix or sequence diagram. These are part of the greenfield default. If essential project decisions are missing, draft a clearly labeled `Proposed` baseline and `Need Confirmation` items rather than blocking all work.
+**Purpose:** Define what product is needed, who will use it, which features and modules exist, and what each user-facing interaction should do.
 
-**Format:** If the user requests DOCX or PDF, create the actual consolidated document(s), including **rendered embedded diagrams**. If no file format is specified, provide the full structured documentation in Markdown and display rendered diagrams where supported. Include editable sources as a useful extra, not instead of visuals.
+**Required content:** Product Overview, User Needs, Product Goals and Success Metrics when evidenced, Target Users/Personas/Roles, Scope and Release Priority, Module/Feature Breakdown, User Stories and Use Cases, **rendered User Journey and User Flow**, Product Behavior, UI/UX Screen Requirements, Feature Acceptance Criteria, Dependencies, Constraints, and Open Product Decisions.
 
-**Not triggered by narrow tasks:** For a short Jira ticket, bug diagnosis, single-field change, translation or requested one-paragraph revision, deliver only what was requested. Do not automatically generate a full architecture or 19-part documentation package.
+**Do not add by default:** exact DB column types, SQL, raw provider API contracts, deployment configuration or detailed internal processing logic.
 
+### 3. FSD — Functional Specification Document
+
+**Audience:** System Analyst, Frontend, Backend, QA, Database Engineer and Technical Lead.
+
+**Purpose:** Define how system functions behave in testable implementation detail, traceable to PRD and BRD.
+
+**Required content:** System and Module Boundary, Functional Requirement IDs with BRD/PRD references, Actors and Roles, Detailed Functional Workflow and exception paths, **rendered Sequence Diagrams**, Screen/Field Specifications, Validation Rules, Business Logic and Calculations, Status Transitions, Role Permission Matrix, **rendered ERD and Data Dictionary for relational persistence**, API/Integration Specification when needed, Error Handling, applicable NFR, Technical Dependencies, Acceptance Criteria/Test Case traceability and Open Technical Questions.
+
+**ERD can be Not Applicable if there is no relational data model. API spec can be Not Applicable if no external integration exists.** Never invent entities or endpoints merely to fill a section.
+
+### Cross-document consistency
+
+Use stable mappings such as `BR-001 → PR-001 → FS-001 → TC-001`. The relationship can be one-to-many. Keep actual people, field names, statuses and rules consistent. Label unknown details `Proposed` or `Need Confirmation` and never claim unapproved business behavior is final.
+
+### ERD visual quality — mandatory for FSD
+
+- **Zero overlap** between table boxes, labels, connectors, relationship lines, cardinalities or other entities.
+- **Do not compress large diagrams.** Expand canvas or page, use landscape or split by domain/module with an overview. Preserve readable Calibri font size and spacing.
+- Within each table, separate **Primary Key (PK)**, **Foreign Key (FK)** and regular attributes with **clearly visible horizontal divider lines**, using explicit `PK` / `FK` tags. For shared keys, show `PK, FK` on the one field.
+- Keep relationship lines outside table contents. Use whitespace, clear routing, correct cardinality and relevant FK references.
+- Inspect the actual rendered SVG/PNG and embedded DOCX/PDF illustration. Correct overlapping, clipping and illegible scale before delivery. Provide editable diagram source as a secondary artifact if useful.
+
+### Document layout — mandatory
+
+Start with a **plain document title**, then substantive content. **Do not automatically add a subtitle**, ornamental colored line or box, or a banner like `Product Management & System Analysis | Status: Proposed | Version: 1.0.0`.
+
+Do **not fabricate** Document Version, Status, Product Owner, Lead Analyst, PIC, Target Release, Sprint, author, reviewer, approval date or date. Include a document-information table **only if those details were actually supplied or an approved template requires it**. Never duplicate metadata as subtitle and table.
+
+Use **Calibri**, all visible text **pure black #000000**, white background and clearly visible black full-grid table borders without any colored or shaded cells. Render diagrams as real graphics in the documents, not just Mermaid code.
+
+### Delivery scope and format
+
+If an editable document artifact is requested, generate **three separate files**: `01_BRD`, `02_PRD` and `03_FSD` with the requested extension. If no file type is specified, keep three clearly distinct Markdown documents/sections and do not assume Word or PDF. A single small Jira bug or limited field change still gets only its requested scope.
+
+The full must-have matrix and ERD design rules are in `docs/document-suite.md` when the repository is available. **The requirements above are self-contained** for agents that install only this language-specific SKILL.md.
 
 ## 1. Scope and operating principles
 
