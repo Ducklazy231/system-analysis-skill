@@ -12,8 +12,26 @@ Reusable instructions for Business Analysts and System Analysts. The repository 
 - Discovery, requirement analysis, As-Is/To-Be, BPMN, swimlane, Business Rules, and Acceptance Criteria.
 - API integration, sequence diagrams, webhook, timeout, idempotency, status mapping, and error handling.
 - BRD, PRD, FRD, SRS, MoM, Jira, UAT, SOP, and technical documentation guidelines.
-- Word/PDF layout rules with **Calibri only**, **visible full-border tables without shading/colors**, and **actual rendered diagrams embedded in documents**.
+- Word/PDF layout rules with **Calibri**, **solid black #000000 text on every element**, **white full-border tables without shading**, and **actual rendered diagrams embedded in documents**.
 - Natural Indonesian writing with **unchanged technical terminology**: `endpoint`, `payload`, `approval`, `validation`, `request`, `response`, `webhook`, `sequence diagram`, and actual UI names.
+
+## Automatic full documentation for new systems
+
+If you ask an agent to design or document a **project, application, or module from scratch**, these skills instruct it to prepare the **complete BA/SA package without being asked for each artifact**:
+
+- Project Charter, stakeholder register, **RACI**, scope and assumptions
+- **BRD, PRD and FRD/SRS** with traceable requirements and acceptance criteria
+- **Rendered workflow, swimlane, sequence diagrams, ERD and architecture** where applicable
+- Data dictionary, Role Permission Matrix, Business Rules, validations and state transitions
+- API specification for actual integrations, UI/UX screen requirements, **UAT**, risks and decision log
+
+Missing owner assignments, business decisions and technical contracts must be labeled **Proposed** or **Need Confirmation**, not fabricated. This mode is for substantial new-system requests, not short Jira tickets or minor revisions.
+
+[Full greenfield documentation coverage and example ERD](docs/greenfield-documentation.md)
+
+## Black text for Word/PDF
+
+All text defaults to **pure black #000000**, including body, headings, captions, tables and hyperlinks. Calibri remains the default font. Tables use white cells with solid visible black full-grid borders and no shaded rows or headers. Diagrams are delivered as rendered graphics and embedded in the actual document when Word/PDF is requested.
 
 ## Diagram output means a rendered visual
 
@@ -26,6 +44,10 @@ A flowchart or sequence diagram request must result in an **actual graphic**, no
 **Sequence diagram example**
 
 ![Rendered request submission sequence diagram](examples/diagrams/sequence-submit-request.svg)
+
+**ERD example**
+
+![Rendered request management ERD](examples/diagrams/erd-request-management.svg)
 
 [Word/PDF document rules](docs/word-pdf-style.md) · [Diagram guidelines](docs/sequence-diagrams.md)
 
@@ -154,6 +176,8 @@ This is a *hypothetical writing example*, not a confirmed process rule.
 - [Indonesian anti-AI-slop rules](docs/anti-ai-slop-id.md)
 - [Sequence diagrams](docs/sequence-diagrams.md)
 - [Word/PDF formatting](docs/word-pdf-style.md)
+- [Complete greenfield documentation blueprint](docs/greenfield-documentation.md)
+- [Rendered example ERD](examples/diagrams/erd-request-management.svg)
 - [BRD example](examples/brd-example.md)
 - [Jira example](examples/jira-example.md)
 - [Editable Mermaid diagrams](examples/diagrams/sequence-external-webhook.mmd)
@@ -166,4 +190,4 @@ CLI usage and supported agent IDs follow the [skills CLI reference](https://gith
 
 ## Version
 
-**v1.2.1** — Calibri-only default font, visible monochrome table borders, rendered diagram requirement, and SVG examples.
+**v1.3.0** — Strict solid-black text, full greenfield documentation mode with automatic stakeholder/BRD/PRD/ERD/UAT coverage, and rendered ERD example.
