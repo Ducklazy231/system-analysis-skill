@@ -1,6 +1,6 @@
 ---
 name: system-analysis-id
-version: 1.4.0
+version: 1.4.1
 description: Reusable Business and System Analysis skill in natural Indonesian, keeping technical terminology in English. Use for requirements, BRD, PRD, Jira, workflow, API, sequence diagrams, UAT, and Word/PDF documents.
 ---
 
@@ -98,9 +98,38 @@ Jangan mengarang `Version`, `Document Status`, `Target Release`, `Sprint`, `Prod
 
 Gunakan **Calibri**, semua tulisan **hitam #000000**, background putih, dan tabel dengan **full border hitam** yang terlihat jelas. Jangan warna-warni atau memakai shading. Diagram wajib sudah di-render dan di-embed, bukan code Mermaid saja.
 
+### Brief sedikit tetap harus jadi dokumentasi lengkap
+
+Kalau user baru kasih deskripsi singkat tentang project, aplikasi, atau module baru, **tetap buat BRD, PRD, dan FSD yang lengkap**. Jangan cuma kasih outline, ringkasan satu halaman, daftar heading kosong, atau balik bertanya panjang. Kalau user secara khusus cuma minta salah satu dokumen, buat **dokumen yang diminta saja**, tetapi isinya tetap detail.
+
+- Dari brief yang ada, jelaskan actor, scope, process, user journey, module/feature, main flow dan alternate flow, field candidate, validation, error handling, status, role permission, data model, integration kalau memang relevan, Acceptance Criteria, dan Test Scenario.
+- Kalau kebutuhan atau system behavior masih belum final, buat rancangan yang **spesifik dan diberi label Proposed**. Jangan menyamarkan usulan sebagai keputusan bisnis yang sudah Approved/Confirmed.
+- Jangan mengarang kondisi existing, nama PIC, role yang sudah resmi, target release, durasi closing, angka efisiensi, pilihan DBMS, teknologi, endpoint, atau status approval. Kalau belum ada sumbernya, beri status **Need Confirmation** dan jelaskan impact-nya.
+- Dokumen tetap harus punya analisis yang bisa direview Business/Developer/QA. Hindari paragraf panjang yang sebenarnya tidak menjelaskan requirement.
+- Buat **workflow, user flow, ERD, dan sequence diagram sebagai visual yang benar-benar sudah di-render** sesuai kebutuhan masing-masing dokumen. Jangan ganti diagram dengan Mermaid code atau daftar step.
+- Kalau dokumentasi panjang, pecah per module atau sub-bab. Jangan memadatkan isi sampai tabel atau diagram tidak terbaca.
+- Pastikan BRD, PRD, dan FSD punya Requirement ID serta istilah yang konsisten, dan setiap dokumen benar-benar berisi content, bukan placeholder semua.
+- Pengecualian: kalau user cuma minta Jira, revisi satu field, analisis error kecil, atau translate, tetap fokus ke task itu. Jangan buat tiga dokumen otomatis.
+
+### Judul dokumen tidak pakai nomor, subtitle, atau tabel metadata
+
+- **Judul halaman pertama tidak boleh diawali nomor**. Jangan buat `01. Business Requirements Document`, `01_BRD`, `1. Accounting Module`, atau `Dokumen 1`. Contoh yang benar: `Accounting Module — Business Requirements Document (BRD)`.
+- Judul dokumen menggunakan Word Title style tanpa numbering/list. Jangan otomatis menambah nomor dari nama file, ornamen sudut halaman, crop mark, kotak, garis dekoratif, header atau footer.
+- Nama file default `BRD.docx`, `PRD.docx`, dan `FSD.docx` (atau sesuai format yang diminta), **tanpa angka di depannya**. Kalau user menentukan nama file sendiri, ikuti nama file itu tanpa membawa angka ke judul halaman.
+- Setelah judul, **langsung isi dokumen**. Jangan buat subtitle seperti `Database Architecture & Technical Data Modeling | Status: Proposed | Version: 1.0.0` atau `Product Management & System Analysis`.
+- **Jangan buat tabel metadata awal dengan header `Item | Keterangan`** atau `Item | Description`. Tabel ini tetap dilarang sebagai template otomatis **meskipun metadata-nya tersedia**.
+- Jangan buat tabel pembuka yang berisi `Nama Produk`, `Modul`, `Target RDBMS`, `Data Architect`, `Target Audience`, `Status`, `Version`, atau `Target Rilis` sekadar untuk mengisi halaman. Masukkan informasi yang memang relevan ke section sebenarnya. Stakeholder masuk BRD, target user masuk PRD, dan DBMS/technical constraint masuk FSD.
+- Kalau user **meminta Document Control secara eksplisit** atau memakai corporate template yang memang mewajibkannya, buat section khusus sesuai template, pakai data yang valid. Jangan pakai tabel generik `Item/Keterangan` atau mengulang metadata di bawah judul.
+- Nomor untuk sub-bab boleh dipakai kalau memang membantu struktur, tapi **judul dokumen utama tetap tanpa nomor**.
+
+### Final check sebelum file dikirim
+
+Lihat halaman pertama pada **white-page / print preview** kalau tool mendukung. Pastikan judul polos tanpa nomor, setelah judul langsung konten, tidak ada tabel `Item/Keterangan`, tidak ada subtitle status/version, tidak ada metadata yang dibuat-buat. Cek semua teks Calibri hitam #000000, tabel putih dengan full border hitam, dan diagram benar-benar muncul sebagai visual. Kalau format atau isinya belum sesuai, revisi lalu preview lagi.
+
+
 ### Cara delivery
 
-Kalau user minta file dokumen editable, buat **tiga file terpisah**: `01_BRD`, `02_PRD`, dan `03_FSD` sesuai format yang diminta. Kalau format belum disebut, pisahkan ketiganya sebagai dokumen/section Markdown. Jangan langsung mengasumsikan harus PDF/Word. Kalau user hanya minta Jira ticket, edit field, atau analisis error kecil, cukup kerjakan task itu.
+Kalau user minta file dokumen editable, buat **tiga file terpisah**: `BRD`, `PRD`, dan `FSD` sesuai format yang diminta. Kalau format belum disebut, pisahkan ketiganya sebagai dokumen/section Markdown. Jangan langsung mengasumsikan harus PDF/Word. Kalau user hanya minta Jira ticket, edit field, atau analisis error kecil, cukup kerjakan task itu.
 
 Referensi must-have dan aturan ERD yang lebih lengkap tersedia di `docs/document-suite.md` kalau repo-nya bisa dibaca. Bagian ini tetap bisa dipakai sendiri oleh AI yang hanya meng-install SKILL.md.
 
