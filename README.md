@@ -15,21 +15,33 @@ Reusable instructions for Business Analysts and System Analysts. The repository 
 - Word/PDF layout rules with **Calibri**, **solid black #000000 text on every element**, **white full-border tables without shading**, and **actual rendered diagrams embedded in documents**.
 - Natural Indonesian writing with **unchanged technical terminology**: `endpoint`, `payload`, `approval`, `validation`, `request`, `response`, `webhook`, `sequence diagram`, and actual UI names.
 
-## Automatic full documentation for new systems
+## Three core documents generated for new systems
 
-If you ask an agent to design or document a **project, application, or module from scratch**, these skills instruct it to prepare the **complete BA/SA package without being asked for each artifact**:
+For a new system, application, project or module, the skills now produce **three primary deliverables**, not 19 separate files:
 
-- Project Charter, stakeholder register, **RACI**, scope and assumptions
-- **BRD, PRD and FRD/SRS** with traceable requirements and acceptance criteria
-- **Rendered workflow, swimlane, sequence diagrams, ERD and architecture** where applicable
-- Data dictionary, Role Permission Matrix, Business Rules, validations and state transitions
-- API specification for actual integrations, UI/UX screen requirements, **UAT**, risks and decision log
+| Document | Main audience | Focus | Required diagrams |
+|---|---|---|---|
+| **BRD — Business Requirements Document** | Business Owner, Management, non-technical stakeholders | Why the business needs the change, objectives, stakeholders, business process and Business Rules | Rendered business workflow / swimlane |
+| **PRD — Product Requirements Document** | Product Owner, PM, UI/UX and product team | Who uses the product, which modules/features are needed, and how users interact | Rendered user journey / user flow |
+| **FSD — Functional Specification Document** | System Analyst, Frontend, Backend, Database, QA | Exact system behavior, field rules, permissions, states, errors, tests and technical integration | Rendered sequence diagrams, ERD when relational data exists |
 
-Missing owner assignments, business decisions and technical contracts must be labeled **Proposed** or **Need Confirmation**, not fabricated. This mode is for substantial new-system requests, not short Jira tickets or minor revisions.
+All three documents must be linked through consistent Requirement IDs, e.g. `BR-001 → PR-001 → FS-001 → TC-001`. Extra analysis (RACI, acceptance tests, Data Dictionary, API mapping, status transitions) lives **inside the appropriate document**, rather than creating many unrelated deliverables.
 
-[Full greenfield documentation coverage and example ERD](docs/greenfield-documentation.md)
+**No fabricated metadata or decorations:** start with the plain document title. Do not add a colored subtitle, role tagline, `Status: Proposed | Version: 1.0.0`, or a Document Information table filled with invented names, dates, owners or releases.
 
-![Rendered greenfield documentation workflow](examples/diagrams/greenfield-documentation-workflow.svg)
+This full mode applies to greenfield or complete-documentation requests. A Jira bug or a limited change stays a small, focused task.
+
+- [Complete BRD/PRD/FSD standard](docs/document-suite.md)
+- [BRD must-have](docs/brd-standard.md)
+- [PRD must-have](docs/prd-standard.md)
+- [FSD must-have](docs/fsd-standard.md)
+- [Greenfield documentation workflow](docs/greenfield-documentation.md)
+
+### ERD layout must remain readable
+
+ERD table boxes, connectors, labels and cardinalities **must not overlap**. Primary Keys, Foreign Keys and regular attributes must be split into clearly labeled groups separated by solid horizontal rules. Do not compress a large ERD. Expand the canvas, use a landscape page or split by module while preserving a relationship overview.
+
+![Rendered ERD with PK/FK separators](examples/diagrams/erd-request-management.svg)
 
 ## Black text for Word/PDF
 
@@ -178,7 +190,8 @@ This is a *hypothetical writing example*, not a confirmed process rule.
 - [Indonesian anti-AI-slop rules](docs/anti-ai-slop-id.md)
 - [Sequence diagrams](docs/sequence-diagrams.md)
 - [Word/PDF formatting](docs/word-pdf-style.md)
-- [Complete greenfield documentation blueprint](docs/greenfield-documentation.md)
+- [Three-document delivery standard](docs/document-suite.md)
+- [Greenfield documentation workflow](docs/greenfield-documentation.md)
 - [Rendered example ERD](examples/diagrams/erd-request-management.svg)
 - [BRD example](examples/brd-example.md)
 - [Jira example](examples/jira-example.md)
@@ -192,4 +205,4 @@ CLI usage and supported agent IDs follow the [skills CLI reference](https://gith
 
 ## Version
 
-**v1.3.0** — Strict solid-black text, full greenfield documentation mode with automatic stakeholder/BRD/PRD/ERD/UAT coverage, and rendered ERD example.
+**v1.4.0** — Three-document BRD/PRD/FSD delivery, strict ERD non-overlap and PK/FK separators, and plain titles without invented subtitle/metadata.
