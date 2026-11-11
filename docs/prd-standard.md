@@ -45,6 +45,6 @@ FSD expands this into field specifications, role permission, validation, data so
 
 ## Document presentation and short-brief behavior
 
-Start with a **plain unnumbered PRD title**, e.g. `Accounting Module — Product Requirements Document (PRD)`. Do not prepend `01.`, department/status/version subtitles or an opening `Item | Keterangan` table, even if metadata is known. If ownership matters, put the known owner under the relevant stakeholder or product-responsibility section.
+Begin with a **plain unnumbered PRD title** and a real two-column information table: `Item | Keterangan` for Indonesian or `Item | Description` for English. The table can include Module, Document Version, Date, Related Systems, Status and other relevant known context. For unknown values use `Need Confirmation`, never fabricated metadata. Plain white cells, black full grid, Calibri black text. No extra colored subtitle.
 
-From a short new-product brief, still provide a **substantive PRD**: proposed feature/module breakdown, target users, user stories, main and alternate user flows, user-facing behavior, screen inventory, validation feedback, acceptance criteria and unresolved product decisions. Render user flows as visual diagrams. Use Proposed and Need Confirmation honestly rather than inventing approved features or release dates.
+From a short project brief, deliver a **substantive PRD**: feature/module inventory, target users, user stories, main and alternate user flows, screen inventory, user-visible behavior, error states, acceptance criteria and open product decisions. Render user flows as visual diagrams and label design recommendations `Proposed`.
