@@ -46,11 +46,36 @@ All document text must be **pure black #000000 (RGB 0/0/0)**. This applies to bo
 - Converting editable tables into images.
 - Diagram text so small it cannot be read at normal zoom.
 
-## Full documentation when starting a system from scratch
+## Default three-document package for a new system
 
-When the user asks to create a new system/project/module from the beginning, deliver **the complete BA/SA documentation package by default**. Include stakeholders/RACI, scope, BRD, PRD, FRD/SRS, workflows and swimlanes, rendered sequence diagrams and ERD, architecture when relevant, API mapping if there are integrations, role permission, validation, Business Rules, state transitions, UAT, risk and open decisions. Don't wait for the user to ask for each one separately.
+When asked to document a new system, project or module from scratch, automatically produce **BRD, PRD, and FSD as three distinct primary documents**, each with its own purpose and must-have content. Supporting analysis such as stakeholders, business workflows, product journeys, sequence diagrams, ERD and UAT belongs inside the relevant document, rather than being published as 19 unrelated files.
 
-See the [full greenfield documentation blueprint](greenfield-documentation.md). It includes a deliverable coverage matrix and a rendered ERD example.
+- **BRD:** Non-technical business purpose, problems, objectives, stakeholders, scope, Business Requirements and **rendered high-level business workflow**.
+- **PRD:** Product features, target users, user stories, product behavior, screen requirements, release scope and **rendered User Flow**.
+- **FSD:** Functional Requirements, role permissions, validation, status changes, integration where applicable, test mapping and **rendered sequence diagrams/ERD** where relevant.
+
+See the [three-document standard](document-suite.md) and [greenfield guide](greenfield-documentation.md). For a narrow ticket or one-field change, do not trigger all three automatically.
+
+## Plain title and metadata rule
+
+Start with **one plain title only**, then the actual document content. Do not add a subtitle, decorative underline, status/version banner, job-function label, colored box or ornamental header.
+
+Specifically, do not produce a line such as:
+
+> Product Management & System Analysis | Status: Proposed | Version: 1.0.0
+
+Do not fabricate Product Owner, Lead System Analyst, Target Release, Sprint, document Version, document Status, author, PIC, approval or date. Add a **Document Information table only when valid metadata was given by the user/source or an approved corporate template requires it**. Do not insert placeholder metadata or duplicate the same values below the title and in a table.
+
+## ERD visual layout gate (FSD)
+
+- Zero overlap: no table/entity, field text, relationship line, connector or cardinality label may overlap another element.
+- **Never compress** a large ERD just to fit one page. Increase SVG canvas, use landscape, or split by module and provide an overview.
+- Within each table, **separate Primary Key, Foreign Key and attributes using solid visible horizontal divider lines** and explicit `PK` and `FK` labels.
+- Keep relationship connectors outside table contents. Mark cardinality and reference the correct FK.
+- Inspect the rendered ERD at normal zoom and fix collision, clipping and microscopic text before exporting it to Word/PDF.
+- Provide editable diagram source when useful, in addition to—not instead of—the rendered graphic.
+
+[Example ERD with separated PK/FK groups](../examples/diagrams/erd-request-management.svg)
 
 ## Example of a real rendered diagram
 
