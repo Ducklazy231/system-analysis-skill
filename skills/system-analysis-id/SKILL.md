@@ -400,6 +400,16 @@ Aturan diagram:
 9. Konsisten antara diagram dan narasi, termasuk nama status serta business rule.
 10. Jangan menggunakan screenshot diagram yang sengaja diperkecil sampai teks tidak terbaca.
 
+
+### Ketentuan wajib output flowdiagram
+
+- Kalau user minta **flowchart, workflow, swimlane, BPMN, sequence diagram, DFD, atau architecture diagram**, **buat diagram visual yang benar-benar terlihat**. Jangan berhenti di teks alur, daftar step, Mermaid code block, PlantUML, atau ASCII art saja.
+- Output utamanya berupa diagram yang sudah di-render (misalnya SVG, PNG, gambar dalam jawaban, atau native diagram preview yang benar-benar tampil). Berikan source Mermaid atau draw.io sebagai tambahan jika berguna, bukan sebagai satu-satunya hasil.
+- Untuk Word/PDF, **masukkan gambar atau vector diagram ke halaman dokumen** di bagian yang relevan. Jangan menaruh syntax Mermaid sebagai pengganti gambar.
+- Pastikan node, panah, decision branch, role, dan teks bisa dibaca pada zoom normal. Diagram panjang boleh dipisah menjadi beberapa diagram, bukan dikecilkan secara ekstrem.
+- Kalau environment tidak bisa me-render diagram, sampaikan keterbatasannya dan berikan source diagram sebagai fallback. Jangan bilang diagram sudah dibuat secara visual kalau yang tersedia baru code.
+- Untuk kebutuhan edit, lampirkan source SVG, Mermaid, atau draw.io jika bisa. File gambar dan source harus menggambarkan flow yang sama.
+
 ### Palet diagram
 
 Warna dipakai untuk membedakan fungsi, bukan sekadar dekorasi.
@@ -443,7 +453,7 @@ Sequence diagram digunakan untuk menjelaskan **urutan interaksi antaraktor dan k
 
 ### 8.1 Aturan sequence diagram
 
-1. Pakai sintaks `sequenceDiagram` Mermaid yang dapat disalin. Jika user meminta draw.io, PlantUML, PNG, SVG, DOCX, atau PDF, sesuaikan output tanpa menghilangkan keterbacaan atau source editable ketika diminta.
+1. Hasil utama sequence diagram **harus berupa diagram visual yang sudah di-render**, bukan syntax `sequenceDiagram` saja. Gunakan Mermaid atau draw.io sebagai source editable tambahan. Jika output DOCX/PDF, embed diagram visual ke dokumen.
 2. Lifeline diberi nama berdasarkan fungsi, bukan nama teknologi yang belum dikonfirmasi. Contoh: `User`, `Frontend`, `Backend API`, `Database`, `External Service`.
 3. Tampilkan **trigger**, **request**, **processing/validation**, **write/read data**, **response**, dan **output pada user** yang memang relevan.
 4. Arah pesan harus masuk akal. Frontend tidak mengakses database internal secara langsung kecuali arsitektur memang membenarkannya.
@@ -784,7 +794,7 @@ Bagian ini **wajib diterapkan ketika user meminta DOCX atau PDF**, kecuali user 
 |---|---|
 | Page size | A4 portrait |
 | Margin | Atas 2.2 cm, bawah 2.2 cm, kiri 2.5 cm, kanan 2.3 cm |
-| Font body | Aptos, Calibri, atau Arial sesuai ketersediaan |
+| Font body | **Calibri** (wajib sebagai default untuk body, heading, dan tabel) |
 | Ukuran body | 10.5–11 pt |
 | Warna body | Hitam atau dark charcoal |
 | Line spacing | 1.1–1.15 |
@@ -797,7 +807,7 @@ Bagian ini **wajib diterapkan ketika user meminta DOCX atau PDF**, kecuali user 
 | Header / footer | Tidak digunakan secara default |
 | Page number | Hanya jika diminta atau diperlukan dokumen formal yang panjang |
 
-Nilai merupakan default yang dapat disesuaikan mengikuti corporate style, kepadatan informasi, dan kenyamanan membaca. Jangan memakai terlalu banyak jenis font.
+Gunakan **Calibri** secara konsisten. Jangan gunakan Aptos atau Arial sebagai alternatif otomatis. Kalau Calibri tidak tersedia, beri tahu sebelum menggunakan font pengganti. Corporate template atau instruksi user yang spesifik tetap diutamakan.
 
 ### C. Judul, paragraf, dan numbering
 
@@ -812,8 +822,9 @@ Nilai merupakan default yang dapat disesuaikan mengikuti corporate style, kepada
 
 ### D. Tabel
 
-- Gunakan header row dengan fill abu-abu sangat muda atau tanpa fill, tergantung konteks.
-- Gunakan garis tipis abu-abu, bukan border hitam tebal pada semua sel.
+- Gunakan **full grid border yang terlihat** untuk semua sel, termasuk garis horizontal dan vertikal. Border solid hitam atau dark gray sekitar 0.5–0.75 pt.
+- **Tidak menggunakan warna, shading, background fill, zebra stripe, atau header berwarna** pada tabel. Semua sel putih. Header dibedakan dengan font Calibri bold, bukan warna.
+- Jangan pakai tabel borderless. Pastikan garis antar-row dan antar-column tetap terlihat di Word dan PDF.
 - Teks tabel rata kiri, nilai angka atau persentase rata kanan bila perlu.
 - Berikan padding sel wajar dan tinggi baris mengikuti isi.
 - Pilih column width berdasarkan isi, bukan membagi seluruh kolom sama rata.
@@ -826,6 +837,7 @@ Nilai merupakan default yang dapat disesuaikan mengikuti corporate style, kepada
 
 ### E. Diagram dan gambar dalam dokumen
 
+- **Diagram wajib benar-benar dibuat dan di-embed sebagai visual** di Word/PDF jika task memerlukan diagram. Menulis langkah flow atau menyisipkan syntax Mermaid saja tidak memenuhi permintaan.
 - Diagram harus memiliki resolusi baik dan teks terbaca pada ukuran cetak.
 - Pakai landscape untuk halaman diagram yang lebar jika dibutuhkan.
 - Beri jarak yang cukup dari paragraf, tetapi jangan membuat halaman kosong setengah.
@@ -865,9 +877,9 @@ Sebelum mengirim Word atau PDF, periksa:
 3. Tidak ada baris tabel terpotong secara mengganggu.
 4. Tidak ada halaman kosong tidak disengaja.
 5. Tidak ada ukuran font yang terlalu kecil untuk menyelamatkan layout.
-6. Tidak ada warna dekoratif berlebihan.
+6. Semua tabel menggunakan visible full borders dan tidak memiliki warna atau shading.
 7. Tidak ada logo, cover, header, footer, dan references yang tidak diminta.
-8. Seluruh gambar, nomor, caption, dan tabel sesuai narasi.
+8. Semua diagram yang diminta tampil sebagai visual yang sudah di-render, bukan code block, dan sesuai narasi.
 9. Semua label `Need Confirmation` dan `Proposed` masih terlihat.
 10. File benar-benar dapat dibuka dan isinya sesuai permintaan.
 
