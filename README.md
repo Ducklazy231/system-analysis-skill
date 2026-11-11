@@ -29,6 +29,8 @@ Missing owner assignments, business decisions and technical contracts must be la
 
 [Full greenfield documentation coverage and example ERD](docs/greenfield-documentation.md)
 
+![Rendered greenfield documentation workflow](examples/diagrams/greenfield-documentation-workflow.svg)
+
 ## Black text for Word/PDF
 
 All text defaults to **pure black #000000**, including body, headings, captions, tables and hyperlinks. Calibri remains the default font. Tables use white cells with solid visible black full-grid borders and no shaded rows or headers. Diagrams are delivered as rendered graphics and embedded in the actual document when Word/PDF is requested.
