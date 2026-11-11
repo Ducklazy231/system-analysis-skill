@@ -2,9 +2,9 @@
 
 **Default for a project, system, application, or module from scratch:** generate **three complete primary documents**, not 19 separate files.
 
-1. `01_BRD` — Business Requirements Document for non-technical business readers.
-2. `02_PRD` — Product Requirements Document for Product/PM/UI/UX and feature decisions.
-3. `03_FSD` — Functional Specification Document for Engineering, System Analysts and QA.
+1. `BRD` — Business Requirements Document for non-technical business readers.
+2. `PRD` — Product Requirements Document for Product/PM/UI/UX and feature decisions.
+3. `FSD` — Functional Specification Document for Engineering, System Analysts and QA.
 
 Supporting analysis remains required, but it is organized **inside the appropriate document**.
 
@@ -69,7 +69,7 @@ Diagrams must be **actually rendered**, not merely Mermaid syntax.
 
 All three documents use **Calibri**, **black #000000 text** throughout, white background, and full black visible table borders without shading or colored headers. Begin directly with a clear document title.
 
-**Do not add an invented subtitle**, departmental tagline, proposed-status banner, version, target release, Product Owner, or author. Only include metadata actually provided or mandated by a supplied corporate template. Omit an empty/assumption-filled Document Information table.
+**Do not add an invented subtitle**, departmental tagline, proposed-status banner, version, target release, Product Owner, or author. Include a dedicated Document Control section only if explicitly requested or mandated by a supplied corporate template, and use only verified fields. Otherwise omit the opening metadata table even if some factual metadata is known.
 
 ## Final delivery check
 
