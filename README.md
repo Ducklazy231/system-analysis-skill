@@ -12,8 +12,22 @@ Reusable instructions for Business Analysts and System Analysts. The repository 
 - Discovery, requirement analysis, As-Is/To-Be, BPMN, swimlane, Business Rules, and Acceptance Criteria.
 - API integration, sequence diagrams, webhook, timeout, idempotency, status mapping, and error handling.
 - BRD, PRD, FRD, SRS, MoM, Jira, UAT, SOP, and technical documentation guidelines.
-- Word/PDF layout rules that produce plain, readable internal documentation instead of decorative AI-generated templates.
+- Word/PDF layout rules with **Calibri only**, **visible full-border tables without shading/colors**, and **actual rendered diagrams embedded in documents**.
 - Natural Indonesian writing with **unchanged technical terminology**: `endpoint`, `payload`, `approval`, `validation`, `request`, `response`, `webhook`, `sequence diagram`, and actual UI names.
+
+## Diagram output means a rendered visual
+
+A flowchart or sequence diagram request must result in an **actual graphic**, not only a Mermaid code block or process description. The skill instructs AI agents to render diagrams as SVG/PNG or another visible diagram format, then embed them directly into Word/PDF when those files are requested.
+
+**Flowchart example**
+
+![Rendered request submission flowchart](examples/diagrams/flowchart-submit-request.svg)
+
+**Sequence diagram example**
+
+![Rendered request submission sequence diagram](examples/diagrams/sequence-submit-request.svg)
+
+[Word/PDF document rules](docs/word-pdf-style.md) · [Diagram guidelines](docs/sequence-diagrams.md)
 
 ## Quick install
 
@@ -152,4 +166,4 @@ CLI usage and supported agent IDs follow the [skills CLI reference](https://gith
 
 ## Version
 
-**v1.2.0** — Bilingual, independently installable skills and English-first repository documentation.
+**v1.2.1** — Calibri-only default font, visible monochrome table borders, rendered diagram requirement, and SVG examples.
