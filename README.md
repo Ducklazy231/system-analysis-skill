@@ -27,7 +27,7 @@ For a new system, application, project or module, the skills now produce **three
 
 All three documents must be linked through consistent Requirement IDs, e.g. `BR-001 → PR-001 → FS-001 → TC-001`. Extra analysis (RACI, acceptance tests, Data Dictionary, API mapping, status transitions) lives **inside the appropriate document**, rather than creating many unrelated deliverables.
 
-**No fabricated metadata or decorations:** start with the plain document title. Do not add a colored subtitle, role tagline, `Status: Proposed | Version: 1.0.0`, or a Document Information table filled with invented names, dates, owners or releases.
+**Document first page:** plain unnumbered title, then a **visible two-column `Item | Keterangan` (ID) / `Item | Description` (EN) table**, then substantive content. Use only known facts or `Need Confirmation`. Do not add decorative subtitles or invent version numbers, PICs or releases.
 
 This full mode applies to greenfield or complete-documentation requests. A Jira bug or a limited change stays a small, focused task.
 
@@ -47,8 +47,8 @@ ERD table boxes, connectors, labels and cardinalities **must not overlap**. Prim
 
 - **No numbered titles.** The visible heading is `Accounting Module — Business Requirements Document (BRD)`, not `01. Business Requirements Document`.
 - **No automatic document index in filenames**. Default filenames are `BRD.docx`, `PRD.docx` and `FSD.docx`.
-- **No generic `Item | Keterangan` / `Item | Description` table** at the beginning, even when metadata is known. No decorative department subtitle, proposed status, version, release or fabricated PIC/DBMS.
-- Begin with the title, then substantive business/product/functional content. A Document Control section is added only when requested or required by a real corporate template.
+- **Required opening table:** after the unnumbered title show a real **`Item | Keterangan`** (ID) / **`Item | Description`** (EN) table with relevant Module, Document Version, Date, Related Systems and Status rows. Unknown values become `Need Confirmation`.
+- Use **title → information table → substantive business/product/functional content**. Keep all cells white with visible black borders, no fill and no extra subtitle.
 - **Even a one-paragraph project brief triggers complete BRD/PRD/FSD** with meaningful sections, specific `Proposed` design options, `Need Confirmation` decisions and actual rendered diagrams. No placeholder-only documents or shallow outlines. Narrow bugs and edits remain small.
 - Calibri, pure black text, white fully bordered tables and non-overlapping rendered ERD remain mandatory.
 
@@ -216,4 +216,4 @@ CLI usage and supported agent IDs follow the [skills CLI reference](https://gith
 
 ## Version
 
-**v1.4.1** — Unnumbered document titles, no generic Item/Keterangan metadata tables, and complete BRD/PRD/FSD from brief inputs.
+**v1.4.2** — Restored the required Item/Keterangan or Item/Description table after the unnumbered title while keeping factual-only values and clean formatting.
