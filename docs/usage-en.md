@@ -14,7 +14,7 @@ The supporting analysis is included inside the appropriate document. The user do
 
 **The ERD must be readable with no overlapping tables, text or connectors.** Use a larger canvas, not image compression. Show Primary Key, Foreign Key and regular fields as separate groups with horizontal divider lines.
 
-Use a **plain, unnumbered document title** (no `01.` or numbered-list prefix). Default filenames are `BRD`, `PRD` and `FSD` with the requested extension. Do not add subtitle banners, Status/Version, fabricated owners, releases or the generic `Item | Keterangan` opening table. Even real metadata belongs in the relevant content section unless the user explicitly asks for Document Control or supplies a mandatory corporate template. All text Calibri black `#000000`, white table cells and visible black full-grid borders.
+Use a **plain, unnumbered document title**, then a **real `Item | Keterangan` / `Item | Description` table**, then the content. Use relevant Module, Document Version, Date, Related Systems and Status rows. Never invent missing values. Mark them `Need Confirmation`. No decorative subtitle or duplicate metadata. Calibri black `#000000` text, white table cells and solid black full borders.
 
 See [the three-document standard](document-suite.md), [BRD](brd-standard.md), [PRD](prd-standard.md), [FSD](fsd-standard.md) and [greenfield workflow](greenfield-documentation.md).
 
