@@ -17,14 +17,14 @@ Follow `docs/document-suite.md`, `docs/brd-standard.md`, `docs/prd-standard.md` 
 
 ERD: no overlapping tables, labels or connectors. Don't compress. Group and separate PK, FK and attributes with visible horizontal rules. Render the diagram and embed it in the document.
 
-Document appearance: Calibri, black #000000 text throughout, white background, fully bordered black tables without shading. Use a **plain title with no invented subtitle** or author/status/version/release metadata. Add document information only when genuine values were provided or a supplied template requires them.
+Document appearance: Calibri, pure black #000000 text, white background, full black table borders without shading. **First-page order is unnumbered title → real two-column Item/Keterangan (ID) or Item/Description (EN) table → content.** Use known metadata or Need Confirmation, without extra decorative subtitle.
 
 [Installation and CLI guide](docs/installation.md)
 
 ## First-page and documentation-completeness rules
 
-For all BRD/PRD/FSD artifacts, the visible document title is **plain and unnumbered**. No `01.`, `Document 1`, number prefixed to the title, decorative subtitle or department/status/version banner. Default file names are `BRD`, `PRD` and `FSD` with the requested extension.
+For BRD/PRD/FSD, begin with a **plain unnumbered title**, then **the required editable `Item | Keterangan` / `Item | Description` table**, then substantive content. Do not add decorative subtitle or status banner outside the table.
 
-**Never use the opening generic `Item | Keterangan` or `Item | Description` metadata table**, even when some document metadata is known. Only an explicit user request or actual required corporate template can authorize a specific Document Control section. Place genuine facts under relevant substantive sections.
+**Use the opening two-column `Item | Keterangan` or `Item | Description` table by default.** Relevant rows include Module, Document Version, Date, Related Systems, Status. Unknown values are `Need Confirmation`. Keep white cells and black full borders, without invented values or duplicate decorative metadata.
 
 **Brief user input is enough to prepare complete documents** for a new module/system. Draft full relevant content and rendered diagrams for BRD, PRD and FSD (or the one document requested), with concrete Proposed designs and clearly marked Need Confirmation decisions. Do not fabricate current-state facts, real architecture, integrations, owners, metrics or schedules.
