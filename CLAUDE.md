@@ -1,16 +1,22 @@
 # Claude Code project guidance
 
-For BA/SA work, select one skill edition:
+Pick the skill matching the requested output language:
 
-- `skills/system-analysis-en/SKILL.md` for English deliverables.
-- `skills/system-analysis-id/SKILL.md` for natural Indonesian deliverables with unchanged technical terminology.
+- `skills/system-analysis-en/SKILL.md` for English.
+- `skills/system-analysis-id/SKILL.md` for natural Indonesian with unchanged English technical terms.
 
-Apply the user's current project evidence and decisions. Do not invent roles, APIs, states, approvals, metrics, or sign-off. Use practical, testable requirements and detailed but readable sequence diagrams.
+Project-specific source evidence determines facts, not generic examples. Maintain `Confirmed`, `Existing / Observed`, `Proposed` and `Need Confirmation` labels.
 
-For global installation via Claude Code, see `docs/installation.md`. For an agent that automatically detects project skills, the language-specific skill folder is the preferred reference.
+## Standard documentation delivery
 
-## Greenfield and document defaults
+When asked to design or document a new application, system or module, create **three core documents by default**: BRD (business/non-technical), PRD (product/features/user journeys), and FSD (functional implementation/validation/data/QA). Place stakeholder mapping and business workflow in BRD, user flows in PRD, and ERD, sequence diagrams, data dictionary, integration and test traceability in FSD as appropriate.
 
-For requests to document a new application, project, or module from scratch, create the **full BA/SA package by default**. This includes stakeholder register/RACI, scope, BRD, PRD, FRD/SRS, workflows and swimlanes, rendered ERD and sequence diagrams, architecture as relevant, validation and permissions, UI/UX requirements, UAT and open decisions. The user does not need to ask for each artifact. See [greenfield guide](docs/greenfield-documentation.md). Use Proposed and Need Confirmation to avoid inventing business decisions.
+Follow `docs/document-suite.md`, `docs/brd-standard.md`, `docs/prd-standard.md` and `docs/fsd-standard.md`. Do not deliver 19 separate files unless the user asks for additional standalone artifacts. Small scoped requests remain small.
 
-For Word/PDF always use Calibri with **solid black #000000 text on every element**. Keep tables white with full visible black grid lines and no shading. Include requested diagrams as rendered images/vector shapes, never just Mermaid code.
+## ERD and style rules
+
+ERD: no overlapping tables, labels or connectors. Don't compress. Group and separate PK, FK and attributes with visible horizontal rules. Render the diagram and embed it in the document.
+
+Document appearance: Calibri, black #000000 text throughout, white background, fully bordered black tables without shading. Use a **plain title with no invented subtitle** or author/status/version/release metadata. Add document information only when genuine values were provided or a supplied template requires them.
+
+[Installation and CLI guide](docs/installation.md)
