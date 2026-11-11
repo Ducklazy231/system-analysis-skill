@@ -152,3 +152,19 @@ When generating a complete new-system package:
 7. Deliver **three** substantive documents. Do not invent 19 other file artifacts.
 
 For a narrow user request, keep the requested smaller scope. For a larger unknown project, draft evidence-backed sections now and mark `Proposed` or `Need Confirmation` honestly. Do not pretend placeholder content is final.
+
+## Start-page formatting — no numbers or metadata tables
+
+The first-page document heading must be **unnumbered**. Use `Accounting Module — Business Requirements Document (BRD)` rather than `01. Accounting Module ...`, and never display a filename index in the title. Default file names are `BRD.docx`, `PRD.docx` and `FSD.docx`, without `01_` prefixes.
+
+Immediately follow the title with meaningful document content. Do not add a decorative subtitle, department label, status/version banner, or a generic opening **`Item | Keterangan` / `Item | Description`** table. Do not add an opening list of Product Owner, Data Architect, RDBMS version, Target Release, audience or status solely to fill a template.
+
+**Even when metadata is available, do not create a generic Item/Keterangan header table by default.** Integrate confirmed facts into appropriate sections: stakeholder roles in BRD, user segments in PRD, technical constraints in FSD. Only create a specific Document Control section if explicitly requested or mandated by a provided organization template. Never invent metadata.
+
+## Full analytical depth from minimal instructions
+
+A brief description of a new project or module still triggers **complete substantive BRD, PRD and FSD** (or only the specific requested document when explicitly limited). Expand known context into meaningful requirements, stakeholders, scope, workflows, product features, screens, role permission, validation, exception paths, data model, integration where applicable, and UAT/test mapping. Do not stop after a generic introduction or outline.
+
+Make concrete design proposals where useful, **label them Proposed**, explain key decisions as `Need Confirmation`, and never invent actual existing processes, API contracts, approved business rules, owners, metrics, software versions or deadlines. All diagrams requested by the relevant section must be **rendered visuals**, not plain text or Mermaid-only snippets.
+
+Quality gate: ensure each document has enough implementation/review detail and is internally consistent. Missing evidence is documented transparently without turning the deliverable into a stub.
