@@ -72,7 +72,7 @@ Use stable mappings such as `BR-001 → PR-001 → FS-001 → TC-001`. The relat
 
 Start with a **plain document title**, then substantive content. **Do not automatically add a subtitle**, ornamental colored line or box, or a banner like `Product Management & System Analysis | Status: Proposed | Version: 1.0.0`.
 
-Do **not fabricate** Document Version, Status, Product Owner, Lead Analyst, PIC, Target Release, Sprint, author, reviewer, approval date or date. Include a document-information table **only if those details were actually supplied or an approved template requires it**. Never duplicate metadata as subtitle and table.
+Do **not fabricate** Document Version, Status, Product Owner, Lead Analyst, PIC, Target Release, Sprint, author, reviewer, approval date or date. Include a Document Control section **only when explicitly requested or mandated by an approved company template** and only with verified fields. Do not generate a generic Item/Keterangan metadata table even when factual metadata is available. Integrate actual facts into relevant BRD/PRD/FSD sections.
 
 Use **Calibri**, all visible text **pure black #000000**, white background and clearly visible black full-grid table borders without any colored or shaded cells. Render diagrams as real graphics in the documents, not just Mermaid code.
 
