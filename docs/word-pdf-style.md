@@ -64,7 +64,7 @@ Specifically, do not produce a line such as:
 
 > Product Management & System Analysis | Status: Proposed | Version: 1.0.0
 
-Do not fabricate Product Owner, Lead System Analyst, Target Release, Sprint, document Version, document Status, author, PIC, approval or date. Add a **Document Information table only when valid metadata was given by the user/source or an approved corporate template requires it**. Do not insert placeholder metadata or duplicate the same values below the title and in a table.
+Do not fabricate Product Owner, Lead System Analyst, Target Release, Sprint, document Version, document Status, author, PIC, approval or date. Add an explicit **Document Control section only when specifically requested or required by a provided corporate template**, and use only verified data. Do not make a generic opening Item/Keterangan metadata table even if metadata exists. Do not insert placeholder metadata or duplicate the same values below the title and in a table.
 
 ## ERD visual layout gate (FSD)
 
