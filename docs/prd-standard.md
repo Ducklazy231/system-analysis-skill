@@ -42,3 +42,9 @@ FSD expands this into field specifications, role permission, validation, data so
 - No invented stakeholder metadata or colored subtitle below the title.
 
 [Three-document standard](document-suite.md) · [BRD standard](brd-standard.md) · [FSD standard](fsd-standard.md)
+
+## Document presentation and short-brief behavior
+
+Start with a **plain unnumbered PRD title**, e.g. `Accounting Module — Product Requirements Document (PRD)`. Do not prepend `01.`, department/status/version subtitles or an opening `Item | Keterangan` table, even if metadata is known. If ownership matters, put the known owner under the relevant stakeholder or product-responsibility section.
+
+From a short new-product brief, still provide a **substantive PRD**: proposed feature/module breakdown, target users, user stories, main and alternate user flows, user-facing behavior, screen inventory, validation feedback, acceptance criteria and unresolved product decisions. Render user flows as visual diagrams. Use Proposed and Need Confirmation honestly rather than inventing approved features or release dates.
