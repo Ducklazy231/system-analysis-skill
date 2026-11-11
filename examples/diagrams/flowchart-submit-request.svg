@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="790" viewBox="0 0 780 790" role="img" aria-labelledby="t d">
+<title id="t">Request Submission — Flowchart Example</title>
+<desc id="d">User submits request, system validates data. Invalid requests show an error. Valid requests are saved and a reference ID is displayed.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4.5 L0 9 Z" fill="#222"/></marker></defs>
+<rect width="780" height="790" fill="#fff"/>
+<text x="390" y="39" font-family="Calibri, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#111">Request Submission — Example Workflow</text>
+<text x="390" y="62" font-family="Calibri, sans-serif" font-size="13" text-anchor="middle" fill="#525252">Illustrative flow, not a confirmed project process</text>
+<rect x="240" y="93" width="300" height="66" rx="12" fill="#fff" stroke="#222" stroke-width="2"/>
+<text x="390" y="121" font-family="Calibri, sans-serif" font-size="19" text-anchor="middle" fill="#111">User submits request</text><text x="390" y="142" font-family="Calibri, sans-serif" font-size="13" text-anchor="middle" fill="#444">Click Submit</text>
+<line x1="390" y1="159" x2="390" y2="211" stroke="#222" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="240" y="216" width="300" height="67" rx="9" fill="#f8f8f8" stroke="#222" stroke-width="2"/>
+<text x="390" y="245" font-family="Calibri, sans-serif" font-size="19" text-anchor="middle" fill="#111">System validates data</text><text x="390" y="266" font-family="Calibri, sans-serif" font-size="13" text-anchor="middle" fill="#444">Required fields and permissions</text>
+<line x1="390" y1="283" x2="390" y2="338" stroke="#222" stroke-width="2" marker-end="url(#arrow)"/>
+<polygon points="390,340 520,411 390,482 260,411" fill="#fff" stroke="#222" stroke-width="2"/>
+<text x="390" y="407" font-family="Calibri, sans-serif" font-size="19" text-anchor="middle" fill="#111">Data valid?</text>
+<rect x="27" y="375" width="204" height="72" rx="8" fill="#fff" stroke="#222" stroke-width="2"/>
+<text x="129" y="404" font-family="Calibri, sans-serif" font-size="17" text-anchor="middle" fill="#111">Show validation</text>
+<text x="129" y="425" font-family="Calibri, sans-serif" font-size="17" text-anchor="middle" fill="#111">errors</text>
+<line x1="260" y1="411" x2="235" y2="411" stroke="#222" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="248" y="400" font-family="Calibri, sans-serif" font-size="15" text-anchor="middle" fill="#111">No</text>
+<path d="M129 375 L129 126 L236 126" fill="none" stroke="#555" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<text x="140" y="360" font-family="Calibri, sans-serif" font-size="13" fill="#444">Correct fields</text>
+<line x1="390" y1="482" x2="390" y2="551" stroke="#222" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="407" y="518" font-family="Calibri, sans-serif" font-size="15" fill="#111">Yes</text>
+<rect x="240" y="556" width="300" height="70" rx="9" fill="#f8f8f8" stroke="#222" stroke-width="2"/>
+<text x="390" y="586" font-family="Calibri, sans-serif" font-size="19" text-anchor="middle" fill="#111">Save request</text>
+<text x="390" y="609" font-family="Calibri, sans-serif" font-size="13" text-anchor="middle" fill="#444">Database stores record</text>
+<line x1="390" y1="626" x2="390" y2="683" stroke="#222" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="240" y="688" width="300" height="70" rx="12" fill="#fff" stroke="#222" stroke-width="2"/>
+<text x="390" y="715" font-family="Calibri, sans-serif" font-size="19" text-anchor="middle" fill="#111">Show confirmation</text><text x="390" y="738" font-family="Calibri, sans-serif" font-size="13" text-anchor="middle" fill="#444">Display request reference ID</text>
+</svg>
