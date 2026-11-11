@@ -134,7 +134,7 @@ The ERD is a **rendered visual** inside the FSD, with editable source available 
 - Page and all table cells white. Full visible black grid on all table cells. No shading, colored backgrounds, decorative header fills or alternating row bands.
 - **Start with the document title only.** Default heading examples: `Accounting Module — Business Requirements Document (BRD)`, `Accounting Module — Product Requirements Document (PRD)`, and `Accounting Module — Functional Specification Document (FSD)`.
 - Do not automatically add a subtitle such as `Product Management & System Analysis | Status: Proposed | Version: 1.0.0`, department labels, ornamental rule lines, boxes, revision banners, or colored title decoration.
-- **No fabricated document metadata.** Do not invent Version, Status, Target Release, Sprint, Product Owner, Lead System Analyst, PIC, approver, date or document author. Do **not** add a Document Information table by default, even when authentic values are supplied. Only create an explicit Document Control section when the user specifically requests it or a supplied corporate template requires it. Place other verified details in the relevant substantive sections.
+- **Document information table is required under the title.** Use `Item | Keterangan` for Indonesian and `Item | Description` for English. List relevant Module, Document Version, Date, Related Systems, Status. Never invent a value. Mark unknown fields `Need Confirmation` or `Not specified`.
 - Do not repeat the same status/owner/version under the heading and in a metadata table.
 - Any required diagrams must be **visibly rendered and embedded**, not Mermaid code blocks disguised as graphics.
 - Do not create decorative covers, header/footer, random icons, tinted summaries or other AI-template styling unless the user requests them.
@@ -153,13 +153,23 @@ When generating a complete new-system package:
 
 For a narrow user request, keep the requested smaller scope. For a larger unknown project, draft evidence-backed sections now and mark `Proposed` or `Need Confirmation` honestly. Do not pretend placeholder content is final.
 
-## Start-page formatting — no numbers or metadata tables
+## Start-page formatting — plain title, then visible document table
 
-The first-page document heading must be **unnumbered**. Use `Accounting Module — Business Requirements Document (BRD)` rather than `01. Accounting Module ...`, and never display a filename index in the title. Default file names are `BRD.docx`, `PRD.docx` and `FSD.docx`, without `01_` prefixes.
+First-page order: **unnumbered title → actual two-column Document Information table → substantive content**.
 
-Immediately follow the title with meaningful document content. Do not add a decorative subtitle, department label, status/version banner, or a generic opening **`Item | Keterangan` / `Item | Description`** table. Do not add an opening list of Product Owner, Data Architect, RDBMS version, Target Release, audience or status solely to fill a template.
+For Bahasa Indonesia use:
 
-**Even when metadata is available, do not create a generic Item/Keterangan header table by default.** Integrate confirmed facts into appropriate sections: stakeholder roles in BRD, user segments in PRD, technical constraints in FSD. Only create a specific Document Control section if explicitly requested or mandated by a provided organization template. Never invent metadata.
+| Item | Keterangan |
+|---|---|
+| Modul | Accounting Module (illustrative) |
+| Versi Dokumen | Need Confirmation |
+| Tanggal | Actual document creation date |
+| Sistem Terkait | Need Confirmation |
+| Status | Proposed (if the document is a proposal) |
+
+For English documents, the headers are `Item | Description`. Use relevant row labels in English.
+
+This is a **real editable table** in Word, not paragraph text. Plain white cells with **full solid black grid borders**, Calibri black text, and no shading or colored header. Show only known values or `Need Confirmation` / `Not specified`. Don't invent release, version, ownership or technology values. Document title remains unnumbered. **Do not add an extra decorative subtitle** or duplicate metadata outside the table. An explicit corporate template or user instruction can override this default.
 
 ## Full analytical depth from minimal instructions
 
