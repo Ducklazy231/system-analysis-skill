@@ -1,29 +1,38 @@
 # Instructions for AI coding agents
 
-This repository contains reusable Business Analyst and System Analyst instructions, not project-specific requirements.
-
-## Which skill to use
+Use the appropriate language-specific BA/SA skill:
 
 - English: `skills/system-analysis-en/SKILL.md`
-- Natural Indonesian: `skills/system-analysis-id/SKILL.md`
-- Root working reference: `SKILL.md`
+- Natural Indonesian with English technical terms: `skills/system-analysis-id/SKILL.md`
+- English-first bilingual master: `SKILL.md`
 
-Use the edition that matches the user's requested output language. If writing in Indonesian, keep technical terms in English: API, endpoint, payload, workflow, validation, approval, role, permission, webhook, retry, sequence diagram, and actual UI field names.
+Apply the user's project evidence. Separate `Existing / Observed`, `Confirmed`, `Proposed` and `Need Confirmation`. Do not invent stakeholder names, approval rules, fields, schemas, endpoints, metrics, or sign-off.
 
-Always separate `Existing / Observed`, `Confirmed`, `Proposed`, and `Need Confirmation`.
+## Default for a new system or module
 
-Use the supplied project's evidence for actual business decisions, API contracts, roles, status names, and requirements. Do not invent those details.
+Automatically create **three complete primary documents**: **BRD, PRD and FSD**, not 19 independent artifacts.
 
-For diagrams see `docs/sequence-diagrams.md`. For Word/PDF layout see `docs/word-pdf-style.md`. For installation see `docs/installation.md`.
+1. BRD is for non-technical business stakeholders. Include problems, objectives, scope, stakeholder mapping and rendered business workflow.
+2. PRD is for Product/PM/UI/UX and feature decisions. Include target users, module/feature inventory, product behavior, user stories and rendered user flow.
+3. FSD is for System Analyst, Developers and QA. Include technical functional behavior, fields, validation, permissions, state transitions, errors, UAT/test mapping, rendered sequence diagrams and rendered ERD where relational data is used.
 
-Do not pad a small task with a generic introduction, excessive tables, or an unnecessary conclusion.
+Each document has mandatory sections and traceability rules in `docs/document-suite.md`. Do not ask whether to also produce ERD, workflow, stakeholder mapping or test cases. They belong inside the three primary documents.
 
-## Mandatory greenfield documentation behavior
+**For a narrow Jira bug, one field, or short edit, perform only the requested task.**
 
-When asked to create or analyze a **new project, system, application, or module from scratch**, automatically produce the complete documentation package. Include stakeholder register/RACI, scope, BRD, PRD, FRD/SRS, business workflow and swimlane, rendered sequence diagrams, rendered ERD with data dictionary, architecture/data flow if relevant, role permissions, status transitions, API specs when applicable, UI/UX screen requirements, UAT, risk and decision log.
+## ERD quality gate
 
-The user **does not need to request each artifact separately**. Use [the greenfield blueprint](docs/greenfield-documentation.md). Do not invent real stakeholders, roles, business rules, data schemas, or technical integration details: label proposed design and Need Confirmation. Don't apply this full-package mode to narrow Jira tickets or one-paragraph edits.
+- Never overlap entities, fields, connectors, relationship text or cardinality.
+- Never compress large ERDs into illegible images. Use a larger canvas or split by domain with a relationship overview.
+- Draw visible horizontal separator lines inside each table between **Primary Key (PK)**, **Foreign Key (FK)** and **Attributes**. Label key fields explicitly and show `PK, FK` if both apply.
+- Route connectors around table contents and inspect the rendered output. Include editable source only as supplementary material.
 
-## Mandatory document rendering style
+## Document appearance
 
-Any generated Word/PDF must use Calibri and **pure black #000000 for all text**, including titles, headings, captions, table content and hyperlinks. No blue links, gray captions, dark-charcoal body, or alternating text colors. Tables have white cells and visible full black borders, without shading. Render every required diagram into an actual visual and embed it in the document instead of merely supplying Mermaid code.
+- **Calibri** for all text, **solid black #000000** for every title, paragraph, table cell, heading, caption and hyperlink.
+- White page, white cells, clearly visible black table borders. No colored/shaded headers or zebra stripes.
+- **Plain title only**. Never insert an invented decorative subtitle, "Product Management & System Analysis" tagline, status/version banner, fake author, owner, release date, or placeholder Document Information table.
+- Include document metadata only when provided or required by an approved corporate template. Do not duplicate it.
+- Render diagrams as actual visual graphics in the requested document, not raw Mermaid code alone.
+
+Other guides: `docs/word-pdf-style.md`, `docs/sequence-diagrams.md`, `docs/brd-standard.md`, `docs/prd-standard.md`, `docs/fsd-standard.md`.
